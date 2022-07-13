@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user_roles', function (Blueprint $table) {
-            $table->id('role_id');
-            $table->string('role_name');
-            $table->string('role_slug');
-            $table->string('role_description');
+        Schema::create('course_masterclass_levels', function (Blueprint $table) {
+            $table->id('masterclass_level_id');
+            $table->string('masterclass_level_name');
+            $table->string('masterclass_level_slug');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_roles');
+        Schema::dropIfExists('masterclass_levels');
     }
 };

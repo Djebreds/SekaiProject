@@ -13,25 +13,23 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id('user_id');
+        Schema::create('course_instructors', function (Blueprint $table) {
+            $table->id('instructor_id');
             $table->unsignedBigInteger('role_id');
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->enum('status', ['active', 'deactive']);
-            $table->string('picture');
-            $table->string('phone');
-            $table->text('about');
-            $table->string('job_title')->nullable();
+            $table->string('instructor_first_name');
+            $table->string('instructor_last_name');
+            $table->string('instructor_email')->unique();
+            $table->string('instructor_password');
+            $table->enum('instructor_status', ['active', 'deactive']);
+            $table->string('instructor_picture');
+            $table->string('instructor_phone');
+            $table->text('instructor_about');
+            $table->string('instructor_job_title')->nullable();
             $table->string('social_twitter')->nullable();
             $table->string('social_instagram')->nullable();
             $table->string('social_facebook')->nullable();
             $table->string('social_likedin')->nullable();
             $table->string('social_youtube')->nullable();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -43,6 +41,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('course_instructors');
     }
 };

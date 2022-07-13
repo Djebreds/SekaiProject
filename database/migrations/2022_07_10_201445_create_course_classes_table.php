@@ -14,7 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('course_classes', function (Blueprint $table) {
-            $table->id();
+            $table->id('class_id');
+            $table->unsignedBigInteger('masterclass_id');
+            $table->unsignedBigInteger('user_id');
+            $table->date('class_date');
+            $table->enum('class_status', ['active', 'deactive']);
             $table->timestamps();
         });
     }
