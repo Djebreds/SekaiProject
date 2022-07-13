@@ -1,5 +1,5 @@
 /**
-* Eduport- LMS, Education and Course Theme
+* Eduport- LMS, Education and CourseEnroll Theme
 *
 * @author Webestica (https://www.webestica.com/)
 * @version 1.1.0
@@ -691,7 +691,7 @@ var e = {
           // CHART: Page Views
           var options = {
             series: [50, 20, 20, 10, 10],
-            labels: ['Course-1', 'Course-2', 'Course-3', 'Course-4', 'Course-5'],
+            labels: ['CourseEnroll-1', 'CourseEnroll-2', 'CourseEnroll-3', 'CourseEnroll-4', 'CourseEnroll-5'],
             chart: {
               height: 300,
               width: 300,
@@ -737,7 +737,7 @@ var e = {
         // CHART: Page Views
         var options = {
           series: [70, 15, 10, 5],
-          labels: ['Course-1', 'Course-2', 'Course-3', 'Course-4'],
+          labels: ['CourseEnroll-1', 'CourseEnroll-2', 'CourseEnroll-3', 'CourseEnroll-4'],
           chart: {
             height: 200,
             width: 200,

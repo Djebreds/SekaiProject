@@ -20,10 +20,10 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->enum('status', ['active', 'deactive']);
+            $table->enum('status', ['active', 'inactive']);
             $table->string('picture');
-            $table->string('phone');
-            $table->text('about');
+            $table->string('phone')->unique();
+            $table->text('about')->nullable();
             $table->string('job_title')->nullable();
             $table->string('social_twitter')->nullable();
             $table->string('social_instagram')->nullable();

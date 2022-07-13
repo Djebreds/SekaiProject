@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('courses', function (Blueprint $table) {
+        Schema::create('course_enrolls', function (Blueprint $table) {
             $table->id('course_id');
             $table->unsignedBigInteger('class_id');
             $table->unsignedBigInteger('user_id');
@@ -34,10 +34,10 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('courses', function(Blueprint $table) {
-            $table->dropForeign(['courses_class_id_foreign', 'courses_user_id_foreign']);
+        Schema::table('course_enrolls', function(Blueprint $table) {
+            $table->dropForeign(['course_enrolls_class_id_foreign', 'courses_user_id_foreign']);
             $table->dropColumn('class_id', 'user_id');
-            $table->dropIndex(['courses_class_id_index', 'courses_user_id_index']);
+            $table->dropIndex(['course_enrolls_class_id_index', 'courses_user_id_index']);
         });
     }
 };
