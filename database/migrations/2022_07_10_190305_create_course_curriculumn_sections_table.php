@@ -14,7 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('course_curriculumn_sections', function (Blueprint $table) {
-            $table->id();
+            $table->id('curriculumn_section_id');
+            $table->unsignedBigInteger('masterclass_id');
+            $table->string('curriculumn_section_name');
+            $table->boolean('section_is_completed');
             $table->timestamps();
         });
     }
