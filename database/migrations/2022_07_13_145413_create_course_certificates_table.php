@@ -22,6 +22,11 @@ return new class extends Migration
             $table->string('certificate_validate');
             $table->string('certificate_expired');
             $table->timestamps();
+
+            $table->index('user_id');
+            $table->index('masterclass_id');
+            $table->foreign('user_id')->references('user_id')->on('users');
+            $table->foreign('masterclass_id')->references('masterclass_id')->on('course_masterclasses');
         });
     }
 
@@ -32,6 +37,10 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('course_certificates');
+        Schema::table('course_certificates', function(Blueprint $table) {
+            $table->dropForeign(['course_certificates_user_id_foreign', 'course_certificates_masterclass_id_foreign']);
+            $table->dropColumn('user_id', 'masterclass_id');
+            $table->dropIndex(['course_certificates_user_id_index', 'course_certificate_masterclass_id_index']);
+        });
     }
 };
