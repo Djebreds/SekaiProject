@@ -33,6 +33,9 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
+
+            $table->index('role_id');
+            $table->foreign('role_id')->references('role_id')->on('user_roles');
         });
     }
 
@@ -43,6 +46,11 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::table('users', function(Blueprint $table) {
+            $table->dropForeign('users_role_id_foreign');
+            $table->dropColumn('role_id');
+            $table->dropIndex('users_role_id_index');
+        });
+
     }
 };
