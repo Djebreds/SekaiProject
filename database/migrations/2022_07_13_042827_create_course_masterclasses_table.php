@@ -25,8 +25,8 @@ return new class extends Migration
             $table->string('masterclass_video_preview');
             $table->string('masterclass_price')->nullable();
             $table->string('masterclass_discount')->nullable();
-            $table->string('masterclass_total_duration');
-            $table->string('masterclass_total_curriculumn');
+            $table->integer('masterclass_total_duration')->unsigned();
+            $table->string('masterclass_total_curriculum');
             $table->timestamps();
 
             $table->index('masterclass_category_id');
