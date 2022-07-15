@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('credential_id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('masterclass_id');
+            $table->unsignedBigInteger('instructor_id');
             $table->boolean('certificate_active');
             $table->string('certificate_validate');
             $table->string('certificate_expired');
@@ -25,8 +26,10 @@ return new class extends Migration
 
             $table->index('user_id');
             $table->index('masterclass_id');
+            $table->index('instructor_id');
             $table->foreign('user_id')->references('user_id')->on('users');
             $table->foreign('masterclass_id')->references('masterclass_id')->on('course_masterclasses');
+            $table->foreign('instructor_id')->references('instructor_id')->on('course_instructors');
         });
     }
 
@@ -38,9 +41,9 @@ return new class extends Migration
     public function down()
     {
         Schema::table('course_certificates', function(Blueprint $table) {
-            $table->dropForeign(['course_certificates_user_id_foreign', 'course_certificates_masterclass_id_foreign']);
-            $table->dropColumn('user_id', 'masterclass_id');
-            $table->dropIndex(['course_certificates_user_id_index', 'course_certificate_masterclass_id_index']);
+            $table->dropForeign(['course_certificates_user_id_foreign', 'course_certificates_masterclass_id_foreign', 'course_certificates_instructor_id_foreign']);
+            $table->dropColumn('user_id', 'masterclass_id', 'instructor_id');
+            $table->dropIndex(['course_certificates_user_id_index', 'course_certificate_masterclass_id_index', 'course_certificates_instructor_id_index']);
         });
     }
 };

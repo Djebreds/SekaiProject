@@ -5,18 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CourseEnroll extends Model
+class CourseComment extends Model
 {
     use HasFactory;
-    protected $table = 'course_enrolls';
-    protected $primaryKey = 'enroll_id';
+    protected $table = 'course_comments';
+    protected $primaryKey = 'comment_id';
     protected $guarded = [];
-
-    public function course_classes() {
-        return $this->belongsTo(CourseClass::class, 'class_id', 'class_id');
-    }
 
     public function users() {
         return $this->belongsTo(User::class, 'user_id', 'user_id');
+    }
+    public function replies() {
+        return $this->hasMany(CourseComment::class, 'parent_id', 'comment_id');
     }
 }

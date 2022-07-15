@@ -13,6 +13,6 @@ class CourseClassType extends Model
     protected $guarded = [];
 
     public function course_masterclasses() {
-        return $this->hasMany(CourseMasterclass::class);
+        return $this->hasMany(CourseMasterclass::class, 'class_type_id', 'class_type_id');
     }
 }

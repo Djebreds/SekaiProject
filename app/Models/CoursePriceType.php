@@ -13,6 +13,6 @@ class CoursePriceType extends Model
     protected $guarded = [];
 
     public function course_masterclasses() {
-        return $this->hasMany(CourseMasterclass::class);
+        return $this->hasMany(CourseMasterclass::class, 'price_type_id', 'price_type_id');
     }
 }
