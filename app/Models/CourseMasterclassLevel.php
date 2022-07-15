@@ -13,6 +13,6 @@ class CourseMasterclassLevel extends Model
     protected $guarded = [];
 
     public function course_masterclasses() {
-        return $this->hasMany(CourseMasterclass::class);
+        return $this->hasMany(CourseMasterclass::class, 'masterclass_level_id', 'masterclass_level_id');
     }
 }

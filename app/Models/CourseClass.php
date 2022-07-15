@@ -15,4 +15,5 @@ class CourseClass extends Model
     public function course_masterclasses() {
         return $this->belongsTo(CourseMasterclass::class, 'masterclass_id', 'masterclass_id');
     }
+
 }
