@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -16,8 +15,7 @@ return new class extends Migration
         Schema::create('course_instructors', function (Blueprint $table) {
             $table->id('instructor_id');
             $table->unsignedBigInteger('role_id');
-            $table->string('instructor_first_name');
-            $table->string('instructor_last_name');
+            $table->string('instructor_full_name');
             $table->string('instructor_email')->unique();
             $table->string('instructor_password');
             $table->enum('instructor_status', ['active', 'inactive']);
@@ -33,7 +31,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->index('role_id');
-            $table->foreign('role_id')->references('role_id')->on('user_roles');
+            $table->foreign('role_id')->references('role_id')->on('roles');
         });
     }
 
@@ -44,7 +42,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('instructors', function(Blueprint $table) {
+        Schema::table('instructors', function (Blueprint $table) {
             $table->dropForeign('instructors_role_id_foreign');
             $table->dropColumn('role_id');
             $table->dropIndex('instructors_role_id_index');
