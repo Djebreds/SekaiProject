@@ -13,22 +13,14 @@ return new class extends Migration {
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id('user_id');
-            $table->unsignedBigInteger('role_id');
+            $table->id('id');
+            $table->unsignedBigInteger('role_id')->nullable();
             $table->string('full_name');
             $table->string('email')->unique();
             $table->string('password');
             $table->enum('status', ['active', 'inactive']);
-            $table->string('picture');
-            $table->string('phone')->unique();
-            $table->text('about')->nullable();
-            $table->string('job_title')->nullable();
-            $table->string('social_twitter')->nullable();
-            $table->string('social_instagram')->nullable();
-            $table->string('social_facebook')->nullable();
-            $table->string('social_likedin')->nullable();
-            $table->string('social_youtube')->nullable();
             $table->timestamp('email_verified_at')->nullable();
+            $table->boolean('is_email_verified')->default(0);
             $table->rememberToken();
             $table->timestamps();
 
