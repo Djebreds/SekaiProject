@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -18,8 +17,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'first_name',
-        'last_name',
+        'full_name',
         'email',
         'password',
         'picture',
@@ -47,10 +45,44 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function user_roles() {
-        return $this->belongsTo(UserRole::class, 'role_id', 'role_id');
+    public function authorizeRole($roles)
+    {
+        if ($this->hasAnyRole($roles))
+            return true;
+
+        abort(401, 'This action is unauthorized');
     }
-    public function course_enrolls() {
+
+    public function hasAnyRole($roles)
+    {
+        if (is_array($roles)) {
+            foreach ($roles as $role) {
+                if ($role->hasRole($role))
+                    return true;
+            }
+        } else {
+            if ($this->hasRole($roles))
+                return true;
+        }
+        return false;
+    }
+
+    public function hasRole($role)
+    {
+        if ($this->roles()->where('role_name', $role)->first()) {
+            return true;
+        }
+        return false;
+    }
+
+    // relationship
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
+
+    public function course_enrolls()
+    {
         return $this->hasMany(CourseEnroll::class, 'user_id', 'user_id');
     }
 }

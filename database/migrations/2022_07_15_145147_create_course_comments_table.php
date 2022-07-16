@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -15,9 +14,9 @@ return new class extends Migration
     {
         Schema::create('course_comments', function (Blueprint $table) {
             $table->id('comment_id');
-            $table->unsignedBigInteger('user_id')->unsigned();
-            $table->unsignedBigInteger('curriculum_id')->unsigned();
-            $table->unsignedBigInteger('parent_id')->unsigned()->nullable();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('curriculum_id');
+            $table->unsignedBigInteger('parent_id')->nullable();
             $table->text('commenting');
             $table->timestamps();
 
@@ -37,7 +36,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('course_comments', function(Blueprint $table) {
+        Schema::table('course_comments', function (Blueprint $table) {
             $table->dropForeign(['course_comments_user_id_foreign', 'course_comments_curriculum_id_foreign', 'course_comments_parent_id_foreign']);
             $table->dropColumn('user_id', 'curriculum_id', 'parent_id');
             $table->dropIndex(['course_comments_user_id_index', 'course_comments_curriculum_id_index', 'course_comments_parent_id_index']);

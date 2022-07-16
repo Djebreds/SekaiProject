@@ -19,4 +19,8 @@ class CourseEnroll extends Model
     public function users() {
         return $this->belongsTo(User::class, 'user_id', 'user_id');
     }
+
+    public function course_instructors() {
+        return $this->belongsTo(CourseInstructor::class, 'instructor_id', 'instructor_id');
+    }
 }
