@@ -65,7 +65,7 @@
                         @endif
 
                         <!-- Form START -->
-                            <form method="POST" action="">
+                            <form method="POST" action="{{ route('register') }}">
                             @csrf
                             <!-- Full Name -->
                                 <div class="row gx-2">
@@ -76,7 +76,8 @@
                                                             class="fa fa-user"></i></span>
                                             <input type="text" name="full_name"
                                                    class="form-control border-0 bg-light rounded-end ps-1 @error('full_name') is-invalid @enderror"
-                                                   placeholder="Full name" id="full_name" autofocus required>
+                                                   placeholder="Full name" id="full_name" value="{{ old('full_name') }}"
+                                                   autofocus required>
                                             @error('full_name')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -93,7 +94,8 @@
                                                     class="bi bi-envelope-fill"></i></span>
                                         <input type="email" name="email"
                                                class="form-control border-0 bg-light rounded-end ps-1 @error('email') is-invalid @enderror"
-                                               placeholder="E-mail" id="email" autocomplete="email" required>
+                                               placeholder="E-mail" id="email" value="{{ old('email') }}"
+                                               autocomplete="email" required>
                                         @error('email')
                                         <div class="invalid-feedback">
                                             {{ $message }}

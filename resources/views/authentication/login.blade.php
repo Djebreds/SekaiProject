@@ -62,10 +62,16 @@
                                 <div class="alert alert-danger" role="alert">
                                     {{ session('error') }}
                                 </div>
+                            @endif
+
+                            @if(session()->has('message'))
+                                <div class="alert alert-success" role="alert">
+                                    {{ session('message') }}
+                                </div>
                         @endif
 
                         <!-- Form START -->
-                            <form method="POST" action="">
+                            <form method="POST" action="{{ route('login') }}">
                             @csrf
                             <!-- Email -->
                                 <div class="mb-4">

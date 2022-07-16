@@ -20,10 +20,8 @@ class User extends Authenticatable
         'full_name',
         'email',
         'password',
-        'picture',
-        'phone',
-        'status',
         'role_id',
+        'is_email_verified'
     ];
 
     /**
@@ -83,6 +81,6 @@ class User extends Authenticatable
 
     public function course_enrolls()
     {
-        return $this->hasMany(CourseEnroll::class, 'user_id', 'user_id');
+        return $this->hasMany(CourseEnroll::class, 'user_id', 'id');
     }
 }

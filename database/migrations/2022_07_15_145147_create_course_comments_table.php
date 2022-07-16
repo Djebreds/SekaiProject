@@ -23,7 +23,7 @@ return new class extends Migration {
             $table->index('user_id');
             $table->index('curriculum_id');
             $table->index('parent_id');
-            $table->foreign('user_id')->references('user_id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('curriculum_id')->references('curriculum_id')->on('course_curriculums');
             $table->foreign('comment_id')->references('parent_id')->on('course_comments');
         });

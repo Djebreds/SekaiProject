@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -27,7 +26,7 @@ return new class extends Migration
             $table->index('user_id');
             $table->index('masterclass_id');
             $table->index('instructor_id');
-            $table->foreign('user_id')->references('user_id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('masterclass_id')->references('masterclass_id')->on('course_masterclasses');
             $table->foreign('instructor_id')->references('instructor_id')->on('course_instructors');
         });
@@ -40,7 +39,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('course_certificates', function(Blueprint $table) {
+        Schema::table('course_certificates', function (Blueprint $table) {
             $table->dropForeign(['course_certificates_user_id_foreign', 'course_certificates_masterclass_id_foreign', 'course_certificates_instructor_id_foreign']);
             $table->dropColumn('user_id', 'masterclass_id', 'instructor_id');
             $table->dropIndex(['course_certificates_user_id_index', 'course_certificate_masterclass_id_index', 'course_certificates_instructor_id_index']);

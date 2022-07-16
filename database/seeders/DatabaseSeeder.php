@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Role;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,5 +20,23 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        $role = new Role();
+        $role->role_name = 'Admin';
+        $role->role_slug = 'admin';
+        $role->role_description = 'can do anything';
+        $role->save();
+
+        $role = new Role();
+        $role->role_name = 'Student';
+        $role->role_slug = 'student';
+        $role->role_description = 'can learning';
+        $role->save();
+
+        $role = new Role();
+        $role->role_name = 'Instructor';
+        $role->role_slug = 'instructor';
+        $role->role_description = 'can teaching';
+        $role->save();
     }
 }
