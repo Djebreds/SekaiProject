@@ -49,11 +49,15 @@ class RegisterController extends Controller
             'user_id' => $user->user_id,
             'token' => $token
         ]);
-
         // send email to verification
         $this->sendActivationEmail($request, $token);
+        $body = [
+            'email' => $user->email,
+            'token' => $token
+        ];
 
-        return redirect()->route('login')->with('message', 'We has sent verification code to your email. Please Check it!');
+//        return redirect()->route('verify.user', $token)->with(compact('body'));
+        return redirect()->route('verify.index')->with(compact('body'));
     }
 
     public function sendActivationEmail($request, $token)
