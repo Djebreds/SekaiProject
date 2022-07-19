@@ -14,15 +14,25 @@ return new class extends Migration {
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id('id');
-            $table->unsignedBigInteger('role_id')->nullable();
+            $table->unsignedBigInteger('role_id')->default(2);
             $table->string('full_name');
             $table->string('email')->unique();
             $table->string('password');
             $table->enum('status', ['active', 'inactive', 'deactivated'])->default('inactive');
             $table->timestamp('email_verified_at')->nullable();
-            $table->boolean('is_email_verified')->default(0);
+            $table->boolean('is_email_verified')->default(false);
+            $table->string('profile_picture');
+            $table->string('phone_number')->nullable();
+            $table->text('about')->nullable();
+            $table->string('job_title')->nullable();
+            $table->string('social_twitter')->nullable();
+            $table->string('social_instagram')->nullable();
+            $table->string('social_facebook')->nullable();
+            $table->string('social_linkedin')->nullable();
+            $table->string('social_youtube')->nullable();
             $table->rememberToken();
             $table->timestamps();
+            $table->unsignedBigInteger('provider_id')->nullable();
 
             $table->index('role_id');
             $table->foreign('role_id')->references('role_id')->on('roles');

@@ -2,12 +2,13 @@
 <html lang="en">
 
 <head>
-    <title>Register | Basicschool</title>
+    <title>@yield('title')</title>
 
     <!-- Meta Tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="author" content="Refi Ahmad Fauzan x PT Basicteknologi Intersolusi Tersinergi">
+    <meta name="author"
+          content="PT Basicteknologi Intersolusi Tersinergi | Refi Ahmad Fauzan & Farrel Rafiardi Kusmana">
     <meta name="description" content="Basicschool Belajar Pemrograman Di Bimbing Instruktur">
 
     <!-- Favicon -->
@@ -23,7 +24,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendor/font-awesome/css/all.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendor/bootstrap-icons/bootstrap-icons.css') }}">
 
-    <!-- Theme CSS -->
+    <!-- Custom CSS -->
     <link id="style-switch" rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
 
 </head>
@@ -35,23 +36,23 @@
     <section class="p-0 d-flex align-items-center position-relative overflow-hidden">
         <div class="container-fluid">
             <div class="row">
-
+                @yield('content')
             </div> <!-- Row END -->
         </div>
     </section>
 </main>
 <!-- **************** MAIN CONTENT END **************** -->
 
+<!-- Back to top -->
+<div class="back-top"><i class="bi bi-arrow-up-short position-absolute top-50 start-50 translate-middle"></i></div>
+
 <!-- Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
-
-<!-- custom JS -->
-<script src="{{ asset('assets/js/page/register.js') }}"></script>
+<!-- Custom Javascript -->
 <script src="{{ asset('assets/js/functions.js') }}"></script>
-
-
+@stack('custom-script')
 </body>
 
 </html>
