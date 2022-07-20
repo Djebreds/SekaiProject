@@ -8,6 +8,7 @@ use App\Providers\RouteServiceProvider;
 use Dotenv\Validator;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
 class LoginController extends Controller
@@ -30,7 +31,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo;
 
     /**
      * Create a new controller instance.
@@ -40,43 +41,6 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
-
-    }
-
-
-    /**
-     * The user has been authenticated.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param mixed $user
-     * @return mixed
-     */
-    protected function authenticated(Request $request, $user)
-    {
-        //
-    }
-
-
-    /**
-     * Validate the user login request.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return void
-     *
-     * @throws \Illuminate\Validation\ValidationException
-     */
-    protected function validateLogin(Request $request)
-    {
-        $request->validate([
-            $this->username() => ['required', 'string',
-                Rule::exists('users')->where(function ($query) {
-                    $query->where('is_email_verified', 0);
-                })
-            ],
-            'password' => 'required|string',
-        ], [
-            $this->username() . '.exists' => 'The email has not verified, please verify first.'
-        ]);
 
     }
 }

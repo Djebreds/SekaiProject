@@ -87,19 +87,16 @@
 
                     <!-- Term of service -->
                     <div class="mb-4">
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input"
-                                   id="term-service" required>
-                            <label class="form-check-label" for="term-service">By registering, you agree to
+                            <p class="text-center" for="term-service">By registering, you agree to
                                 our<a
                                         href="#"> term of service</a>, and<a href="#"> privacy
-                                    policy</a></label>
-                        </div>
+                                    policy</a></p>
+
                     </div>
                     <!-- Button -->
                     <div class="align-items-center mt-0">
                         <div class="d-grid">
-                            <button class="btn btn-primary mb-0 disabled" id="register" type="submit">
+                            <button class="btn btn-primary mb-0" id="register" type="submit">
                                 Register
                             </button>
                         </div>
@@ -117,7 +114,7 @@
                     </div>
                     <!-- Social btn -->
                     <div class="d-grid">
-                        <a href="/oauth/google" class="btn bg-google mb-2 mb-xxl-0 disabled"
+                        <a href="/oauth/google" class="btn bg-google mb-2 mb-xxl-0 "
                            id="google-register"><i
                                     class="fab fa-fw fa-google text-white me-2"></i>Register
                             with
