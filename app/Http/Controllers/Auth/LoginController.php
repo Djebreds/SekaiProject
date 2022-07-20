@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use Dotenv\Validator;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class LoginController extends Controller
 {
@@ -54,26 +57,26 @@ class LoginController extends Controller
     }
 
 
-//    /**
-//     * Validate the user login request.
-//     *
-//     * @param \Illuminate\Http\Request $request
-//     * @return void
-//     *
-//     * @throws \Illuminate\Validation\ValidationException
-//     */
-//    protected function validateLogin(Request $request)
-//    {
-//        $request->validate([
-//            $this->username() => ['required', 'string',
-//                Rule::exists('users')->where(function ($query) {
-//                    $query->where('is_email_verified', 0);
-//                })
-//            ],
-//            'password' => 'required|string',
-//        ], [
-//            $this->username() . '.exists' => 'The email has not verified, please verify first.'
-//        ]);
-//
-//    }
+    /**
+     * Validate the user login request.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return void
+     *
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    protected function validateLogin(Request $request)
+    {
+        $request->validate([
+            $this->username() => ['required', 'string',
+                Rule::exists('users')->where(function ($query) {
+                    $query->where('is_email_verified', 0);
+                })
+            ],
+            'password' => 'required|string',
+        ], [
+            $this->username() . '.exists' => 'The email has not verified, please verify first.'
+        ]);
+
+    }
 }

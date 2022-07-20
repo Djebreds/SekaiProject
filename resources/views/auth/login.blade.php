@@ -1,24 +1,6 @@
 @extends('auth.layouts.main')
 @section('title', 'Login | Basicshool')
 @section('content')
-    <!-- left -->
-    <div class="col-12 col-lg-6 d-md-flex align-items-center justify-content-center bg-primary bg-opacity-10 vh-lg-100">
-        <div class="p-3 p-lg-5">
-            <!-- Title -->
-            <div class="text-center">
-                <h2 class="fw-bold">Welcome to Basicschool</h2>
-                <p class="mb-0 h6 fw-light">Let's learn something new today!</p>
-            </div>
-            <!-- SVG Image -->
-            <img src="{{ asset('assets/images/element/02.svg') }}" class="mt-5" alt="">
-        </div>
-    </div>
-
-    <!-- Right -->
-    <div class="col-12 col-lg-6 m-auto">
-        <div class="row my-5">
-            <div class="col-sm-10 col-xl-8 m-auto">
-
                 <!-- Title -->
                 <h1 class="fs-2">👋 Welcome back</h1>
                 <p class="lead mb-4">Please login to learn many things with us.</p>
@@ -72,7 +54,9 @@
                             <input type="checkbox" name="remember" class="form-check-input" id="remember">
                             <label class="form-check-label" for="remember">Remember me</label>
                         </div>
-                        <a href="#"><u>Forgot password?</u></a>
+                        @if(Route::has('password.request'))
+                            <a href="{{ route('password.request') }}"><u>Forgot password?</u></a>
+                        @endif
                     </div>
                     <!-- Button -->
                     <div class="align-items-center mt-0">
@@ -102,7 +86,5 @@
                 <div class="mt-4 text-center">
                     <span>Don't have an account? <a href="{{ route('register') }}">Register</a></span>
                 </div>
-            </div>
-        </div> <!-- Row END -->
-    </div>
+
 @endsection
