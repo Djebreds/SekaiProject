@@ -7,6 +7,7 @@ use App\Models\User;;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
 
 class OauthController extends Controller
@@ -41,7 +42,7 @@ class OauthController extends Controller
                 'email_is_verified' => true,
                 'email_verified' => time(),
                 'profile_picture' => $userData->avatar,
-                'provider_id' => truelm
+                'provider_id' => true
             ]);
             Auth::login($user);
             if ($user->role_id == 2) {

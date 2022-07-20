@@ -16,12 +16,12 @@ class CheckRole
      */
     public function handle(Request $request, Closure $next, string $role)
     {
-        if ($request->user()->roles()->where('role_name', '=', $role)->exists()) {
-            return $next($request);
-        }
-//        if (!$request->user()->hasRole($role)) {
-//            abort(401, 'This action is unauthorized.');
+//        if ($request->user()->roles()->where('role_name', '=', $role)->exists()) {
+//            return $next($request);
 //        }
-        abort(404);
+        if (!$request->user()->hasRole($role)) {
+            abort(404);
+        }
+        return $next($request);
     }
 }
