@@ -1,23 +1,6 @@
 @extends('auth.layouts.main')
 @section('title', 'Register | Basicshool')
 @section('content')
-    <!-- left -->
-    <div class="col-12 col-lg-6 d-md-flex align-items-center justify-content-center bg-primary bg-opacity-10 vh-lg-100">
-        <div class="p-3 p-lg-5">
-            <!-- Title -->
-            <div class="text-center">
-                <h2 class="fw-bold">Welcome to Basicschool</h2>
-                <p class="mb-0 h6 fw-light">Let's learn something new today!</p>
-            </div>
-            <!-- SVG Image -->
-            <img src="{{ asset('assets/images/element/02.svg') }}" class="mt-5" alt="">
-        </div>
-    </div>
-
-    <!-- Right -->
-    <div class="col-12 col-lg-6 m-auto">
-        <div class="row my-5">
-            <div class="col-sm-10 col-xl-8 m-auto">
 
                 <!-- Title -->
                 <h1 class="fs-2">🎓 Here to get started</h1>
@@ -146,9 +129,7 @@
                                 <span>Already have an account? <a href="{{ route('login') }}"
                                     >Login</a></span>
                 </div>
-            </div>
-        </div> <!-- Row END -->
-    </div>
+
 @endsection
 @push('custom-script')
     <script src="{{ asset('assets/js/page/register.js') }}"></script>

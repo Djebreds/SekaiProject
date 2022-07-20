@@ -216,8 +216,15 @@
                             </li>
                             <li><a class="dropdown-item" href="#"><i class="bi bi-info-circle fa-fw me-2"></i>Help</a>
                             </li>
-                            <li><a class="dropdown-item bg-danger-soft-hover" href="#"><i
+
+                                <li><a class="dropdown-item bg-danger-soft-hover" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"><i
                                             class="bi bi-power fa-fw me-2"></i>Sign Out</a></li>
+                            <form action="{{ route('logout') }}" id="logout-form" method="POST" class="d-none">
+                                @csrf
+                            </form>
+
+
                         </ul>
                     </div>
                 @elseauth
