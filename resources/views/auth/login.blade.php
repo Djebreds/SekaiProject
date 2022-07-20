@@ -77,7 +77,7 @@
                     </div>
                     <!-- Social btn -->
                     <div class="d-grid">
-                        <a href="/oauth/google" class="btn bg-google mb-2 mb-xxl-0"><i
+                        <a href="{{ route('auth.google') }}" class="btn bg-google mb-2 mb-xxl-0"><i
                                     class="fab fa-fw fa-google text-white me-2"></i>Login with
                             <b>Google</b></a>
                     </div>
