@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Role;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -38,5 +39,7 @@ class DatabaseSeeder extends Seeder
         $role->role_slug = 'instructor';
         $role->role_description = 'can teaching';
         $role->save();
+
+        User::factory()->count(20)->create();
     }
 }

@@ -18,7 +18,7 @@ class OauthController extends Controller
     }
 
     public function googleCallBack() {
-        try {
+
             $userData = Socialite::driver('google')->user();
             $user = User::where('email', $userData->email)->first();
             if ($user != null) {
@@ -40,17 +40,14 @@ class OauthController extends Controller
                     'email' => $userData->email,
                     'password' => Hash::make(Str::random(12)),
                     'profile_picture' => $userData->avatar,
-                    'provider_id' => $userData->id
+                    'provider_id' => $userData->id,
                 ]);
-                $user->markEmailAsVerified();
                 $user->status = 'active';
                 $user->is_email_verified = true;
+                $user->markEmailAsVerified();
 
                 Auth::login($user);
-                return redirect()->route('login');
+                return redirect()->route('login')->with('status', "Congratulation! Now you are student at Basicschool.");
             }
-        } catch (\Exception $e) {
-            dd($e->getMessage());
-        }
     }
 }
