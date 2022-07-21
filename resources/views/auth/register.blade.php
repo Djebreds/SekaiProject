@@ -114,7 +114,7 @@
                     </div>
                     <!-- Social btn -->
                     <div class="d-grid">
-                        <a href="/oauth/google" class="btn bg-google mb-2 mb-xxl-0 "
+                        <a href="{{ route('auth.google') }}" class="btn bg-google mb-2 mb-xxl-0 "
                            id="google-register"><i
                                     class="fab fa-fw fa-google text-white me-2"></i>Register
                             with

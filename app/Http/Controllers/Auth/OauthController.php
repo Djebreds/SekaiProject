@@ -18,36 +18,39 @@ class OauthController extends Controller
     }
 
     public function googleCallBack() {
-        $userData = Socialite::driver('google')->user();
+        try {
+            $userData = Socialite::driver('google')->user();
+            $user = User::where('email', $userData->email)->first();
+            if ($user != null) {
+                if ($user->role_id == 1) {
+                    Auth::login($user);
+                    return redirect()->intended('admin/dashboard');
+                } else if ($user->role_id == 2) {
+                    Auth::login($user);
+                    return redirect()->intended('account/dashboard');
+                } else if ($user->role_id == 3) {
+                    Auth::login($user);
+                    return redirect()->intended('instructor/dashboard');
+                } else {
+                    return redirect()->intended('login');
+                }
+            }  else {
+                $user = User::create([
+                    'full_name' => $userData->name,
+                    'email' => $userData->email,
+                    'password' => Hash::make(Str::random(12)),
+                    'profile_picture' => $userData->avatar,
+                    'provider_id' => $userData->id
+                ]);
+                $user->markEmailAsVerified();
+                $user->status = 'active';
+                $user->is_email_verified = true;
 
-        $user = User::where('email', $userData->email)->first();
-
-        if ($user != null) {
-            if ($user->role_id == 1) {
                 Auth::login($user);
-                return redirect()->intended('admin/dashboard');
-            } else if ($user->role_id == 2) {
-                Auth::login($user);
-                return redirect()->intended('account/dashboard');
-            } else if ($user->role_id == 3) {
-                Auth::login($user);
-                return redirect()->intended('instructor/dashboard');
+                return redirect()->route('login');
             }
-        }  else {
-            $user = User::create([
-                'full_name' => $userData->name,
-                'email' => $userData->email,
-                'password' => Hash::make(Str::random(12)),
-                'status' => 'active',
-                'email_is_verified' => true,
-                'email_verified' => time(),
-                'profile_picture' => $userData->avatar,
-                'provider_id' => true
-            ]);
-            Auth::login($user);
-            if ($user->role_id == 2) {
-                return redirect()->intended('/dashboard');
-            }
+        } catch (\Exception $e) {
+            dd($e->getMessage());
         }
     }
 }

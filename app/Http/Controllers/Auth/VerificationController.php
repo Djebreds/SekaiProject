@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\VerifiesEmails;
 use Illuminate\Http\Request;
@@ -52,6 +53,12 @@ class VerificationController extends Controller
      */
     protected function verified(Request $request)
     {
+
+        User::where('id', Auth::user()->id)->update([
+            'status' => 'active',
+            'is_email_verified' => true,
+        ]);
+
         Auth::logout();
         return redirect('login')->with('message', 'Your account has verified, now you can login.');
     }

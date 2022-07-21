@@ -70,16 +70,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-//        Get initial name
-//        $get_initial = explode(' ', ucwords($data['full_name']));
-//
-//        if (count($get_initial) > 1) {
-//            $inital_name = substr($get_initial[0], 0, 1) . substr($get_initial[1], 0, 1);
-//        } else {
-//            $inital_name = substr($get_initial[0], 0, 1);
-//        }
-
-        // generate picture color
         $color = array('bg-primary', 'bg-warning', 'bg-info', 'bg-danger', 'bg-success', 'bg-dark');
         $generate = array_rand($color, 1);
         $default_pic_color = $color[$generate];
