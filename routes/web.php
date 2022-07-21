@@ -39,14 +39,14 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/oauth/google', [OauthController::class, 'redirectToGoogle'])->name('auth.google');
 Route::get('/oauth/google/callback',[OauthController::class, 'googleCallBack'])->name('auth.google.callback');
 
-Route::group(['as' => 'admin.', 'prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth', 'admin']], function () {
-   Route::get('dashboard', [AdminController::class, 'index'])->name('dashboard');
+Route::group(['namespace' => 'Admin', 'middleware' => ['auth', 'admin']], function () {
+   Route::get('admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
 });
 
-Route::group(['as' => 'student.', 'prefix' => 'student', 'namespace' => 'Student', 'middleware' => ['auth', 'student']], function () {
-    Route::get('dashboard', [StudentController::class, 'index'])->name('dashboard');
+Route::group(['namespace' => 'Student', 'middleware' => ['auth', 'student']], function () {
+    Route::get('student/dashboard', [StudentController::class, 'index'])->name('student.dashboard');
 });
 
-Route::group(['as' => 'instructor.', 'prefix' => 'instructor', 'namespace' => 'Instructor', 'middleware' => ['auth', 'instructor']], function () {
-    Route::get('dashboard', [AdminController::class, 'index'])->name('dashboard');
+Route::group(['namespace' => 'Instructor', 'middleware' => ['auth', 'instructor']], function () {
+    Route::get('instructor/dashboard', [AdminController::class, 'index'])->name('instructor.dashboard');
 });
