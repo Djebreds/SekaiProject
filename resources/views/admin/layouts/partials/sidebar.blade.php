@@ -22,8 +22,8 @@
                 </a>
             </li>
             <li class="sidebar-header">Data</li>
-            <li class="sidebar-item">
-                <a href="" class="sidebar-link {{ (request()->is('admin/users*')) ? '' : 'collapsed' }}" data-bs-target="#users" data-bs-toggle="collapse" aria-expanded="false">
+            <li class="sidebar-item {{ (request()->is('admin/users*')) ? 'active' : '' }}">
+                <a href="#" class="sidebar-link {{ (request()->is('admin/users*')) ? '' : 'collapsed' }}" data-bs-target="#users" data-bs-toggle="collapse" aria-expanded="false">
                     <i class="align-middle" data-feather="users"></i>
                     <span class="align-middle">Users</span>
                 </a>
@@ -39,54 +39,53 @@
                     </li>
                 </ul>
             </li>
-            <li class="sidebar-item {{ (request()->is('admin/instructor*')) ? 'active' : '' }}">
-                <a class="sidebar-link" href="/admin/instructor">
+            <li class="sidebar-item {{ (request()->is('admin/roles*')) ? 'active' : '' }}">
+                <a class="sidebar-link" href="{{ route('roles.index') }}">
                     <i class="align-middle" data-feather="tool"></i> <span class="align-middle">Roles</span>
                 </a>
             </li>
-            <li class="sidebar-item {{ (request()->is('admin/categories*')) ? 'active' : '' }}">
-                <a class="sidebar-link collapsed" data-bs-target="#categories" href="/admin/categories" data-bs-toggle="collapse" aria-expanded="false" >
+            <li class="sidebar-item {{ (request()->is('admin/category*')) ? 'active' : '' }}">
+                <a class="sidebar-link {{ (request()->is('admin/category*')) ? '' : 'collapsed' }}" data-bs-target="#category" href="#" data-bs-toggle="collapse" aria-expanded="false" >
                     <i class="align-middle" data-feather="grid"></i>
                     <span class="align-middle">Categories</span>
                 </a>
-                <ul id="categories" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                    <li class="sidebar-item">
-                        <a href="" class="sidebar-link">Course Category</a>
+                <ul id="category" class="sidebar-dropdown list-unstyled collapse {{ (request()->is('admin/category*')) ? 'show' : '' }}" data-bs-parent="#sidebar">
+                    <li class="sidebar-item {{ (request()->is('admin/category/course-categories*')) ? 'active' : '' }}">
+                        <a href="{{ route('course-categories.index') }}" class="sidebar-link">Course Category</a>
                     </li>
-                    <li class="sidebar-item">
-                        <a href="" class="sidebar-link">Price Type</a>
+                    <li class="sidebar-item {{ (request()->is('admin/category/price-types*')) ? 'active' : '' }}">
+                        <a href="{{ route('price-types.index') }}" class="sidebar-link">Price Type</a>
                     </li>
-
-                    <li class="sidebar-item">
-                        <a href="" class="sidebar-link">Class Type</a>
+                    <li class="sidebar-item {{ (request()->is('admin/category/class-types*')) ? 'active' : '' }}">
+                        <a href="{{ route('class-types.index') }}" class="sidebar-link">Class Type</a>
                     </li>
-                    <li class="sidebar-item">
-                        <a href="" class="sidebar-link">Course Level</a>
+                    <li class="sidebar-item {{ (request()->is('admin/category/course-levels*')) ? 'active' : '' }}">
+                        <a href="{{ route('course-levels.index') }}" class="sidebar-link">Course Level</a>
                     </li>
                 </ul>
             </li>
-            <li class="sidebar-item {{ (request()->is('admin/masterclass*')) ? 'active' : '' }}">
-                <a class="sidebar-link" href="/admin/masterclass">
+            <li class="sidebar-item {{ (request()->is('admin/classes*')) ? 'active' : '' }}">
+                <a class="sidebar-link" href="{{ route('classes.index') }}">
                     <i class="align-middle" data-feather="clipboard"></i> <span class="align-middle">Classes</span>
                 </a>
             </li>
-            <li class="sidebar-item {{ (request()->is('admin/instructor*')) ? 'active' : '' }}">
-                <a class="sidebar-link" href="/admin/instructor">
+            <li class="sidebar-item {{ (request()->is('admin/masterclasses*')) ? 'active' : '' }}">
+                <a class="sidebar-link" href="{{ route('masterclasses.index') }}">
                     <i class="align-middle" data-feather="book"></i> <span class="align-middle">Masterclasses</span>
                 </a>
             </li>
             <li class="sidebar-item {{ (request()->is('admin/certificate*')) ? 'active' : '' }}">
-                <a class="sidebar-link" href="/admin/certificate">
+                <a class="sidebar-link" href="{{ route('certificates.index') }}">
                     <i class="align-middle" data-feather="book-open"></i> <span class="align-middle">Certificates</span>
                 </a>
             </li>
-            <li class="sidebar-item {{ (request()->is('admin/certificate*')) ? 'active' : '' }}">
-                <a class="sidebar-link" href="/admin/certificate">
+            <li class="sidebar-item {{ (request()->is('admin/reviews*')) ? 'active' : '' }}">
+                <a class="sidebar-link" href="{{ route('reviews.index') }}">
                     <i class="align-middle" data-feather="message-circle"></i> <span class="align-middle">Reviews</span>
                 </a>
             </li>
             <li class="sidebar-header">Pages</li>
-            <li class="sidebar-item {{ (request()->is('admin/certificate*')) ? 'active' : '' }}">
+            <li class="sidebar-item">
                 <a class="sidebar-link" href="/admin/certificate">
                     <i class="align-middle" data-feather="monitor"></i> <span class="align-middle">Home Page</span>
                 </a>
