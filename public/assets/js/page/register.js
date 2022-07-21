@@ -1,9 +1,7 @@
 $("#term-service").click(function () {
     if ($("#term-service:checked").length === 1) {
-        $("#register").removeClass("disabled");
         $("#google-register").removeClass("disabled");
     } else {
-        $("#register").addClass("disabled");
         $("#google-register").addClass("disabled");
     }
 });

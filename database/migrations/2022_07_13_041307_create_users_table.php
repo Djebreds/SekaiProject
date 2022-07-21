@@ -32,7 +32,7 @@ return new class extends Migration {
             $table->string('social_youtube')->nullable();
             $table->rememberToken();
             $table->timestamps();
-            $table->unsignedBigInteger('provider_id')->nullable();
+            $table->string('provider_id')->nullable();
 
             $table->index('role_id');
             $table->foreign('role_id')->references('role_id')->on('roles');
