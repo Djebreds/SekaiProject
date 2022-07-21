@@ -5,22 +5,22 @@
         <div class="container-fluid px-3 px-xl-5">
             <!-- Logo START -->
             <a class="navbar-brand" href="/">
-                <img class="light-mode-item navbar-brand-item" src="{{ asset('assets/images/logo.png') }}"
-                     alt="logo" style="max-width: 200px;">
+                <img class="light-mode-item navbar-brand-item" src="{{ asset('assets/images/logo.png') }}" alt="logo"
+                    style="max-width: 200px;">
                 <img class="dark-mode-item navbar-brand-item" src="{{ asset('assets/images/logo-light.svg') }}"
-                     alt="logo">
+                    alt="logo">
             </a>
             <!-- Logo END -->
 
             <!-- Responsive navbar toggler -->
             <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-animation">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </span>
+                data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-animation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
             </button>
 
             <!-- Main navbar START -->
@@ -31,8 +31,8 @@
                     <!-- Nav item 1 Demos -->
                     <li class="nav-item dropdown dropdown-menu-shadow-stacked">
                         <a class="nav-link bg-primary bg-opacity-10 rounded-3 text-primary px-3 py-3 py-xl-0"
-                           href="#" id="categoryMenu" data-bs-toggle="dropdown" aria-haspopup="true"
-                           aria-expanded="false"><i class="bi bi-ui-radios-grid me-2"></i><span>Kategori</span></a>
+                            href="#" id="categoryMenu" data-bs-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false"><i class="bi bi-ui-radios-grid me-2"></i><span>Kategori</span></a>
                         <ul class="dropdown-menu" aria-labelledby="categoryMenu">
                             <li><a class="dropdown-item" href="/categories">Web Development</a></li>
                         </ul>
@@ -53,11 +53,11 @@
                 </li> --}}
                     <li class="nav-item">
                         <a class="nav-link" href="/cek-sertifikat" aria-haspopup="true"
-                           aria-expanded="false">Courses</a>
+                            aria-expanded="false">Courses</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="demoMenu" data-bs-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">Instructor</a>
+                            aria-haspopup="true" aria-expanded="false">Instructor</a>
                         <ul class="dropdown-menu" aria-labelledby="demoMenu">
                             <li><a class="dropdown-item" href="/about">Become Instructor</a></li>
                             <li><a class="dropdown-item" href="/instructors">Instructor List</a></li>
@@ -65,7 +65,7 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="demoMenu" data-bs-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">About</a>
+                            aria-haspopup="true" aria-expanded="false">About</a>
                         <ul class="dropdown-menu" aria-labelledby="demoMenu">
                             <li><a class="dropdown-item" href="/about">About Basicschool</a></li>
                             <li><a class="dropdown-item" href="/instructors">About Us</a></li>
@@ -74,8 +74,8 @@
                     </li>
                     <!-- Nav item 4 Megamenu-->
                     <li class="nav-item dropdown dropdown-fullwidth">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-haspopup="true"
-                           aria-expanded="false">Others</a>
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Others</a>
                         <div class="dropdown-menu dropdown-menu-end pb-0" data-bs-popper="none">
                             <div class="row p-4 g-4">
                                 <!-- Dropdown column item -->
@@ -97,19 +97,22 @@
                                     <h6 class="mb-0">Help</h6>
                                     <hr>
                                     <!-- Dropdown item -->
-                                    <div class="mb-2 position-relative bg-primary-soft-hover rounded-2 transition-base p-3">
+                                    <div
+                                        class="mb-2 position-relative bg-primary-soft-hover rounded-2 transition-base p-3">
                                         <a class="stretched-link h6 mb-0" href="#">Guide</a>
                                         <p class="mb-0 small text-truncate-2">Speedily say has suitable disposal add
                                             boy. On forth doubt miles of child.</p>
                                     </div>
                                     <!-- Dropdown item -->
-                                    <div class="mb-2 position-relative bg-primary-soft-hover rounded-2 transition-base p-3">
+                                    <div
+                                        class="mb-2 position-relative bg-primary-soft-hover rounded-2 transition-base p-3">
                                         <a class="stretched-link h6 mb-0" href="#">Privacy and security</a>
                                         <p class="mb-0 small text-truncate-2">Speedily say has suitable disposal add
                                             boy. On forth doubt miles of child.</p>
                                     </div>
                                     <!-- Dropdown item -->
-                                    <div class="mb-2 position-relative bg-primary-soft-hover rounded-2 transition-base p-3">
+                                    <div
+                                        class="mb-2 position-relative bg-primary-soft-hover rounded-2 transition-base p-3">
                                         <a class="stretched-link h6 mb-0" href="#">Term and services</a>
                                         <p class="mb-0 small text-truncate-2">Speedily say has suitable disposal add
                                             boy. On forth doubt miles of child.</p>
@@ -124,7 +127,8 @@
                                     <div class="d-flex mb-4 position-relative">
                                         <h2 class="mb-0"><i class="fab fa-fw fa-google text-google-icon"></i></h2>
                                         <div class="ms-2">
-                                            <a class="stretched-link h6 mb-0" href="#">Google SEO certificate</a>
+                                            <a class="stretched-link h6 mb-0" href="#">Google SEO
+                                                certificate</a>
                                             <p class="mb-0 small">No prerequisites</p>
                                         </div>
                                     </div>
@@ -156,9 +160,10 @@
                     <div class="nav-item w-100">
                         <form class="position-relative">
                             <input class="form-control pe-5 bg-transparent" type="search" placeholder="Search"
-                                   aria-label="Search">
-                            <button class="btn bg-transparent px-2 py-0 position-absolute top-50 end-0 translate-middle-y"
-                                    type="submit"><i class="fas fa-search fs-6 "></i></button>
+                                aria-label="Search">
+                            <button
+                                class="btn bg-transparent px-2 py-0 position-absolute top-50 end-0 translate-middle-y"
+                                type="submit"><i class="fas fa-search fs-6 "></i></button>
                         </form>
                     </div>
                 </div>
@@ -168,25 +173,25 @@
                 @auth
                     <div class="dropdown ms-1 ms-lg-0">
                         <a class="avatar avatar-sm p-0 align-middle" href="#" id="profileDropdown" role="button"
-                           data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown"
-                           aria-expanded="false">
+                            data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown"
+                            aria-expanded="false">
                             @php
                                 $get_initial = explode(' ', ucwords(Auth::user()->full_name));
-                                $initial_name = (count($get_initial) > 1) ? substr($get_initial[0], 0, 1) . substr($get_initial[1], 0, 1) : substr($get_initial[0], 0, 1);
-                                $color = array('bg-primary', 'bg-warning', 'bg-info', 'bg-danger', 'bg-success', 'bg-dark');
+                                $initial_name = count($get_initial) > 1 ? substr($get_initial[0], 0, 1) . substr($get_initial[1], 0, 1) : substr($get_initial[0], 0, 1);
+                                $color = ['bg-primary', 'bg-warning', 'bg-info', 'bg-danger', 'bg-success', 'bg-dark'];
                             @endphp
 
-                            @if (!Auth::user()->provider_id)
+                            @if (Auth::user()->provider_id != null)
                                 <img class="avatar-img rounded-circle" src="{{ Auth::user()->profile_picture }}"
-                                     alt="avatar">
+                                    alt="avatar">
                             @else
                                 @if (in_array(Auth::user()->profile_picture, $color))
                                     <div class="avatar-img rounded-circle {{ Auth::user()->profile_picture }}"><span
-                                                class="text-white position-absolute top-50 start-50 translate-middle fw-bold">{{ $initial_name }}</span>
+                                            class="text-white position-absolute top-50 start-50 translate-middle fw-bold">{{ $initial_name }}</span>
                                     </div>
                                 @else
                                     <img class="avatar-img rounded-circle" src="{{ Auth::user()->profile_picture }}"
-                                         alt="avatar">
+                                        alt="avatar">
                                 @endif
                             @endif
                         </a>
@@ -199,7 +204,7 @@
                                     <div class="avatar me-3">
                                         @if (!Auth::user()->provider_id)
                                         <div class="avatar-img rounded-circle {{ Auth::user()->profile_picture }}"><span
-                                                    class="text-white position-absolute top-50 start-50 translate-middle fw-bold">{{ $initial_name }}</span>
+                                                class="text-white position-absolute top-50 start-50 translate-middle fw-bold">{{ $initial_name }}</span>
                                         </div>
                                         @else
                                             @if (in_array(Auth::user()->profile_picture, $color))
@@ -220,17 +225,21 @@
                                 <hr>
                             </li>
                             <!-- Links -->
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-person fa-fw me-2"></i>Edit
+                            <li><a class="dropdown-item" href="{{ route('student.profile') }}"><i
+                                        class="bi bi-person fa-fw me-2"></i>Edit
                                     Profile</a>
                             </li>
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-gear fa-fw me-2"></i>Account Settings</a>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-gear fa-fw me-2"></i>Account
+                                    Settings</a>
                             </li>
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-info-circle fa-fw me-2"></i>Help</a>
+                            <li><a class="dropdown-item" href="#"><i
+                                        class="bi bi-info-circle fa-fw me-2"></i>Help</a>
                             </li>
 
-                                <li><a class="dropdown-item bg-danger-soft-hover" href="{{ route('logout') }}" onclick="event.preventDefault();
+                            <li><a class="dropdown-item bg-danger-soft-hover" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"><i
-                                            class="bi bi-power fa-fw me-2"></i>Sign Out</a></li>
+                                        class="bi bi-power fa-fw me-2"></i>Sign Out</a></li>
                             <form action="{{ route('logout') }}" id="logout-form" method="POST" class="d-none">
                                 @csrf
                             </form>
@@ -238,8 +247,8 @@
 
                         </ul>
                     </div>
-                @elseauth
-                <!-- Profile START -->
+                    @elseauth
+                    <!-- Profile START -->
                     <div class="dropdown ms-1 ms-lg-0">
                         <a href="/login" class="btn btn-primary">LOGIN</a>
                     </div>
@@ -251,5 +260,3 @@
     <!-- Logo Nav END -->
 </header>
 <!-- Header END -->
-
-
