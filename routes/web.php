@@ -38,6 +38,11 @@ Auth::routes();
 Auth::routes(['verify' => true]);
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+<<<<<<< HEAD
+Route::get('student/editProfile', function () {
+    return view('student.profile');
+})->name('student.profile');
+=======
 // Login and register with google
 Route::get('/oauth/google', [OauthController::class, 'redirectToGoogle'])->name('auth.google');
 Route::get('/oauth/google/callback',[OauthController::class, 'googleCallBack'])->name('auth.google.callback');
@@ -57,3 +62,4 @@ Route::group(['namespace' => 'Student', 'middleware' => ['auth', 'student']], fu
 Route::group(['namespace' => 'Instructor', 'middleware' => ['auth', 'instructor']], function () {
     Route::get('instructor/dashboard', [DashboardInstructorController::class, 'index'])->name('instructor.dashboard');
 });
+>>>>>>> b38b3f30bd48a23f28538690c0dc6bf02b1de160
