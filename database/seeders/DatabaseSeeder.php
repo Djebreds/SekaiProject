@@ -40,6 +40,6 @@ class DatabaseSeeder extends Seeder
         $role->role_description = 'can teaching';
         $role->save();
 
-        User::factory()->count(20)->create();
+
     }
 }

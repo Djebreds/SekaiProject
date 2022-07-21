@@ -19,7 +19,11 @@
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="pages-settings.html">Settings & Privacy</a>
                     <a class="dropdown-item" href="#">Help</a>
-                    <a class="dropdown-item" href="/logout">Sign out</a>
+                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">Sign out</a>
+                    <form action="{{ route('logout') }}" id="logout-form" method="POST" class="d-none">
+                        @csrf
+                    </form>
                 </div>
             </li>
         </ul>
