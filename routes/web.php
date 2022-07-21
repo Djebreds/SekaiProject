@@ -20,7 +20,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    if (Auth::check() && Auth::user()->role_id == 1) {
+        return redirect('admin/dashboard');
+    } else if (Auth::check() && Auth::user()->role_id == 2) {
+        return redirect('student/dashboard');
+    } else if (Auth::check() && Auth::user()->role_id == 3) {
+        return redirect('instructor/dashboard');
+    } else {
+        return redirect('login');
+    }
 });
 
 Auth::routes();
@@ -31,26 +39,14 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/oauth/google', [OauthController::class, 'redirectToGoogle'])->name('auth.google');
 Route::get('/oauth/google/callback',[OauthController::class, 'googleCallBack'])->name('auth.google.callback');
 
-//Route::middleware(['auth' => 'role:admin'])->group(function() {
-//    Route::get('admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
-//});
-//
-//Route::middleware(['auth' => 'role:instructor'])->group(function() {
-//    Route::get('instructor/dashboard', [InstructorController::class, 'index'])->name('instructor.dashboard');
-//});
-//
-//Route::middleware(['auth' => 'role:student'])->group(function() {
-//    Route::get('account/dashboard', [StudentController::class, 'index'])->name('student.dashboard');
-//});
-
-Route::middleware(['auth' => 'admin'])->group(function() {
-    Route::get('admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+Route::group(['as' => 'admin.', 'prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth', 'admin']], function () {
+   Route::get('dashboard', [AdminController::class, 'index'])->name('dashboard');
 });
 
-Route::middleware(['auth' => 'student'])->group(function () {
-    Route::get('account/dashboard', [StudentController::class, 'index'])->name('student.dashboard');
+Route::group(['as' => 'student.', 'prefix' => 'student', 'namespace' => 'Student', 'middleware' => ['auth', 'student']], function () {
+    Route::get('dashboard', [StudentController::class, 'index'])->name('dashboard');
 });
 
-Route::middleware(['auth' => 'instructor, admin'])->group(function() {
-    Route::get('instructor/dashboard', [InstructorController::class, 'index'])->name('instructor.dashboard');
+Route::group(['as' => 'instructor.', 'prefix' => 'instructor', 'namespace' => 'Instructor', 'middleware' => ['auth', 'instructor']], function () {
+    Route::get('dashboard', [AdminController::class, 'index'])->name('dashboard');
 });

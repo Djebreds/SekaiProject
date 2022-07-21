@@ -17,11 +17,10 @@ class StudentMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check() && Auth::user()->role_id === 2) {
+        if (auth::check() && Auth::user()->role_id == 2) {
             return $next($request);
         } else {
             return redirect()->route('login');
         }
-
     }
 }
