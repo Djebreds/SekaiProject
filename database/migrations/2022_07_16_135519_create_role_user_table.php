@@ -14,12 +14,12 @@ return new class extends Migration {
     {
         Schema::create('role_user', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('role_id');
+            $table->unsignedBigInteger('role_role_id');
 
             $table->index('user_id');
-            $table->index('role_id');
+            $table->index('role_role_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('role_id')->references('role_id')->on('roles');
+            $table->foreign('role_role_id')->references('role_id')->on('roles');
         });
     }
 

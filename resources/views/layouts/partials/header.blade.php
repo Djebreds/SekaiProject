@@ -176,7 +176,7 @@
                                 $color = array('bg-primary', 'bg-warning', 'bg-info', 'bg-danger', 'bg-success', 'bg-dark');
                             @endphp
 
-                            @if (Auth::user()->provider_id != '')
+                            @if (Auth::user()->provider_id != 0)
                                 <img class="avatar-img rounded-circle" src="{{ Auth::user()->profile_picture }}"
                                      alt="avatar">
                             @else

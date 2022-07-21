@@ -17,7 +17,7 @@ class InstructorMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check() && Auth::user()->role_id === 3) {
+        if (auth::check() && Auth::user()->role_id == 3) {
             return $next($request);
         } else {
             return redirect()->route('login');
