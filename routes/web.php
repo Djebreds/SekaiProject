@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\PriceTypeController;
 use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Auth\OauthController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Instructor\DashboardInstructorController;
 use App\Http\Controllers\Admin\InstructorController;
@@ -32,22 +33,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    if (Auth::check() && Auth::user()->role_id == 1) {
-        return redirect('admin/dashboard');
-    } else if (Auth::check() && Auth::user()->role_id == 2) {
-        return redirect('student/dashboard');
-    } else if (Auth::check() && Auth::user()->role_id == 3) {
-        return redirect('instructor/dashboard');
-    } else {
-        return redirect('login');
-    }
-});
+Route::get('/dashboard', [DashboardController::class, 'index']);
 
 Auth::routes();
-Auth::routes(['verify' => true]);
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('student/editProfile', function () {
     return view('student.profile');
@@ -76,10 +65,15 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
 
 Route::group(['namespace' => 'Student', 'middleware' => ['auth', 'student']], function () {
-    Route::get('student/dashboard', [DashboardStudentController::class, 'index'])->name('student.dashboard');
+
+});
+Route::middleware(['auth', 'student'])->group(function() {
+    Route::resource('profile', DashboardStudentController::class)->parameters([
+        'student' => 'users:username'
+    ]);
 });
 
-Route::group(['namespace' => 'Instructor', 'middleware' => ['auth', 'instructor']], function () {
-    Route::get('instructor/dashboard', [DashboardInstructorController::class, 'index'])->name('instructor.dashboard');
+Route::middleware(['auth' => 'instructor'])->group(function() {
+    Route::resource('instructor', DashboardInstructorController::class);
 });
 

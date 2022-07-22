@@ -25,9 +25,28 @@
                                                             class="fa fa-user"></i></span>
                                 <input type="text" name="full_name"
                                        class="form-control border-0 bg-light rounded-end ps-1 @error('full_name') is-invalid @enderror"
-                                       placeholder="Full name" id="full_name" value="{{ old('full_name') }}"
+                                       placeholder="Enter Full Name" id="full_name" value="{{ old('full_name') }}"
                                        autofocus required>
                                 @error('full_name')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+                    <!-- username -->
+                    <div class="row gx-2">
+                        <div class="mb-4">
+                            <label for="full_name" class="form-label">Username</label>
+                            <div class="input-group input-group-lg">
+                                                <span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i
+                                                        class="fa fa-user"></i></span>
+                                <input type="text" name="username"
+                                       class="form-control border-0 bg-light rounded-end ps-1 @error('username') is-invalid @enderror"
+                                       placeholder="Enter Username" id="Username" value="{{ old('username') }}"
+                                       required>
+                                @error('username')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
@@ -43,7 +62,7 @@
                                                     class="bi bi-envelope-fill"></i></span>
                             <input type="email" name="email"
                                    class="form-control border-0 bg-light rounded-end ps-1 @error('email') is-invalid @enderror"
-                                   placeholder="E-mail" id="email" value="{{ old('email') }}"
+                                   placeholder="Enter E-mail" id="email" value="{{ old('email') }}"
                                    autocomplete="email" required>
                             @error('email')
                             <div class="invalid-feedback">
@@ -61,7 +80,7 @@
                                                     class="fas fa-lock"></i></span>
                             <input type="password" name="password"
                                    class="form-control border-0 bg-light ps-1 @error('password') is-invalid @enderror"
-                                   placeholder="password" id="new-password" autocomplete="new-password"
+                                   placeholder="Enter Password" id="new-password" autocomplete="new-password"
                                    required>
                             <span class="input-group-text bg-light rounded-end border-0 text-secondary px-3"><i
                                         class="fas fa-eye-slash" id="togglePassword"></i></span>
@@ -80,7 +99,7 @@
                                                     class="fas fa-lock"></i></span>
                             <input type="password" name="password_confirmation"
                                    class="form-control border-0 bg-light rounded-end ps-1 @error('password') is-invalid @enderror"
-                                   placeholder="Password confirmation" id="password_confirmation"
+                                   placeholder="Enter Password Confirmation" id="password_confirmation"
                                    autocomplete="new-password" required>
                         </div>
                     </div>
