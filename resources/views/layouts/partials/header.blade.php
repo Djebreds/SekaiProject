@@ -247,11 +247,9 @@
 
                         </ul>
                     </div>
-                    @elseauth
+                @else
                     <!-- Profile START -->
-                    <div class="dropdown ms-1 ms-lg-0">
-                        <a href="/login" class="btn btn-primary">LOGIN</a>
-                    </div>
+                        <a href="{{ route('login') }}" class="btn btn-primary mb-0">LOGIN</a>
                     <!-- Profile START -->
                 @endauth
             </div>

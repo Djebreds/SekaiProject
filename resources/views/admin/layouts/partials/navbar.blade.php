@@ -11,15 +11,18 @@
                 </a>
 
                 <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-                    <span class="text-dark">Administrator</span>
+                    <span class="text-dark">{{ Auth::user()->full_name }}</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
-                    <a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
-                    <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="pie-chart"></i> Analytics</a>
+                    <a class="dropdown-item" href="{{ route('profile.show', Auth::user()->id) }}"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
+                    <a class="dropdown-item" href="pages-settings.html"><i class="align-middle me-1" data-feather="settings"></i>Settings & Privacy</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="pages-settings.html">Settings & Privacy</a>
-                    <a class="dropdown-item" href="#">Help</a>
-                    <a class="dropdown-item" href="/logout">Sign out</a>
+                    <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="info"></i>Help</a>
+                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"><i class="align-middle me-1" data-feather="power"></i>Sign out</a>
+                    <form action="{{ route('logout') }}" id="logout-form" method="POST" class="d-none">
+                        @csrf
+                    </form>
                 </div>
             </li>
         </ul>

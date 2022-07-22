@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -27,7 +27,7 @@ class OauthController extends Controller
                     return redirect()->intended('admin/dashboard');
                 } else if ($user->role_id == 2) {
                     Auth::login($user);
-                    return redirect()->intended('account/dashboard');
+                    return redirect()->intended('student');
                 } else if ($user->role_id == 3) {
                     Auth::login($user);
                     return redirect()->intended('instructor/dashboard');
@@ -37,6 +37,7 @@ class OauthController extends Controller
             }  else {
                 $user = User::create([
                     'full_name' => $userData->name,
+                    'username' => ucfirst(Str::slug($userData->name)),
                     'email' => $userData->email,
                     'password' => Hash::make(Str::random(12)),
                     'profile_picture' => $userData->avatar,

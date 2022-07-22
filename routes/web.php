@@ -1,8 +1,19 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminProfileController;
+use App\Http\Controllers\Admin\CertificateController;
+use App\Http\Controllers\Admin\ClassController;
+use App\Http\Controllers\Admin\ClassTypeController;
+use App\Http\Controllers\Admin\CourseCategoryController;
+use App\Http\Controllers\Admin\CourseLevelController;
 use App\Http\Controllers\Admin\DashboardAdminController;
+use App\Http\Controllers\Admin\MasterClassController;
+use App\Http\Controllers\Admin\PriceTypeController;
+use App\Http\Controllers\Admin\ReviewController;
+use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Auth\OauthController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Instructor\DashboardInstructorController;
 use App\Http\Controllers\Admin\InstructorController;
@@ -22,41 +33,53 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    if (Auth::check() && Auth::user()->role_id == 1) {
-        return redirect('admin/dashboard');
-    } else if (Auth::check() && Auth::user()->role_id == 2) {
-        return redirect('student/dashboard');
-    } else if (Auth::check() && Auth::user()->role_id == 3) {
-        return redirect('instructor/dashboard');
-    } else {
-        return redirect('login');
-    }
-});
+Route::get('/dashboard', [DashboardController::class, 'index']);
 
 Auth::routes();
-Auth::routes(['verify' => true]);
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('student/editProfile', function () {
     return view('student.profile');
 })->name('student.profile');
+<<<<<<< HEAD
+=======
+
+>>>>>>> 170f9b0d58456f1d60e42271a5682be81aea56a9
 // Login and register with google
 Route::get('/oauth/google', [OauthController::class, 'redirectToGoogle'])->name('auth.google');
 Route::get('/oauth/google/callback', [OauthController::class, 'googleCallBack'])->name('auth.google.callback');
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('admin/dashboard', [DashboardAdminController::class, 'index'])->name('admin.dashboard');
+    Route::resource('admin/profile', AdminProfileController::class, ['only' => ['show', 'post', 'put', 'delete']]);
     Route::resource('admin/users/admins', AdminController::class, ['only' => ['index', 'show']]);
     Route::resource('admin/users/students', StudentController::class);
     Route::resource('admin/users/instructors', InstructorController::class);
+    Route::resource('admin/roles', RoleController::class, ['only' => ['index', 'show']]);
+    Route::resource('admin/category/course-categories', CourseCategoryController::class);
+    Route::resource('admin/category/price-types', PriceTypeController::class);
+    Route::resource('admin/category/class-types', ClassTypeController::class);
+    Route::resource('admin/category/course-levels', CourseLevelController::class);
+    Route::resource('admin/classes', ClassController::class);
+    Route::resource('admin/masterclasses', MasterClassController::class);
+    Route::resource('admin/certificates', CertificateController::class);
+    Route::resource('admin/reviews', ReviewController::class);
 });
 
 
 Route::group(['namespace' => 'Student', 'middleware' => ['auth', 'student']], function () {
-    Route::get('student/dashboard', [DashboardStudentController::class, 'index'])->name('student.dashboard');
+
+});
+Route::middleware(['auth', 'student'])->group(function() {
+    Route::resource('profile', DashboardStudentController::class)->parameters([
+        'student' => 'users:username'
+    ]);
 });
 
-Route::group(['namespace' => 'Instructor', 'middleware' => ['auth', 'instructor']], function () {
-    Route::get('instructor/dashboard', [DashboardInstructorController::class, 'index'])->name('instructor.dashboard');
+Route::middleware(['auth' => 'instructor'])->group(function() {
+    Route::resource('instructor', DashboardInstructorController::class);
 });
+<<<<<<< HEAD
+=======
+
+>>>>>>> 170f9b0d58456f1d60e42271a5682be81aea56a9

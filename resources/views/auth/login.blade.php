@@ -86,5 +86,7 @@
                 <div class="mt-4 text-center">
                     <span>Don't have an account? <a href="{{ route('register') }}">Register</a></span>
                 </div>
-
 @endsection
+@push('custom-script')
+    <script src="{{ asset('assets/js/page/login.js') }}"></script>
+@endpush
