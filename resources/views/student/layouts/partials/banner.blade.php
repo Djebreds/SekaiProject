@@ -22,7 +22,7 @@
                                          alt="avatar">
                             @else
                                 @if (in_array(Auth::user()->profile_picture, $color))
-                                    <div class="avatar-img rounded-circle {{ Auth::user()->profile_picture }}"><span
+                                    <div class="avatar-img rounded-circle border border-dark {{ Auth::user()->profile_picture }}"><span
                                             class="text-white position-absolute top-50 start-50 translate-middle fw-bold fs-1">{{ $initial_name }}</span>
                                     </div>
                                 @else
