@@ -218,7 +218,7 @@
                                         @endif
                                     </div>
                                     <div>
-                                        <a class="h6" href="#">{{ Auth::user()->full_name }}</a>
+                                        <a class="h6" href="{{ route('profile.index') }}">{{ Auth::user()->full_name }}</a>
                                         <p class="small m-0">{{ Auth::user()->email }}</p>
                                     </div>
                                 </div>
