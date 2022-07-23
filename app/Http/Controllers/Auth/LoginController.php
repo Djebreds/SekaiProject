@@ -36,12 +36,15 @@ class LoginController extends Controller
     /**
      * Create a new controller instance.
      *
-     * @return void
+     * @return string
      */
     public function __construct()
     {
         if(Auth::check() && Auth::user()->role_id == 1){
-            $this->redirectTo = route('admin.dashboard');
+            if (Auth::user()->is_email_verified === true) {
+                $this->redirectTo = route('admin.dashboard');
+            }
+            $this->redirectTo = route('login');
         } elseif(Auth::check() && Auth::user()->role_id == 2){
             $this->redirectTo = route('student.dashboard');
         } elseif (Auth::check() && Auth::user()->role_id == 3) {

@@ -36,6 +36,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/dashboard', [DashboardController::class, 'index']);
 
 Auth::routes();
+Auth::routes(['verify' => true]);
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('student/editProfile', function () {
@@ -69,8 +71,8 @@ Route::group(['namespace' => 'Student', 'middleware' => ['auth', 'student']], fu
 });
 Route::middleware(['auth', 'student'])->group(function() {
     Route::resource('profile', DashboardStudentController::class)->parameters([
-        'student' => 'users:username'
-    ]);
+        'student' => 'users:username',
+    ])->middleware('verified');
 });
 
 Route::middleware(['auth' => 'instructor'])->group(function() {
