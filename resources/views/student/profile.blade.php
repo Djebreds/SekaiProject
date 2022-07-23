@@ -1,7 +1,5 @@
-@extends('layouts.app')
 @extends('student.layouts.main')
-@section('content')
-@section('card')
+@section('menu')
     <!-- Counter boxes START -->
     <div class="row mb-4">
         <!-- Counter item -->

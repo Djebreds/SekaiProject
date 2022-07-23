@@ -17870,6 +17870,14 @@ textarea.form-control-lg {
   border-radius: 0.325rem;
 }
 
+.list-group-dark .list-group-item-signout {
+  color: red;
+  margin-bottom: 10px;
+  padding-right: 1rem !important;
+  padding-left: 1rem !important;
+  border-radius: 0.325rem;
+}
+
 .list-group-dark .list-group-item:not(.bg-danger-soft-hover):hover, .list-group-dark .list-group-item:not(.bg-danger-soft-hover).active {
   color: #24292d !important;
   background-color: #fff !important;
