@@ -41,10 +41,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('student/editProfile', function () {
     return view('student.profile');
 })->name('student.profile');
-<<<<<<< HEAD
-=======
 
->>>>>>> 170f9b0d58456f1d60e42271a5682be81aea56a9
 // Login and register with google
 Route::get('/oauth/google', [OauthController::class, 'redirectToGoogle'])->name('auth.google');
 Route::get('/oauth/google/callback', [OauthController::class, 'googleCallBack'])->name('auth.google.callback');
@@ -79,7 +76,3 @@ Route::middleware(['auth', 'student'])->group(function() {
 Route::middleware(['auth' => 'instructor'])->group(function() {
     Route::resource('instructor', DashboardInstructorController::class);
 });
-<<<<<<< HEAD
-=======
-
->>>>>>> 170f9b0d58456f1d60e42271a5682be81aea56a9
