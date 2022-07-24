@@ -15,7 +15,7 @@ class MyCourseController extends Controller
      */
 
     public function index() {
-        return view('student.course');
+        return view('student.myCourse');
     }
 
     /**

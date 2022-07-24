@@ -16,6 +16,10 @@ class DashboardStudentController extends Controller
         return view('student.setting');
     }
 
+    public function deleteAccount() {
+        return view('student.delete');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

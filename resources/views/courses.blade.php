@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('content')
     <main>
-
         <!-- =======================
         Page Banner START -->
         <section class="py-4">

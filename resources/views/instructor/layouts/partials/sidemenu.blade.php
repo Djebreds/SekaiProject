@@ -11,17 +11,17 @@
                                 class="bi bi-ui-checks-grid fa-fw me-2"></i>Dashboard</a>
                         <a class="list-group-item" href="{{ route('instructor.makecourse') }}"><i
                                 class="bi bi-basket fa-fw me-2"></i>My Courses</a>
-                        <a class="list-group-item" href="instructor-studentlist.html"><i
+                        <a class="list-group-item" href="{{ route('instructor.student') }}"><i
                                 class="bi bi-people fa-fw me-2"></i>Students</a>
-                        <a class="list-group-item" href="instructor-order.html"><i
+                        <a class="list-group-item" href="{{ route('instructor.order') }}"><i
                                 class="bi bi-folder-check fa-fw me-2"></i>Orders</a>
-                        <a class="list-group-item" href="instructor-review.html"><i
+                        <a class="list-group-item" href="{{ route('instructor.review') }}"><i
                                 class="bi bi-star fa-fw me-2"></i>Reviews</a>
                         <a class="list-group-item" href="{{ route('instructor.edit', Auth::user()->username) }}"><i
                                 class="bi bi-pencil-square fa-fw me-2"></i>Edit Profile</a>
                         <a class="list-group-item" href="{{ route('instructor.setting') }}"><i
                                 class="bi bi-gear fa-fw me-2"></i>Settings</a>
-                        <a class="list-group-item" href="#"><i
+                        <a class="list-group-item" href="{{ route('instructor.delete') }}"><i
                                 class="bi bi-trash fa-fw me-2"></i>Delete Profile</a>
                         <a class="list-group-item text-danger bg-danger-soft-hover"
                            href="sign-in.html"><i class="fas fa-sign-out-alt fa-fw me-2"></i>Sign
