@@ -21,6 +21,5 @@ class HomeController extends Controller
             $this->middleware('guest');
             return view('home');
         }
-
     }
 }

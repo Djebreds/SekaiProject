@@ -19,6 +19,8 @@ use App\Http\Controllers\Instructor\DashboardInstructorController;
 use App\Http\Controllers\Admin\InstructorController;
 use App\Http\Controllers\Student\DashboardStudentController;
 use App\Http\Controllers\Admin\StudentController;
+use App\Http\Controllers\Student\MyCourseController;
+use App\Http\Controllers\Student\SettingController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -40,14 +42,12 @@ Auth::routes(['verify' => true]);
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('student/editProfile', function () {
-    return view('student.profile');
-})->name('student.profile');
 
 // Login and register with google
 Route::get('/oauth/google', [OauthController::class, 'redirectToGoogle'])->name('auth.google');
 Route::get('/oauth/google/callback', [OauthController::class, 'googleCallBack'])->name('auth.google.callback');
 
+// Route For Admin
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('admin/dashboard', [DashboardAdminController::class, 'index'])->name('admin.dashboard');
     Route::resource('admin/profile', AdminProfileController::class, ['only' => ['show', 'post', 'put', 'delete']]);
@@ -65,16 +65,16 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('admin/reviews', ReviewController::class);
 });
 
-
-Route::group(['namespace' => 'Student', 'middleware' => ['auth', 'student']], function () {
-
-});
+// Routes For Student
 Route::middleware(['auth', 'student'])->group(function() {
-    Route::resource('profile', DashboardStudentController::class)->parameters([
-        'student' => 'users:username',
-    ])->middleware('verified');
+    Route::get('student/setting', [SettingController::class, 'index'])->middleware('verified')->name('student.setting');
+    Route::get('student/course', [MyCoursecontroller::class, 'index'])->middleware('verified')->name('student.mycourse');
+    Route::resource('student', DashboardStudentController::class)->middleware('verified');
 });
 
+// Routes For Instructor
 Route::middleware(['auth' => 'instructor'])->group(function() {
-    Route::resource('instructor', DashboardInstructorController::class);
+    Route::resource('instructor', DashboardInstructorController::class)->parameters([
+        'instructor' => 'users:username'
+    ])->middleware('verified');
 });

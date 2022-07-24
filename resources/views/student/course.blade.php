@@ -1,0 +1,4 @@
+@extends('student.layouts.main')
+@section('profile')
+    <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eius exercitationem explicabo, mollitia natus numquam quam qui quod vitae. Assumenda autem consequatur placeat. Aliquam culpa deserunt ducimus ipsa nam natus quisquam saepe suscipit vitae voluptatum. Consequatur, dignissimos distinctio enim expedita illum neque nihil officia tempore? Alias aliquam aliquid consequatur culpa cum cupiditate dicta eius excepturi exercitationem facilis fuga fugiat fugit hic, illo impedit laborum laudantium modi nemo nihil nisi nostrum numquam placeat quas qui quia quibusdam quidem quisquam rem saepe sapiente sequi suscipit tempore unde, vel vero voluptate voluptates. Beatae distinctio fuga obcaecati recusandae repudiandae. Culpa cumque molestiae quia quo.</h1>
+@endsection

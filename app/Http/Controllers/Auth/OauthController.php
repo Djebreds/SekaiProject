@@ -30,7 +30,7 @@ class OauthController extends Controller
                     return redirect()->intended('student');
                 } else if ($user->role_id == 3) {
                     Auth::login($user);
-                    return redirect()->intended('instructor/dashboard');
+                    return redirect()->intended('instructor');
                 } else {
                     return redirect()->intended('login');
                 }
