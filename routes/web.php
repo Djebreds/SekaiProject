@@ -38,13 +38,6 @@ Route::get('/dashboard', [DashboardController::class, 'index']);
 Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('student/editProfile', function () {
-    return view('student.profile');
-})->name('student.profile');
-<<<<<<< HEAD
-=======
-
->>>>>>> 170f9b0d58456f1d60e42271a5682be81aea56a9
 // Login and register with google
 Route::get('/oauth/google', [OauthController::class, 'redirectToGoogle'])->name('auth.google');
 Route::get('/oauth/google/callback', [OauthController::class, 'googleCallBack'])->name('auth.google.callback');
@@ -68,18 +61,74 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
 
 Route::group(['namespace' => 'Student', 'middleware' => ['auth', 'student']], function () {
-
 });
-Route::middleware(['auth', 'student'])->group(function() {
+Route::middleware(['auth', 'student'])->group(function () {
     Route::resource('profile', DashboardStudentController::class)->parameters([
         'student' => 'users:username'
     ]);
 });
 
-Route::middleware(['auth' => 'instructor'])->group(function() {
+Route::middleware(['auth' => 'instructor'])->group(function () {
     Route::resource('instructor', DashboardInstructorController::class);
 });
-<<<<<<< HEAD
-=======
 
->>>>>>> 170f9b0d58456f1d60e42271a5682be81aea56a9
+
+Route::get('courses/categories', function () {
+    return view('navbar.courses.categories');
+})->name('courses.categories');
+
+Route::get('courses/gridclassic', function () {
+    return view('navbar.courses.gridclassic');
+})->name('courses.gridclassic');
+
+Route::get('courses/gridminimal', function () {
+    return view('navbar.courses.gridminimal');
+})->name('courses.gridminimal');
+
+Route::get('courses/listclassic', function () {
+    return view('navbar.courses.listclassic');
+})->name('courses.listclassic');
+
+Route::get('courses/listminimal', function () {
+    return view('navbar.courses.listminimal');
+})->name('courses.listminimal');
+
+Route::get('courses/detailclassic', function () {
+    return view('navbar.courses.detailclassic');
+})->name('courses.detailclassic');
+
+Route::get('courses/detailminimal', function () {
+    return view('navbar.courses.detailminimal');
+})->name('courses.detailminimal');
+
+Route::get('courses/detailadvance', function () {
+    return view('navbar.courses.detailadvance');
+})->name('courses.detailadvance');
+
+Route::get('courses/video', function () {
+    return view('navbar.courses.video');
+})->name('courses.video');
+
+Route::get('instruktor/become', function () {
+    return view('navbar.instruktor.become');
+})->name('instruktor.become');
+
+Route::get('instruktor/list', function () {
+    return view('navbar.instruktor.list');
+})->name('instruktor.list');
+
+Route::get('aboutBasic', function () {
+    return view('navbar.about.aboutBasic');
+})->name('aboutBasic');
+
+Route::get('aboutUs', function () {
+    return view('navbar.about.aboutUs');
+})->name('aboutUs');
+
+Route::get('contactUs', function () {
+    return view('navbar.about.contactUs');
+})->name('contactUs');
+
+Route::get('other/help', function () {
+    return view('navbar.other.help');
+})->name('other.help');
