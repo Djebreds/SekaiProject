@@ -131,14 +131,14 @@
                                     <!-- Dropdown item -->
                                     <div
                                         class="mb-2 position-relative bg-primary-soft-hover rounded-2 transition-base p-3">
-                                        <a class="stretched-link h6 mb-0" href="#item-1">Guide</a>
+                                        <a class="stretched-link h6 mb-0" href="{{ route('other.help') }}">Guide</a>
                                         <p class="mb-0 small text-truncate-2">Speedily say has suitable disposal add
                                             boy. On forth doubt miles of child.</p>
                                     </div>
                                     <!-- Dropdown item -->
                                     <div
                                         class="mb-2 position-relative bg-primary-soft-hover rounded-2 transition-base p-3">
-                                        <a class="stretched-link h6 mb-0" href="#item-2">Privacy
+                                        <a class="stretched-link h6 mb-0" href="{{ route('other.help') }}">Privacy
                                             and security</a>
                                         <p class="mb-0 small text-truncate-2">Speedily say has suitable disposal add
                                             boy. On forth doubt miles of child.</p>
@@ -146,7 +146,7 @@
                                     <!-- Dropdown item -->
                                     <div
                                         class="mb-2 position-relative bg-primary-soft-hover rounded-2 transition-base p-3">
-                                        <a class="stretched-link h6 mb-0" href="#item-3">Term and
+                                        <a class="stretched-link h6 mb-0" href="{{ route('other.help') }}">Term and
                                             services</a>
                                         <p class="mb-0 small text-truncate-2">Speedily say has suitable disposal add
                                             boy. On forth doubt miles of child.</p>
@@ -237,39 +237,27 @@
                                     <!-- Avatar -->
                                     <div class="avatar me-3">
                                         @if (!Auth::user()->provider_id)
-<<<<<<< HEAD
-                                            <div class="avatar-img rounded-circle {{ Auth::user()->profile_picture }}">
+                                            <div
+                                                class="avatar-img rounded-circle border border-white border-3 shadow bg-light {{ Auth::user()->profile_picture }}">
                                                 <span
                                                     class="text-white position-absolute top-50 start-50 translate-middle fw-bold">{{ $initial_name }}</span>
                                             </div>
                                         @else
                                             @if (in_array(Auth::user()->profile_picture, $color))
                                                 <div
-                                                    class="avatar-img rounded-circle {{ Auth::user()->profile_picture }}">
+                                                    class="avatar-img rounded-circle border-white border-3 shadow bg-light {{ Auth::user()->profile_picture }}">
                                                     <span
                                                         class="text-white position-absolute top-50 start-50 translate-middle fw-bold">{{ $initial_name }}</span>
                                                 </div>
                                             @else
-                                                <img class="avatar-img rounded-circle"
+                                                <img class="avatar-img rounded-circle border-white border-3 shadow bg-light"
                                                     src="{{ Auth::user()->profile_picture }}" alt="avatar">
-=======
-                                        <div class="avatar-img rounded-circle border border-white border-3 shadow bg-light {{ Auth::user()->profile_picture }}"><span
-                                                class="text-white position-absolute top-50 start-50 translate-middle fw-bold">{{ $initial_name }}</span>
-                                        </div>
-                                        @else
-                                            @if (in_array(Auth::user()->profile_picture, $color))
-                                                <div class="avatar-img rounded-circle border-white border-3 shadow bg-light {{ Auth::user()->profile_picture }}"><span
-                                                        class="text-white position-absolute top-50 start-50 translate-middle fw-bold">{{ $initial_name }}</span>
-                                                </div>
-                                            @else
-                                                <img class="avatar-img rounded-circle border-white border-3 shadow bg-light" src="{{ Auth::user()->profile_picture }}"
-                                                     alt="avatar">
->>>>>>> ec11a36a39502226d4d4bace6475268ed5c5fe40
                                             @endif
                                         @endif
                                     </div>
                                     <div>
-                                        <a class="h6" href="{{ route('student.index', Auth::user()->id) }}">{{ Auth::user()->full_name }}</a>
+                                        <a class="h6"
+                                            href="{{ route('student.index', Auth::user()->id) }}">{{ Auth::user()->full_name }}</a>
                                         <p class="small m-0">{{ Auth::user()->email }}</p>
                                     </div>
                                 </div>
@@ -280,7 +268,8 @@
                                         class="bi bi-person fa-fw me-2"></i>Edit
                                     Profile</a>
                             </li>
-                            <li><a class="dropdown-item" href="{{ route('student.setting') }}"><i class="bi bi-gear fa-fw me-2"></i>Account
+                            <li><a class="dropdown-item" href="{{ route('student.setting') }}"><i
+                                        class="bi bi-gear fa-fw me-2"></i>Account
                                     Settings</a>
                             </li>
                             <li><a class="dropdown-item" href="#"><i
