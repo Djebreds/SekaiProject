@@ -22,7 +22,7 @@
                             class="bi bi-pencil-square fa-fw me-2"></i>Edit Profile</a>
                     <a class="list-group-item" href="{{ route('student.setting') }}"><i
                             class="bi bi-gear fa-fw me-2"></i>Settings</a>
-                    <a class="list-group-item" href="{{ route('student.destroy', Auth::user()->username) }}"><i
+                    <a class="list-group-item" href="{{ route('student.delete') }}"><i
                             class="bi bi-trash fa-fw me-2"></i>Delete Profile</a>
                     <a class="list-group-item text-danger bg-danger-soft-hover" href="{{ route('logout') }}"><i
                             class="fas fa-sign-out-alt fa-fw me-2"></i>Sign Out</a>

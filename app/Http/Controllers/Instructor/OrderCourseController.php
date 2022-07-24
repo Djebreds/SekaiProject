@@ -3,22 +3,20 @@
 namespace App\Http\Controllers\Instructor;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use Illuminate\Http\Request;
 
-class DashboardInstructorController extends Controller
+class OrderCourseController extends Controller
 {
-    public function index() {
-        return view('instructor.dashboard');
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('instructor.order');
     }
 
-    public function setting() {
-        return view('instructor.setting');
-    }
-
-    public function deleteAccount() {
-        return view('instructor.delete');
-    }
     /**
      * Show the form for creating a new resource.
      *
@@ -55,12 +53,11 @@ class DashboardInstructorController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($id)
     {
-        $user = User::where('role_id', $user->role_id)->where('username', $user->username);
-        return view('instructor.profile', compact('user'));
+        //
     }
 
     /**

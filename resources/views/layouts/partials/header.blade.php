@@ -7,8 +7,6 @@
             <a class="navbar-brand" href="/">
                 <img class="light-mode-item navbar-brand-item" src="{{ asset('assets/images/logo.png') }}" alt="logo"
                     style="max-width: 200px;">
-                <img class="dark-mode-item navbar-brand-item" src="{{ asset('assets/images/logo-light.svg') }}"
-                    alt="logo">
             </a>
             <!-- Logo END -->
 
@@ -52,7 +50,7 @@
                     </ul>
                 </li> --}}
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('courses.courses') }}" aria-haspopup="true"
+                        <a class="nav-link" href="{{ route('courses') }}" aria-haspopup="true"
                             aria-expanded="false">Courses</a>
 
                     </li>
@@ -60,18 +58,18 @@
                         <a class="nav-link dropdown-toggle" href="#" id="demoMenu" data-bs-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">Instructor</a>
                         <ul class="dropdown-menu" aria-labelledby="demoMenu">
-                            <li><a class="dropdown-item" href="{{ route('instruktor.become') }}">Become Instructor</a>
+                            <li><a class="dropdown-item" href="{{ route('become.instructor') }}">Become Instructor</a>
                             </li>
-                            <li><a class="dropdown-item" href="{{ route('instruktor.list') }}">Instructor List</a></li>
+                            <li><a class="dropdown-item" href="{{ route('list.instructor') }}">Instructor List</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="demoMenu" data-bs-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">About</a>
                         <ul class="dropdown-menu" aria-labelledby="demoMenu">
-                            <li><a class="dropdown-item" href="{{ route('aboutBasic') }}">About Basicschool</a></li>
-                            <li><a class="dropdown-item" href="{{ route('aboutUs') }}">About Us</a></li>
-                            <li><a class="dropdown-item" href="{{ route('contactUs') }}">Contact Us</a></li>
+                            <li><a class="dropdown-item" href="{{ route('about.basicschool') }}">About Basicschool</a></li>
+                            <li><a class="dropdown-item" href="{{ route('about') }}">About Us</a></li>
+                            <li><a class="dropdown-item" href="{{ route('contact') }}">Contact Us</a></li>
                         </ul>
                     </li>
                     <!-- Nav item 4 Megamenu-->
@@ -101,14 +99,14 @@
                                     <!-- Dropdown item -->
                                     <div
                                         class="mb-2 position-relative bg-primary-soft-hover rounded-2 transition-base p-3">
-                                        <a class="stretched-link h6 mb-0" href="{{ route('other.help') }}">Guide</a>
+                                        <a class="stretched-link h6 mb-0" href="{{ route('help') }}">Guide</a>
                                         <p class="mb-0 small text-truncate-2">Speedily say has suitable disposal add
                                             boy. On forth doubt miles of child.</p>
                                     </div>
                                     <!-- Dropdown item -->
                                     <div
                                         class="mb-2 position-relative bg-primary-soft-hover rounded-2 transition-base p-3">
-                                        <a class="stretched-link h6 mb-0" href="{{ route('other.help') }}">Privacy
+                                        <a class="stretched-link h6 mb-0" href="{{ route('help') }}">Privacy
                                             and security</a>
                                         <p class="mb-0 small text-truncate-2">Speedily say has suitable disposal add
                                             boy. On forth doubt miles of child.</p>
@@ -116,7 +114,7 @@
                                     <!-- Dropdown item -->
                                     <div
                                         class="mb-2 position-relative bg-primary-soft-hover rounded-2 transition-base p-3">
-                                        <a class="stretched-link h6 mb-0" href="{{ route('other.help') }}">Term and
+                                        <a class="stretched-link h6 mb-0" href="{{ route('help') }}">Term and
                                             services</a>
                                         <p class="mb-0 small text-truncate-2">Speedily say has suitable disposal add
                                             boy. On forth doubt miles of child.</p>
@@ -136,7 +134,6 @@
                                             <p class="mb-0 small">No prerequisites</p>
                                         </div>
                                     </div>
-
                                 </div>
 
                                 <!-- Dropdown column item -->
