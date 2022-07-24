@@ -66,20 +66,6 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('admin/reviews', ReviewController::class);
 });
 
-
-Route::group(['namespace' => 'Student', 'middleware' => ['auth', 'student']], function () {
-});
-Route::middleware(['auth', 'student'])->group(function () {
-    Route::resource('profile', DashboardStudentController::class)->parameters([
-        'student' => 'users:username'
-    ]);
-});
-
-Route::middleware(['auth' => 'instructor'])->group(function () {
-    Route::resource('instructor', DashboardInstructorController::class);
-});
-
-
 Route::get('courses/categories', function () {
     return view('navbar.courses.categories');
 })->name('courses.categories');
