@@ -72,9 +72,13 @@ Route::middleware(['auth', 'student'])->group(function() {
     Route::resource('student', DashboardStudentController::class)->middleware('verified');
 });
 
-// Routes For Instructor
-Route::middleware(['auth' => 'instructor'])->group(function() {
+Route::middleware(['auth', 'instructor'])->group(function() {
     Route::resource('instructor', DashboardInstructorController::class)->parameters([
         'instructor' => 'users:username'
     ])->middleware('verified');
+});
+
+// Routes For Instructor
+Route::middleware('auth')->group(function() {
+    Route::get('/{username}', [ProfileController::class, 'index']);
 });
