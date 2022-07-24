@@ -17,7 +17,7 @@
 
                     <!-- Main content START -->
                     <div class="col-xl-9">
-                        @yield('menu')
+                        @yield('profile')
                     </div>
                     <!-- Main content END -->
                 </div><!-- Row END -->

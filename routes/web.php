@@ -17,6 +17,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Instructor\DashboardInstructorController;
 use App\Http\Controllers\Admin\InstructorController;
+use App\Http\Controllers\Instructor\MakeCourseController;
 use App\Http\Controllers\Student\DashboardStudentController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Student\MyCourseController;
@@ -65,16 +66,98 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('admin/reviews', ReviewController::class);
 });
 
+
+Route::group(['namespace' => 'Student', 'middleware' => ['auth', 'student']], function () {
+});
+Route::middleware(['auth', 'student'])->group(function () {
+    Route::resource('profile', DashboardStudentController::class)->parameters([
+        'student' => 'users:username'
+    ]);
+});
+
+Route::middleware(['auth' => 'instructor'])->group(function () {
+    Route::resource('instructor', DashboardInstructorController::class);
+});
+
+
+Route::get('courses/categories', function () {
+    return view('navbar.courses.categories');
+})->name('courses.categories');
+
+Route::get('courses/gridclassic', function () {
+    return view('navbar.courses.gridclassic');
+})->name('courses.gridclassic');
+
+Route::get('courses/gridminimal', function () {
+    return view('navbar.courses.gridminimal');
+})->name('courses.gridminimal');
+
+Route::get('courses/listclassic', function () {
+    return view('navbar.courses.listclassic');
+})->name('courses.listclassic');
+
+Route::get('courses/listminimal', function () {
+    return view('navbar.courses.listminimal');
+})->name('courses.listminimal');
+
+Route::get('courses/detailclassic', function () {
+    return view('navbar.courses.detailclassic');
+})->name('courses.detailclassic');
+
+Route::get('courses/detailminimal', function () {
+    return view('navbar.courses.detailminimal');
+})->name('courses.detailminimal');
+
+Route::get('courses/detailadvance', function () {
+    return view('navbar.courses.detailadvance');
+})->name('courses.detailadvance');
+
+Route::get('courses/video', function () {
+    return view('navbar.courses.video');
+})->name('courses.video');
+
+Route::get('instruktor/become', function () {
+    return view('navbar.instruktor.become');
+})->name('instruktor.become');
+
+Route::get('instruktor/list', function () {
+    return view('navbar.instruktor.list');
+})->name('instruktor.list');
+
+Route::get('aboutBasic', function () {
+    return view('navbar.about.aboutBasic');
+})->name('aboutBasic');
+
+Route::get('aboutUs', function () {
+    return view('navbar.about.aboutUs');
+})->name('aboutUs');
+
+Route::get('contactUs', function () {
+    return view('navbar.about.contactUs');
+})->name('contactUs');
+
+Route::get('other/help', function () {
+    return view('navbar.other.help');
+})->name('other.help');
 // Routes For Student
-Route::middleware(['auth', 'student'])->group(function() {
-    Route::get('student/setting', [SettingController::class, 'index'])->middleware('verified')->name('student.setting');
-    Route::get('student/course', [MyCoursecontroller::class, 'index'])->middleware('verified')->name('student.mycourse');
+
+Route::middleware(['auth', 'student'])->group(function () {
+    Route::get('student/setting', [DashboardInstructorController::class, 'index'])->middleware('verified')->name('student.setting');
+    Route::get('student/my-course', [MyCoursecontroller::class, 'index'])->middleware('verified')->name('student.mycourse');
     Route::resource('student', DashboardStudentController::class)->middleware('verified');
 });
 
 // Routes For Instructor
-Route::middleware(['auth' => 'instructor'])->group(function() {
+
+Route::middleware(['auth', 'instructor'])->group(function() {
+    Route::get('instructor/setting', [DashboardInstructorController::class, 'setting'])->name('instructor.setting');
+    Route::get('instructor/create/course', [MakeCourseController::class, 'index'])->name('instructor.makecourse');
     Route::resource('instructor', DashboardInstructorController::class)->parameters([
-        'instructor' => 'users:username'
+        'instructor' => 'user:username'
     ])->middleware('verified');
 });
+
+//// Routes For Instructor
+//Route::middleware('auth')->group(function() {
+//    Route::get('/{username}', [ProfileController::class, 'index']);
+//});

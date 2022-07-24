@@ -1,5 +1,5 @@
 @extends('instructor.layouts.main')
-@section('menu')
+@section('profile')
     <!-- Counter boxes START -->
     <div class="row g-4">
         <!-- Counter item -->

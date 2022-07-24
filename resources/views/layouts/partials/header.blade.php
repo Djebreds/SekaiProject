@@ -32,7 +32,7 @@
                     <li class="nav-item dropdown dropdown-menu-shadow-stacked">
                         <a class="nav-link bg-primary bg-opacity-10 rounded-3 text-primary px-3 py-3 py-xl-0"
                             href="#" id="categoryMenu" data-bs-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false"><i class="bi bi-ui-radios-grid me-2"></i><span>Kategori</span></a>
+                            aria-expanded="false"><i class="bi bi-ui-radios-grid me-2"></i><span>Category</span></a>
                         <ul class="dropdown-menu" aria-labelledby="categoryMenu">
                             <li><a class="dropdown-item" href="/categories">Web Development</a></li>
                         </ul>
@@ -51,25 +51,57 @@
                         <li> <a class="dropdown-item" href="#">Web Development Laravel</a></li>
                     </ul>
                 </li> --}}
-                    <li class="nav-item">
-                        <a class="nav-link" href="/cek-sertifikat" aria-haspopup="true"
-                            aria-expanded="false">Courses</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="/cek-sertifikat" id="demoMenu"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Courses</a>
+                        <ul class="dropdown-menu dropdown-menu-start" data-bs-popper="none">
+                            <li> <a class="dropdown-item" href="{{ route('courses.categories') }}">Course Categories
+                                    <span class="badge bg-success ms-2 smaller">New</span></a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li> <a class="dropdown-item" href="{{ route('courses.gridclassic') }}">Course Grid
+                                    Classic</a></li>
+                            <li> <a class="dropdown-item" href="{{ route('courses.gridminimal') }}">Course Grid
+                                    Minimal</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li> <a class="dropdown-item" href="{{ route('courses.listclassic') }}">Course List
+                                    Classic</a></li>
+                            <li> <a class="dropdown-item" href="{{ route('courses.listminimal') }}">Course List
+                                    Minimal</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li> <a class="dropdown-item" href="{{ route('courses.detailclassic') }}">Course Detail
+                                    Classic</a></li>
+                            <li> <a class="dropdown-item" href="{{ route('courses.detailminimal') }}">Course Detail
+                                    Minimal</a></li>
+                            <li> <a class="dropdown-item" href="{{ route('courses.detailadvance') }}">Course Detail
+                                    Advance</a></li>
+                            <li> <a class="dropdown-item" href="{{ route('courses.video') }}">Course Full Screen
+                                    Video</a>
+                            </li>
+                        </ul>
+
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="demoMenu" data-bs-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">Instructor</a>
                         <ul class="dropdown-menu" aria-labelledby="demoMenu">
-                            <li><a class="dropdown-item" href="/about">Become Instructor</a></li>
-                            <li><a class="dropdown-item" href="/instructors">Instructor List</a></li>
+                            <li><a class="dropdown-item" href="{{ route('instruktor.become') }}">Become Instructor</a>
+                            </li>
+                            <li><a class="dropdown-item" href="{{ route('instruktor.list') }}">Instructor List</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="demoMenu" data-bs-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">About</a>
                         <ul class="dropdown-menu" aria-labelledby="demoMenu">
-                            <li><a class="dropdown-item" href="/about">About Basicschool</a></li>
-                            <li><a class="dropdown-item" href="/instructors">About Us</a></li>
-                            <li><a class="dropdown-item" href="/contact-us">Contact Us</a></li>
+                            <li><a class="dropdown-item" href="{{ route('aboutBasic') }}">About Basicschool</a></li>
+                            <li><a class="dropdown-item" href="{{ route('aboutUs') }}">About Us</a></li>
+                            <li><a class="dropdown-item" href="{{ route('contactUs') }}">Contact Us</a></li>
                         </ul>
                     </li>
                     <!-- Nav item 4 Megamenu-->
@@ -99,21 +131,23 @@
                                     <!-- Dropdown item -->
                                     <div
                                         class="mb-2 position-relative bg-primary-soft-hover rounded-2 transition-base p-3">
-                                        <a class="stretched-link h6 mb-0" href="#">Guide</a>
+                                        <a class="stretched-link h6 mb-0" href="{{ route('other.help') }}">Guide</a>
                                         <p class="mb-0 small text-truncate-2">Speedily say has suitable disposal add
                                             boy. On forth doubt miles of child.</p>
                                     </div>
                                     <!-- Dropdown item -->
                                     <div
                                         class="mb-2 position-relative bg-primary-soft-hover rounded-2 transition-base p-3">
-                                        <a class="stretched-link h6 mb-0" href="#">Privacy and security</a>
+                                        <a class="stretched-link h6 mb-0" href="{{ route('other.help') }}">Privacy
+                                            and security</a>
                                         <p class="mb-0 small text-truncate-2">Speedily say has suitable disposal add
                                             boy. On forth doubt miles of child.</p>
                                     </div>
                                     <!-- Dropdown item -->
                                     <div
                                         class="mb-2 position-relative bg-primary-soft-hover rounded-2 transition-base p-3">
-                                        <a class="stretched-link h6 mb-0" href="#">Term and services</a>
+                                        <a class="stretched-link h6 mb-0" href="{{ route('other.help') }}">Term and
+                                            services</a>
                                         <p class="mb-0 small text-truncate-2">Speedily say has suitable disposal add
                                             boy. On forth doubt miles of child.</p>
                                     </div>
@@ -139,7 +173,7 @@
                                 <div class="col-xl-6 col-xxl-3">
                                     <h6 class="mb-0">Basicschool Support</h6>
                                     <hr>
-                                    <img src="assets/images/element/15.svg" alt="">
+                                    <img src="{{ asset('assets/images/element/15.svg') }}" alt="">
 
                                     <!-- Download button -->
                                     <div class="row g-2 justify-content-center mt-3">
@@ -203,22 +237,23 @@
                                     <!-- Avatar -->
                                     <div class="avatar me-3">
                                         @if (!Auth::user()->provider_id)
-                                        <div class="avatar-img rounded-circle border border-white border-3 shadow bg-light {{ Auth::user()->profile_picture }}"><span
+                                        <div class="avatar-img rounded-circle border border-white border-3 shadow {{ Auth::user()->profile_picture }}"><span
                                                 class="text-white position-absolute top-50 start-50 translate-middle fw-bold">{{ $initial_name }}</span>
                                         </div>
-                                        @else
                                             @if (in_array(Auth::user()->profile_picture, $color))
-                                                <div class="avatar-img rounded-circle border-white border-3 shadow bg-light {{ Auth::user()->profile_picture }}"><span
-                                                        class="text-white position-absolute top-50 start-50 translate-middle fw-bold">{{ $initial_name }}</span>
+                                                <div
+                                                    class="avatar-img rounded-circle border-white border-3 shadow bg-light {{ Auth::user()->profile_picture }}">
+                                                    <span class="text-white position-absolute top-50 start-50 translate-middle fw-bold">{{ $initial_name }}</span>
                                                 </div>
                                             @else
-                                                <img class="avatar-img rounded-circle border-white border-3 shadow bg-light" src="{{ Auth::user()->profile_picture }}"
-                                                     alt="avatar">
+                                                <img class="avatar-img rounded-circle border-white border-3 shadow bg-light"
+                                                    src="{{ Auth::user()->profile_picture }}" alt="avatar">
                                             @endif
                                         @endif
                                     </div>
                                     <div>
-                                        <a class="h6" href="{{ route('student.index', Auth::user()->id) }}">{{ Auth::user()->full_name }}</a>
+                                        <a class="h6"
+                                            href="{{ route('student.index', Auth::user()->id) }}">{{ Auth::user()->full_name }}</a>
                                         <p class="small m-0">{{ Auth::user()->email }}</p>
                                     </div>
                                 </div>
@@ -229,7 +264,8 @@
                                         class="bi bi-person fa-fw me-2"></i>Edit
                                     Profile</a>
                             </li>
-                            <li><a class="dropdown-item" href="{{ route('student.setting') }}"><i class="bi bi-gear fa-fw me-2"></i>Account
+                            <li><a class="dropdown-item" href="{{ route('student.setting') }}"><i
+                                        class="bi bi-gear fa-fw me-2"></i>Account
                                     Settings</a>
                             </li>
                             <li><a class="dropdown-item" href="#"><i
@@ -249,7 +285,7 @@
                     </div>
                 @else
                     <!-- Profile START -->
-                        <a href="{{ route('login') }}" class="btn btn-primary mb-0">LOGIN</a>
+                    <a href="{{ route('login') }}" class="btn btn-primary mb-0">LOGIN</a>
                     <!-- Profile START -->
                 @endauth
             </div>
