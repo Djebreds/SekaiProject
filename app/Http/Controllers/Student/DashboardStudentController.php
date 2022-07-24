@@ -12,6 +12,10 @@ class DashboardStudentController extends Controller
         return view('student.dashboard');
     }
 
+    public function setting() {
+        return view('student.setting');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

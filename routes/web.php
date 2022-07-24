@@ -17,6 +17,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Instructor\DashboardInstructorController;
 use App\Http\Controllers\Admin\InstructorController;
+use App\Http\Controllers\Instructor\MakeCourseController;
 use App\Http\Controllers\Student\DashboardStudentController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Student\MyCourseController;
@@ -66,19 +67,22 @@ Route::middleware(['auth', 'admin'])->group(function () {
 });
 
 // Routes For Student
-Route::middleware(['auth', 'student'])->group(function() {
-    Route::get('student/setting', [SettingController::class, 'index'])->middleware('verified')->name('student.setting');
-    Route::get('student/course', [MyCoursecontroller::class, 'index'])->middleware('verified')->name('student.mycourse');
+Route::middleware(['auth', 'student', 'verified'])->group(function() {
+    Route::get('student/setting', [DashboardStudentController::class, 'setting'])->middleware('verified')->name('student.setting');
+    Route::get('student/my-course', [MyCoursecontroller::class, 'index'])->middleware('verified')->name('student.mycourse');
     Route::resource('student', DashboardStudentController::class)->middleware('verified');
 });
 
+// Routes For Instructor
 Route::middleware(['auth', 'instructor'])->group(function() {
+    Route::get('instructor/setting', [DashboardInstructorController::class, 'setting'])->name('instructor.setting');
+    Route::get('instructor/create/course', [MakeCourseController::class, 'index'])->name('instructor.makecourse');
     Route::resource('instructor', DashboardInstructorController::class)->parameters([
         'instructor' => 'users:username'
     ])->middleware('verified');
 });
 
-// Routes For Instructor
-Route::middleware('auth')->group(function() {
-    Route::get('/{username}', [ProfileController::class, 'index']);
-});
+//// Routes For Instructor
+//Route::middleware('auth')->group(function() {
+//    Route::get('/{username}', [ProfileController::class, 'index']);
+//});
