@@ -207,11 +207,12 @@
                                     <!-- Avatar -->
                                     <div class="avatar me-3">
                                         @if (!Auth::user()->provider_id)
-                                            <div
-                                                class="avatar-img rounded-circle border border-white border-3 shadow {{ Auth::user()->profile_picture }}">
-                                                <span
-                                                    class="text-white position-absolute top-50 start-50 translate-middle fw-bold">{{ $initial_name }}</span>
-                                            </div>
+
+                                        <div class="avatar-img rounded-circle border border-white border-3 shadow {{ Auth::user()->profile_picture }}"><span
+                                                class="text-white position-absolute top-50 start-50 translate-middle fw-bold">{{ $initial_name }}</span>
+                                        </div>
+                                        @else
+
                                             @if (in_array(Auth::user()->profile_picture, $color))
                                                 <div
                                                     class="avatar-img rounded-circle border-white border-3 shadow bg-light {{ Auth::user()->profile_picture }}">
