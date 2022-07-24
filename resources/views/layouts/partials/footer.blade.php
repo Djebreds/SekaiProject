@@ -8,21 +8,19 @@
             <div class="col-lg-3">
                 <!-- logo -->
                 <a class="me-0" href="/">
-                    <img class="light-mode-item h-40px" src="{{ asset('assets/images/logo.png') }}"
-                         alt="logo">
-                    <img class="dark-mode-item h-40px" src="{{ asset('assets/images/logo-light.svg') }}"
-                         alt="logo">
+                    <img class="light-mode-item h-40px" src="{{ asset('assets/images/logo.png') }}" alt="logo">
+                    <img class="dark-mode-item h-40px" src="{{ asset('assets/images/logo-light.svg') }}" alt="logo">
                 </a>
-                <p class="my-3">Platform belajar seputar programming secara mudah dan fleksibel dari dasar
-                    hingga mahir. Persiapkan dirimu berkarir di bidang IT, siapapun bisa jadi programmer!</p>
+                <p class="my-3">Easy and flexible learning platform about programming from basic to advanced. Prepare
+                    yourself for a career in IT, anyone can be a programmer!</p>
                 <!-- Social media icon -->
                 <ul class="list-inline mb-0 mt-3">
                     <li class="list-inline-item"><a class="btn btn-white btn-sm shadow px-2 text-facebook"
-                                                    href="https://www.facebook.com/basicschoolofficial"><i
-                                    class="fab fa-fw fa-facebook-f"></i></a></li>
+                            href="https://www.facebook.com/basicschoolofficial"><i
+                                class="fab fa-fw fa-facebook-f"></i></a></li>
                     <li class="list-inline-item"><a class="btn btn-white btn-sm shadow px-2 text-instagram"
-                                                    href="https://www.instagram.com/basicschool.id/"><i
-                                    class="fab fa-fw fa-instagram"></i></a></li>
+                            href="https://www.instagram.com/basicschool.id/"><i class="fab fa-fw fa-instagram"></i></a>
+                    </li>
                 </ul>
             </div>
             <!-- Widget 1 END -->
@@ -32,12 +30,12 @@
                 <div class="row g-4">
                     <!-- Link block -->
                     <div class="col-6 col-md-6">
-                        <h5 class="mb-2 mb-md-4">Perusahaan</h5>
+                        <h5 class="mb-2 mb-md-4">Company</h5>
                         <ul class="nav flex-column">
-                            <li class="nav-item"><a class="nav-link" href="#">Tentang Basicschool</a>
+                            <li class="nav-item"><a class="nav-link" href="#">About Basicschool</a>
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="#">Kontak Kami</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">Menjadi Instruktur</a>
+                            <li class="nav-item"><a class="nav-link" href="#">Contact us</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">Become an Instructor</a>
                             </li>
                         </ul>
                     </div>
