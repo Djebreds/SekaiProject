@@ -51,40 +51,9 @@
                         <li> <a class="dropdown-item" href="#">Web Development Laravel</a></li>
                     </ul>
                 </li> --}}
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="/cek-sertifikat" id="demoMenu"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Courses</a>
-                        <ul class="dropdown-menu dropdown-menu-start" data-bs-popper="none">
-                            <li> <a class="dropdown-item" href="{{ route('courses.categories') }}">Course Categories
-                                    <span class="badge bg-success ms-2 smaller">New</span></a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li> <a class="dropdown-item" href="{{ route('courses.gridclassic') }}">Course Grid
-                                    Classic</a></li>
-                            <li> <a class="dropdown-item" href="{{ route('courses.gridminimal') }}">Course Grid
-                                    Minimal</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li> <a class="dropdown-item" href="{{ route('courses.listclassic') }}">Course List
-                                    Classic</a></li>
-                            <li> <a class="dropdown-item" href="{{ route('courses.listminimal') }}">Course List
-                                    Minimal</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li> <a class="dropdown-item" href="{{ route('courses.detailclassic') }}">Course Detail
-                                    Classic</a></li>
-                            <li> <a class="dropdown-item" href="{{ route('courses.detailminimal') }}">Course Detail
-                                    Minimal</a></li>
-                            <li> <a class="dropdown-item" href="{{ route('courses.detailadvance') }}">Course Detail
-                                    Advance</a></li>
-                            <li> <a class="dropdown-item" href="{{ route('courses.video') }}">Course Full Screen
-                                    Video</a>
-                            </li>
-                        </ul>
-
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('courses.courses') }}" aria-haspopup="true"
+                            aria-expanded="false">Courses</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="demoMenu" data-bs-toggle="dropdown"
@@ -237,13 +206,16 @@
                                     <!-- Avatar -->
                                     <div class="avatar me-3">
                                         @if (!Auth::user()->provider_id)
-                                        <div class="avatar-img rounded-circle border border-white border-3 shadow {{ Auth::user()->profile_picture }}"><span
-                                                class="text-white position-absolute top-50 start-50 translate-middle fw-bold">{{ $initial_name }}</span>
-                                        </div>
+                                            <div
+                                                class="avatar-img rounded-circle border border-white border-3 shadow {{ Auth::user()->profile_picture }}">
+                                                <span
+                                                    class="text-white position-absolute top-50 start-50 translate-middle fw-bold">{{ $initial_name }}</span>
+                                            </div>
                                             @if (in_array(Auth::user()->profile_picture, $color))
                                                 <div
                                                     class="avatar-img rounded-circle border-white border-3 shadow bg-light {{ Auth::user()->profile_picture }}">
-                                                    <span class="text-white position-absolute top-50 start-50 translate-middle fw-bold">{{ $initial_name }}</span>
+                                                    <span
+                                                        class="text-white position-absolute top-50 start-50 translate-middle fw-bold">{{ $initial_name }}</span>
                                                 </div>
                                             @else
                                                 <img class="avatar-img rounded-circle border-white border-3 shadow bg-light"
