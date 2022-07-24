@@ -24,7 +24,7 @@ class RedirectIfAuthenticated
         } elseif(Auth::guard($guard)->check() && Auth::user()->role_id == 2){
             return redirect()->route('student.index');
         } elseif (Auth::guard($guard)->check() && Auth::user()->role_id == 3) {
-            return redirect()->route('instructor.dashboard');
+            return redirect()->route('instructor.index');
         } else {
             return $next($request);
         }

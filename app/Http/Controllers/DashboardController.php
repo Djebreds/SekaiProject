@@ -9,11 +9,11 @@ class DashboardController extends Controller
 {
     public function index() {
         if (Auth::check() && Auth::user()->role_id == 1) {
-            return redirect('admin/dashboard');
+            return redirect()->route('admin.dashboard');
         } else if (Auth::check() && Auth::user()->role_id == 2) {
-            return redirect('student');
+            return redirect()->route('student.index');
         } else if (Auth::check() && Auth::user()->role_id == 3) {
-            return redirect('instructor/dashboard');
+            return redirect()->route('instructor.index');
         } else {
             return redirect('login');
         }
