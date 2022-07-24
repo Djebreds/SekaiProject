@@ -60,28 +60,15 @@
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li> <a class="dropdown-item" href="{{ route('courses.gridclassic') }}">Course Grid
-                                    Classic</a></li>
                             <li> <a class="dropdown-item" href="{{ route('courses.gridminimal') }}">Course Grid
                                     Minimal</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li> <a class="dropdown-item" href="{{ route('courses.listclassic') }}">Course List
-                                    Classic</a></li>
                             <li> <a class="dropdown-item" href="{{ route('courses.listminimal') }}">Course List
                                     Minimal</a></li>
                             <li>
                                 <hr class="dropdown-divider">
-                            </li>
-                            <li> <a class="dropdown-item" href="{{ route('courses.detailclassic') }}">Course Detail
-                                    Classic</a></li>
-                            <li> <a class="dropdown-item" href="{{ route('courses.detailminimal') }}">Course Detail
-                                    Minimal</a></li>
-                            <li> <a class="dropdown-item" href="{{ route('courses.detailadvance') }}">Course Detail
-                                    Advance</a></li>
-                            <li> <a class="dropdown-item" href="{{ route('courses.video') }}">Course Full Screen
-                                    Video</a>
                             </li>
                         </ul>
 
