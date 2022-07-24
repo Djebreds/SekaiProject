@@ -51,8 +51,9 @@
 </div>
 
 <!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
-
+{{--public/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js--}}
 <!-- Vendors -->
 <script src="{{ asset('assets/vendor/tiny-slider/tiny-slider.js') }}"></script>
 <script src="{{ asset('assets/vendor/glightbox/js/glightbox.js') }}"></script>
@@ -72,13 +73,13 @@
             if (metode_pembayaran == 'BRI') {
                 $('#totaltransfer').html('Rp. ' + ($('#hargakelas').val() + $('#kodeunik').val()));
             }
-            elseif(metode_pembayaran == 'QRIS')
+            else if(metode_pembayaran == 'QRIS')
             {
                 $('#totaltransfer').html('Rp. ' + ($('#hargakelas').val() + $('#kodeunik').val()) +
                     biayaadmin);
                 $('#biayaadmin').html('Rp. ' + biayaadmin);
             }
-        else
+            else
             {
                 $('#totaltransfer').html('Rp. ' + ($('#hargakelas').val() + $('#kodeunik').val()));
             }

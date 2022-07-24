@@ -6,10 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class DashboardStudentController extends Controller
+class SettingController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index() {
-        return view('student.dashboard');
+        return view('student.setting');
     }
 
     /**
@@ -48,12 +53,11 @@ class DashboardStudentController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($id)
     {
-        $user = User::where('role_id', $user->role_id)->where('username', $user->username);
-        return view('student.profile', compact('user'));
+        //
     }
 
     /**

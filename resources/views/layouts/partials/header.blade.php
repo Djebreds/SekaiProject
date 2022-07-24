@@ -203,33 +203,33 @@
                                     <!-- Avatar -->
                                     <div class="avatar me-3">
                                         @if (!Auth::user()->provider_id)
-                                        <div class="avatar-img rounded-circle {{ Auth::user()->profile_picture }}"><span
+                                        <div class="avatar-img rounded-circle border border-white border-3 shadow bg-light {{ Auth::user()->profile_picture }}"><span
                                                 class="text-white position-absolute top-50 start-50 translate-middle fw-bold">{{ $initial_name }}</span>
                                         </div>
                                         @else
                                             @if (in_array(Auth::user()->profile_picture, $color))
-                                                <div class="avatar-img rounded-circle {{ Auth::user()->profile_picture }}"><span
+                                                <div class="avatar-img rounded-circle border-white border-3 shadow bg-light {{ Auth::user()->profile_picture }}"><span
                                                         class="text-white position-absolute top-50 start-50 translate-middle fw-bold">{{ $initial_name }}</span>
                                                 </div>
                                             @else
-                                                <img class="avatar-img rounded-circle" src="{{ Auth::user()->profile_picture }}"
+                                                <img class="avatar-img rounded-circle border-white border-3 shadow bg-light" src="{{ Auth::user()->profile_picture }}"
                                                      alt="avatar">
                                             @endif
                                         @endif
                                     </div>
                                     <div>
-                                        <a class="h6" href="{{ route('profile.index') }}">{{ Auth::user()->full_name }}</a>
+                                        <a class="h6" href="{{ route('student.index', Auth::user()->id) }}">{{ Auth::user()->full_name }}</a>
                                         <p class="small m-0">{{ Auth::user()->email }}</p>
                                     </div>
                                 </div>
                                 <hr>
                             </li>
                             <!-- Links -->
-                            <li><a class="dropdown-item" href="{{ route('student.profile') }}"><i
+                            <li><a class="dropdown-item" href="{{ route('student.edit', Auth::user()->username) }}"><i
                                         class="bi bi-person fa-fw me-2"></i>Edit
                                     Profile</a>
                             </li>
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-gear fa-fw me-2"></i>Account
+                            <li><a class="dropdown-item" href="{{ route('student.setting') }}"><i class="bi bi-gear fa-fw me-2"></i>Account
                                     Settings</a>
                             </li>
                             <li><a class="dropdown-item" href="#"><i
