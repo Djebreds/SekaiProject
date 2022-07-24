@@ -80,41 +80,10 @@ Route::middleware(['auth' => 'instructor'])->group(function () {
 });
 
 
-Route::get('courses/categories', function () {
-    return view('navbar.courses.categories');
-})->name('courses.categories');
 
-Route::get('courses/gridclassic', function () {
-    return view('navbar.courses.gridclassic');
-})->name('courses.gridclassic');
-
-Route::get('courses/gridminimal', function () {
-    return view('navbar.courses.gridminimal');
-})->name('courses.gridminimal');
-
-Route::get('courses/listclassic', function () {
-    return view('navbar.courses.listclassic');
-})->name('courses.listclassic');
-
-Route::get('courses/listminimal', function () {
-    return view('navbar.courses.listminimal');
-})->name('courses.listminimal');
-
-Route::get('courses/detailclassic', function () {
-    return view('navbar.courses.detailclassic');
-})->name('courses.detailclassic');
-
-Route::get('courses/detailminimal', function () {
-    return view('navbar.courses.detailminimal');
-})->name('courses.detailminimal');
-
-Route::get('courses/detailadvance', function () {
-    return view('navbar.courses.detailadvance');
-})->name('courses.detailadvance');
-
-Route::get('courses/video', function () {
-    return view('navbar.courses.video');
-})->name('courses.video');
+Route::get('courses/courses', function () {
+    return view('navbar.courses.courses');
+})->name('courses.courses');
 
 Route::get('instruktor/become', function () {
     return view('navbar.instruktor.become');
@@ -149,7 +118,7 @@ Route::middleware(['auth', 'student'])->group(function () {
 
 // Routes For Instructor
 
-Route::middleware(['auth', 'instructor'])->group(function() {
+Route::middleware(['auth', 'instructor'])->group(function () {
     Route::get('instructor/setting', [DashboardInstructorController::class, 'setting'])->name('instructor.setting');
     Route::get('instructor/create/course', [MakeCourseController::class, 'index'])->name('instructor.makecourse');
     Route::resource('instructor', DashboardInstructorController::class)->parameters([
