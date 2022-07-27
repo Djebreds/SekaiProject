@@ -3,7 +3,7 @@
     <main>
 
         <!-- =======================
-        Page Banner START -->
+                                                                                                        Page Banner START -->
         <section class="py-0">
             <div class="container">
                 <div class="row">
@@ -25,14 +25,14 @@
             </div>
         </section>
         <!-- =======================
-        Page Banner END -->
+                                                                                                        Page Banner END -->
 
         <!-- =======================
-        Inner part START -->
+                                                                                                        Inner part START -->
         <section class="pt-4">
             <div class="container">
                 <!-- Search option START -->
-                <div class="row mb-4 align-items-center">
+                <div class="row mb-4 justify-content-between">
                     <!-- Search bar -->
                     <div class="col-sm-6 col-xl-4">
                         <form class="border rounded p-2">
@@ -42,128 +42,6 @@
                                         class="fas fa-search"></i></button>
                             </div>
                         </form>
-                    </div>
-
-                    <!-- Select option -->
-                    <div class="col-sm-6 col-xl-3 mt-3 mt-lg-0">
-                        <form class="border rounded p-2 input-borderless">
-                            <div class="choices" data-type="select-one" tabindex="0" role="combobox"
-                                aria-autocomplete="list" aria-haspopup="true" aria-expanded="false">
-                                <div class="choices__inner"><select
-                                        class="form-select form-select-sm js-choice choices__input"
-                                        aria-label=".form-select-sm" hidden="" tabindex="-1" data-choice="active">
-                                        <option value="" data-custom-properties="[object Object]">Category</option>
-                                    </select>
-                                    <div class="choices__list choices__list--single">
-                                        <div class="choices__item choices__placeholder choices__item--selectable"
-                                            data-item="" data-id="1" data-value=""
-                                            data-custom-properties="[object Object]" aria-selected="true">Category</div>
-                                    </div>
-                                </div>
-                                <div class="choices__list choices__list--dropdown" aria-expanded="false"><input
-                                        type="text" class="choices__input choices__input--cloned" autocomplete="off"
-                                        autocapitalize="off" spellcheck="false" role="textbox" aria-autocomplete="list"
-                                        aria-label="Category" placeholder="">
-                                    <div class="choices__list" role="listbox">
-                                        <div id="choices--zoay-item-choice-3"
-                                            class="choices__item choices__item--choice is-selected choices__placeholder choices__item--selectable is-highlighted"
-                                            role="option" data-choice="" data-id="3" data-value=""
-                                            data-select-text="Press to select" data-choice-selectable=""
-                                            aria-selected="true">Category</div>
-                                        <div id="choices--zoay-item-choice-1"
-                                            class="choices__item choices__item--choice choices__item--selectable"
-                                            role="option" data-choice="" data-id="1" data-value="Accounting"
-                                            data-select-text="Press to select" data-choice-selectable="">Accounting</div>
-                                        <div id="choices--zoay-item-choice-2"
-                                            class="choices__item choices__item--choice choices__item--selectable"
-                                            role="option" data-choice="" data-id="2" data-value="All"
-                                            data-select-text="Press to select" data-choice-selectable="">All</div>
-                                        <div id="choices--zoay-item-choice-4"
-                                            class="choices__item choices__item--choice choices__item--selectable"
-                                            role="option" data-choice="" data-id="4" data-value="Design"
-                                            data-select-text="Press to select" data-choice-selectable="">Design</div>
-                                        <div id="choices--zoay-item-choice-5"
-                                            class="choices__item choices__item--choice choices__item--selectable"
-                                            role="option" data-choice="" data-id="5" data-value="Development"
-                                            data-select-text="Press to select" data-choice-selectable="">Development</div>
-                                        <div id="choices--zoay-item-choice-6"
-                                            class="choices__item choices__item--choice choices__item--selectable"
-                                            role="option" data-choice="" data-id="6" data-value="Finance"
-                                            data-select-text="Press to select" data-choice-selectable="">Finance</div>
-                                        <div id="choices--zoay-item-choice-7"
-                                            class="choices__item choices__item--choice choices__item--selectable"
-                                            role="option" data-choice="" data-id="7" data-value="Legal"
-                                            data-select-text="Press to select" data-choice-selectable="">Legal</div>
-                                        <div id="choices--zoay-item-choice-8"
-                                            class="choices__item choices__item--choice choices__item--selectable"
-                                            role="option" data-choice="" data-id="8" data-value="Marketing"
-                                            data-select-text="Press to select" data-choice-selectable="">Marketing</div>
-                                        <div id="choices--zoay-item-choice-9"
-                                            class="choices__item choices__item--choice choices__item--selectable"
-                                            role="option" data-choice="" data-id="9" data-value="Photography"
-                                            data-select-text="Press to select" data-choice-selectable="">Photography</div>
-                                        <div id="choices--zoay-item-choice-10"
-                                            class="choices__item choices__item--choice choices__item--selectable"
-                                            role="option" data-choice="" data-id="10" data-value="Translation"
-                                            data-select-text="Press to select" data-choice-selectable="">Translation</div>
-                                        <div id="choices--zoay-item-choice-11"
-                                            class="choices__item choices__item--choice choices__item--selectable"
-                                            role="option" data-choice="" data-id="11" data-value="Writing"
-                                            data-select-text="Press to select" data-choice-selectable="">Writing</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-
-                    <!-- Select option -->
-                    <div class="col-sm-6 col-xl-3 mt-3 mt-xl-0">
-                        <form class="border rounded p-2 input-borderless">
-                            <div class="choices" data-type="select-one" tabindex="0" role="combobox"
-                                aria-autocomplete="list" aria-haspopup="true" aria-expanded="false">
-                                <div class="choices__inner"><select
-                                        class="form-select form-select-sm js-choice choices__input"
-                                        aria-label=".form-select-sm" hidden="" tabindex="-1" data-choice="active">
-                                        <option value="" data-custom-properties="[object Object]">Sort by</option>
-                                    </select>
-                                    <div class="choices__list choices__list--single">
-                                        <div class="choices__item choices__placeholder choices__item--selectable"
-                                            data-item="" data-id="1" data-value=""
-                                            data-custom-properties="[object Object]" aria-selected="true">Sort by</div>
-                                    </div>
-                                </div>
-                                <div class="choices__list choices__list--dropdown" aria-expanded="false"><input
-                                        type="text" class="choices__input choices__input--cloned" autocomplete="off"
-                                        autocapitalize="off" spellcheck="false" role="textbox" aria-autocomplete="list"
-                                        aria-label="Sort by" placeholder="">
-                                    <div class="choices__list" role="listbox">
-                                        <div id="choices--bw63-item-choice-3"
-                                            class="choices__item choices__item--choice is-selected choices__placeholder choices__item--selectable is-highlighted"
-                                            role="option" data-choice="" data-id="3" data-value=""
-                                            data-select-text="Press to select" data-choice-selectable=""
-                                            aria-selected="true">Sort by</div>
-                                        <div id="choices--bw63-item-choice-1"
-                                            class="choices__item choices__item--choice choices__item--selectable"
-                                            role="option" data-choice="" data-id="1" data-value="Most popular"
-                                            data-select-text="Press to select" data-choice-selectable="">Most popular
-                                        </div>
-                                        <div id="choices--bw63-item-choice-2"
-                                            class="choices__item choices__item--choice choices__item--selectable"
-                                            role="option" data-choice="" data-id="2" data-value="Most viewed"
-                                            data-select-text="Press to select" data-choice-selectable="">Most viewed</div>
-                                        <div id="choices--bw63-item-choice-4"
-                                            class="choices__item choices__item--choice choices__item--selectable"
-                                            role="option" data-choice="" data-id="4" data-value="Top rated"
-                                            data-select-text="Press to select" data-choice-selectable="">Top rated</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-
-                    <!-- Button -->
-                    <div class="col-sm-6 col-xl-2 mt-3 mt-xl-0 d-grid">
-                        <a href="#" class="btn btn-lg btn-primary mb-0">Filter Results</a>
                     </div>
                 </div>
                 <!-- Search option END -->
@@ -650,10 +528,10 @@
             </div>
         </section>
         <!-- =======================
-        Inner part END -->
+                                                                                                        Inner part END -->
 
         <!-- =======================
-        Action box START -->
+                                                                                                        Action box START -->
         <section class="pt-0">
             <div class="container position-relative">
                 <!-- SVG -->
@@ -705,7 +583,7 @@
             </div>
         </section>
         <!-- =======================
-        Action box END -->
+                                                                                                        Action box END -->
 
     </main>
 @endsection

@@ -59,7 +59,7 @@ Route::get('about/basicschool', [AboutController::class, 'basicschool'])->name('
 Route::get('about', [AboutController::class, 'about'])->name('about');
 Route::get('contact', [AboutController::class, 'contact'])->name('contact');
 Route::get('help', [HelpController::class, 'index'])->name('help');
-Route::get('certificate/check', [CheckCertificateController::class, 'index'])->name('certificate.check');
+Route::get('certificate/check', [CheckCertificateController::class, 'index'])->name('certificate');
 
 //
 //Route::get('courses/categories', function () {

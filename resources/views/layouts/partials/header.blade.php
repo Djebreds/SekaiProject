@@ -67,7 +67,8 @@
                         <a class="nav-link dropdown-toggle" href="#" id="demoMenu" data-bs-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">About</a>
                         <ul class="dropdown-menu" aria-labelledby="demoMenu">
-                            <li><a class="dropdown-item" href="{{ route('about.basicschool') }}">About Basicschool</a></li>
+                            <li><a class="dropdown-item" href="{{ route('about.basicschool') }}">About Basicschool</a>
+                            </li>
                             <li><a class="dropdown-item" href="{{ route('about') }}">About Us</a></li>
                             <li><a class="dropdown-item" href="{{ route('contact') }}">Contact Us</a></li>
                         </ul>
@@ -126,14 +127,14 @@
                                     <h6 class="mb-0">Check Certificate</h6>
                                     <hr>
                                     <!-- Dropdown item -->
-                                    <div class="d-flex mb-4 position-relative">
-                                        <h2 class="mb-0"><i class="fab fa-fw fa-google text-google-icon"></i></h2>
-                                        <div class="ms-2">
-                                            <a class="stretched-link h6 mb-0" href="#">Google SEO
-                                                certificate</a>
-                                            <p class="mb-0 small">No prerequisites</p>
-                                        </div>
+                                    <div
+                                        class="mb-2 position-relative bg-primary-soft-hover rounded-2 transition-base p-3">
+                                        <a class="stretched-link h6 mb-0" href="{{ route('certificate') }}">Search
+                                            Certificate</a>
+                                        <p class="mb-0 small text-truncate-2">If you have completed the course, you can
+                                            view your certificate here.</p>
                                     </div>
+
                                 </div>
 
                                 <!-- Dropdown column item -->
@@ -204,12 +205,12 @@
                                     <!-- Avatar -->
                                     <div class="avatar me-3">
                                         @if (!Auth::user()->provider_id)
-
-                                        <div class="avatar-img rounded-circle border border-white border-3 shadow {{ Auth::user()->profile_picture }}"><span
-                                                class="text-white position-absolute top-50 start-50 translate-middle fw-bold">{{ $initial_name }}</span>
-                                        </div>
+                                            <div
+                                                class="avatar-img rounded-circle border border-white border-3 shadow {{ Auth::user()->profile_picture }}">
+                                                <span
+                                                    class="text-white position-absolute top-50 start-50 translate-middle fw-bold">{{ $initial_name }}</span>
+                                            </div>
                                         @else
-
                                             @if (in_array(Auth::user()->profile_picture, $color))
                                                 <div
                                                     class="avatar-img rounded-circle border-white border-3 shadow bg-light {{ Auth::user()->profile_picture }}">
@@ -239,7 +240,7 @@
                                         class="bi bi-gear fa-fw me-2"></i>Account
                                     Settings</a>
                             </li>
-                            <li><a class="dropdown-item" href="#"><i
+                            <li><a class="dropdown-item" href="{{ route('help') }}"><i
                                         class="bi bi-info-circle fa-fw me-2"></i>Help</a>
                             </li>
 
