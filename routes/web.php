@@ -30,7 +30,6 @@ use App\Http\Controllers\InstructorListController;
 use App\Http\Controllers\Student\DashboardStudentController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Student\MyCourseController;
-use App\Http\Controllers\Student\SettingController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -101,21 +100,23 @@ Route::get('/oauth/google', [OauthController::class, 'redirectToGoogle'])->name(
 Route::get('/oauth/google/callback', [OauthController::class, 'googleCallBack'])->name('auth.google.callback');
 
 // Route For Admin
-Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('admin/dashboard', [DashboardAdminController::class, 'index'])->name('admin.dashboard');
-    Route::resource('admin/profile', AdminProfileController::class, ['only' => ['show', 'post', 'put', 'delete']]);
-    Route::resource('admin/users/admins', AdminController::class, ['only' => ['index', 'show']]);
-    Route::resource('admin/users/students', StudentController::class);
-    Route::resource('admin/users/instructors', InstructorController::class);
-    Route::resource('admin/roles', RoleController::class, ['only' => ['index', 'show']]);
-    Route::resource('admin/category/course-categories', CourseCategoryController::class);
-    Route::resource('admin/category/price-types', PriceTypeController::class);
-    Route::resource('admin/category/class-types', ClassTypeController::class);
-    Route::resource('admin/category/course-levels', CourseLevelController::class);
-    Route::resource('admin/classes', ClassController::class);
-    Route::resource('admin/masterclasses', MasterClassController::class);
-    Route::resource('admin/certificates', CertificateController::class);
-    Route::resource('admin/reviews', ReviewController::class);
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::middleware(['auth', 'admin'])->group(function () {
+        Route::get('dashboard', [DashboardAdminController::class, 'index'])->name('dashboard');
+        Route::resource('profile', AdminProfileController::class, ['only' => ['show', 'post', 'put', 'delete']]);
+        Route::resource('users/admins', AdminController::class, ['only' => ['index', 'show']]);
+        Route::resource('users/students', StudentController::class);
+        Route::resource('users/instructors', InstructorController::class);
+        Route::resource('roles', RoleController::class, ['only' => ['index', 'show']]);
+        Route::resource('category/course-categories', CourseCategoryController::class);
+        Route::resource('category/price-types', PriceTypeController::class);
+        Route::resource('category/class-types', ClassTypeController::class);
+        Route::resource('category/course-levels', CourseLevelController::class);
+        Route::resource('classes', ClassController::class);
+        Route::resource('masterclasses', MasterClassController::class);
+        Route::resource('certificates', CertificateController::class);
+        Route::resource('reviews', ReviewController::class);
+    });
 });
 
 
