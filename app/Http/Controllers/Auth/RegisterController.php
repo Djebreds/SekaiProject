@@ -61,7 +61,6 @@ class RegisterController extends Controller
         ], [
             'regex' => 'Only letters and white space allowed'
         ]);
-
     }
 
     /**
@@ -101,5 +100,4 @@ class RegisterController extends Controller
             ? redirect($this->redirectPath())
             : view('auth.verify');
     }
-
 }

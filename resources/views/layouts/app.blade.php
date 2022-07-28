@@ -42,7 +42,26 @@
 </head>
 
 <body>
-
+    <script>
+        $(document).ready(function() {
+            console.log('ready');
+            $('select#metode_pembayaran').on('change', function() {
+                var metode_pembayaran = $('#metode_pembayaran:selected').val();
+                console.log(metode_pembayaran);
+                var biayaadmin = 2500;
+                if (metode_pembayaran == 'BRI') {
+                    $('#totaltransfer').html('Rp. ' + ($('#hargakelas').val() + $('#kodeunik').val()));
+                } else if (metode_pembayaran == 'QRIS') {
+                    $('#totaltransfer').html('Rp. ' + ($('#hargakelas').val() + $('#kodeunik').val()) +
+                        biayaadmin);
+                    $('#biayaadmin').html('Rp. ' + biayaadmin);
+                } else {
+                    $('#totaltransfer').html('Rp. ' + ($('#hargakelas').val() + $('#kodeunik').val()));
+                }
+            });
+        });
+    </script>
+    =======
     @include('layouts.partials.header')
     @yield('content')
     @include('layouts.partials.footer')
@@ -64,26 +83,33 @@
 
     <!-- Template Functions -->
     <script src="{{ asset('assets/js/functions.js') }}"></script>
+    @stack('custom-script')
 
-    <script>
-        $(document).ready(function() {
-            console.log('ready');
-            $('select#metode_pembayaran').on('change', function() {
-                var metode_pembayaran = $('#metode_pembayaran:selected').val();
-                console.log(metode_pembayaran);
-                var biayaadmin = 2500;
-                if (metode_pembayaran == 'BRI') {
-                    $('#totaltransfer').html('Rp. ' + ($('#hargakelas').val() + $('#kodeunik').val()));
-                } else if (metode_pembayaran == 'QRIS') {
-                    $('#totaltransfer').html('Rp. ' + ($('#hargakelas').val() + $('#kodeunik').val()) +
-                        biayaadmin);
-                    $('#biayaadmin').html('Rp. ' + biayaadmin);
-                } else {
-                    $('#totaltransfer').html('Rp. ' + ($('#hargakelas').val() + $('#kodeunik').val()));
-                }
-            });
+
+    {{-- <script>
+    $(document).ready(function () {
+        console.log('ready');
+        $('select#metode_pembayaran').on('change', function () {
+            var metode_pembayaran = $('#metode_pembayaran:selected').val();
+            console.log(metode_pembayaran);
+            var biayaadmin = 2500;
+            if (metode_pembayaran == 'BRI') {
+                $('#totaltransfer').html('Rp. ' + ($('#hargakelas').val() + $('#kodeunik').val()));
+            }
+            else if(metode_pembayaran == 'QRIS')
+            {
+                $('#totaltransfer').html('Rp. ' + ($('#hargakelas').val() + $('#kodeunik').val()) +
+                    biayaadmin);
+                $('#biayaadmin').html('Rp. ' + biayaadmin);
+            }
+            else
+            {
+                $('#totaltransfer').html('Rp. ' + ($('#hargakelas').val() + $('#kodeunik').val()));
+            }
         });
-    </script>
+    });
+</script> --}}
+    >>>>>>> 3a2f041d48981a2951f40091bc2e75078b82cc2b
 </body>
 
 </html>
