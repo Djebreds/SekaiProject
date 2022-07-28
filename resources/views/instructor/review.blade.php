@@ -10,58 +10,6 @@
                     <div class="col-sm-6">
                         <h3 class="card-header-title mb-2 mb-sm-0">Student review</h3>
                     </div>
-
-                    <!-- Short by filter -->
-                    <div class="col-sm-4">
-                        <form>
-                            <div class="choices" data-type="select-one" tabindex="0" role="combobox" aria-autocomplete="list"
-                                aria-haspopup="true" aria-expanded="false">
-                                <div class="choices__inner"><select
-                                        class="form-select js-choice z-index-9 bg-white choices__input"
-                                        aria-label=".form-select-sm" hidden="" tabindex="-1" data-choice="active">
-                                        <option value="" data-custom-properties="[object Object]">Sort by</option>
-                                    </select>
-                                    <div class="choices__list choices__list--single">
-                                        <div class="choices__item choices__placeholder choices__item--selectable"
-                                            data-item="" data-id="1" data-value=""
-                                            data-custom-properties="[object Object]" aria-selected="true">Sort by</div>
-                                    </div>
-                                </div>
-                                <div class="choices__list choices__list--dropdown" aria-expanded="false"><input
-                                        type="text" class="choices__input choices__input--cloned" autocomplete="off"
-                                        autocapitalize="off" spellcheck="false" role="textbox" aria-autocomplete="list"
-                                        aria-label="Sort by" placeholder="">
-                                    <div class="choices__list" role="listbox">
-                                        <div id="choices--jlyu-item-choice-6"
-                                            class="choices__item choices__item--choice is-selected choices__placeholder choices__item--selectable is-highlighted"
-                                            role="option" data-choice="" data-id="6" data-value=""
-                                            data-select-text="Press to select" data-choice-selectable=""
-                                            aria-selected="true">Sort by</div>
-                                        <div id="choices--jlyu-item-choice-1"
-                                            class="choices__item choices__item--choice choices__item--selectable"
-                                            role="option" data-choice="" data-id="1" data-value="★★★★★ (5/5)"
-                                            data-select-text="Press to select" data-choice-selectable="">★★★★★ (5/5)</div>
-                                        <div id="choices--jlyu-item-choice-2"
-                                            class="choices__item choices__item--choice choices__item--selectable"
-                                            role="option" data-choice="" data-id="2" data-value="★★★★☆ (4/5)"
-                                            data-select-text="Press to select" data-choice-selectable="">★★★★☆ (4/5)</div>
-                                        <div id="choices--jlyu-item-choice-3"
-                                            class="choices__item choices__item--choice choices__item--selectable"
-                                            role="option" data-choice="" data-id="3" data-value="★★★☆☆ (3/5)"
-                                            data-select-text="Press to select" data-choice-selectable="">★★★☆☆ (3/5)</div>
-                                        <div id="choices--jlyu-item-choice-4"
-                                            class="choices__item choices__item--choice choices__item--selectable"
-                                            role="option" data-choice="" data-id="4" data-value="★★☆☆☆ (2/5)"
-                                            data-select-text="Press to select" data-choice-selectable="">★★☆☆☆ (2/5)</div>
-                                        <div id="choices--jlyu-item-choice-5"
-                                            class="choices__item choices__item--choice choices__item--selectable"
-                                            role="option" data-choice="" data-id="5" data-value="★☆☆☆☆ (1/5)"
-                                            data-select-text="Press to select" data-choice-selectable="">★☆☆☆☆ (1/5)</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
                 </div>
             </div>
             <!-- Header END -->

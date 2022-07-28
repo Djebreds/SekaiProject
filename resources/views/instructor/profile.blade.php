@@ -50,12 +50,6 @@
                         </div>
                     </div>
 
-                    <!-- Password -->
-                    <div class="col-md-6">
-                        <label class="form-label">Password</label>
-                        <input type="password" class="form-control" name="password" value="1234567890">
-                    </div>
-
                     <!-- Email id -->
                     <div class="col-md-6">
                         <label class="form-label">Email</label>
@@ -77,14 +71,6 @@
                         <div class="form-text">Brief description for your profile.</div>
                     </div>
 
-                    <!-- Education -->
-                    <div class="col-12">
-                        <label class="form-label">Education</label>
-                        <input class="form-control mb-2" type="text" value="Bachelor in Computer Graphics">
-                        <input class="form-control mb-2" type="text" value="Masters in Computer Graphics">
-                        <button class="btn btn-sm btn-light mb-0"><i class="bi bi-plus me-1"></i>Add more</button>
-                    </div>
-
                     <!-- Save button -->
                     <div class="d-sm-flex justify-content-end">
                         <button type="button" class="btn btn-primary mb-0">Save changes</button>
@@ -96,63 +82,6 @@
         <!-- Edit profile END -->
 
         <div class="row g-4 mt-3">
-            <!-- Linked account START -->
-            <div class="col-lg-6">
-                <div class="card bg-transparent border rounded-3">
-                    <!-- Card header -->
-                    <div class="card-header bg-transparent border-bottom">
-                        <h5 class="card-header-title mb-0">Linked account</h5>
-                    </div>
-                    <!-- Card body START -->
-                    <div class="card-body pb-0">
-                        <!-- Google -->
-                        <div
-                            class="position-relative mb-4 d-sm-flex bg-success bg-opacity-10 border border-success p-3 rounded">
-                            <!-- Title and content -->
-                            <h2 class="fs-1 mb-0 me-3"><i class="fab fa-google text-google-icon"></i></h2>
-                            <div>
-                                <div
-                                    class="position-absolute top-0 start-100 translate-middle bg-white rounded-circle lh-1 h-20px">
-                                    <i class="bi bi-check-circle-fill text-success fs-5"></i>
-                                </div>
-                                <h6 class="mb-1">Google</h6>
-                                <p class="mb-1 small">You are successfully connected to your Google account</p>
-                                <!-- Button -->
-                                <button type="button" class="btn btn-sm btn-danger mb-0">Invoke</button>
-                                <a href="#" class="btn btn-sm btn-link text-body mb-0">Learn more</a>
-                            </div>
-                        </div>
-
-                        <!-- Linkedin -->
-                        <div class="mb-4 d-sm-flex border p-3 rounded">
-                            <!-- Title and content -->
-                            <h2 class="fs-1 mb-0 me-3"><i class="fab fa-linkedin-in text-linkedin"></i></h2>
-                            <div>
-                                <h6 class="mb-1">Linkedin</h6>
-                                <p class="mb-1 small">Connect with Linkedin account for a personalized experience</p>
-                                <!-- Button -->
-                                <button type="button" class="btn btn-sm btn-primary mb-0">Connect Linkedin</button>
-                                <a href="#" class="btn btn-sm btn-link text-body mb-0">Learn more</a>
-                            </div>
-                        </div>
-
-                        <!-- Facebook -->
-                        <div class="mb-4 d-sm-flex border p-3 rounded">
-                            <!-- Title and content -->
-                            <h2 class="fs-1 mb-0 me-3"><i class="fab fa-facebook text-facebook"></i></h2>
-                            <div>
-                                <h6 class="mb-1">Facebook</h6>
-                                <p class="mb-1 small">Connect with Facebook account for a personalized experience</p>
-                                <!-- Button -->
-                                <button type="button" class="btn btn-sm btn-primary mb-0">Connect Facebook</button>
-                                <a href="#" class="btn btn-sm btn-link text-body mb-0">Learn more</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Card body END -->
-                </div>
-            </div>
-            <!-- Linked account end -->
 
             <!-- Social media profile START -->
             <div class="col-lg-6">
@@ -188,8 +117,8 @@
                         <div class="mb-3">
                             <label class="form-label"><i class="fab fa-youtube text-youtube me-2"></i>Add your youtube
                                 profile URL</label>
-                            <input class="form-control" type="text"
-                                value="https://www.youtube.com/in/Eduport-05620abc" placeholder="Enter username">
+                            <input class="form-control" type="text" value="https://www.youtube.com/in/Eduport-05620abc"
+                                placeholder="Enter username">
                         </div>
 
                         <!-- Button -->
@@ -201,29 +130,6 @@
                 </div>
             </div>
             <!-- Social media profile END -->
-
-            <!-- EMail change START -->
-            <div class="col-lg-6">
-                <div class="card bg-transparent border rounded-3">
-                    <!-- Card header -->
-                    <div class="card-header bg-transparent border-bottom">
-                        <h5 class="card-header-title mb-0">Update email</h5>
-                    </div>
-                    <!-- Card body -->
-                    <div class="card-body">
-                        <p>Your current email address is <span class="text-primary">example@gmail.com</span></p>
-                        <!-- Email -->
-                        <form>
-                            <label class="form-label">Enter your new email id</label>
-                            <input class="form-control" type="email" placeholder="Enter new email">
-                            <div class="d-flex justify-content-end mt-4">
-                                <button type="button" class="btn btn-primary mb-0">Update email</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <!-- EMail change end -->
 
             <!-- Password change START -->
             <div class="col-lg-6">

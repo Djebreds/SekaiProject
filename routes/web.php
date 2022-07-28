@@ -132,6 +132,7 @@ Route::middleware(['auth', 'student'])->group(function () {
 Route::middleware(['auth', 'instructor'])->group(function () {
     Route::get('instructor/setting', [DashboardInstructorController::class, 'setting'])->middleware('verified')->name('instructor.setting');
     Route::get('instructor/create/course', [MakeCourseController::class, 'index'])->middleware('verified')->name('instructor.makecourse');
+    // Route::get('instructor/mycourse', [MakeCourseController::class, 'course'])->middleware('verified')->name('instructor.mycourse');
     Route::get('instructor/reviews', [ReviewCourseController::class, 'index'])->middleware('verified')->name('instructor.review');
     Route::get('instructor/orders', [OrderCourseController::class, 'index'])->middleware('verified')->name('instructor.order');
     Route::get('instructor/student', [StudentCourseController::class, 'index'])->middleware('verified')->name('instructor.student');
