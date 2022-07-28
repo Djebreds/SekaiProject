@@ -21,11 +21,12 @@ class UserFactory extends Factory
             'full_name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
+            'username' => fake()->unique()->name(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'status' => 'active',
             'is_email_verified' => true,
             'profile_picture' => fake()->randomElement(['bg-warning', 'bg-primary', 'bg-danger', 'bg-info', 'bg-dark', 'bg-success']),
-            'role_id' => rand(1,3)
+            'role_id' => rand(1, 3)
         ];
     }
 
