@@ -23,6 +23,7 @@
 
 	<!-- Remove this after purchasing -->
 	<link class="js-stylesheet" href="{{ asset('assets-admin/css/light.css') }}" rel="stylesheet">
+	<link rel="stylesheet" href="{{ asset('assets-admin/css/custom.css') }}">
 	<!-- END SETTINGS -->
 
 	<link href="{{ asset('assets-admin/summernote/summernote.min.css') }}" rel="stylesheet">

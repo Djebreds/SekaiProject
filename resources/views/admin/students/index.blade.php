@@ -11,12 +11,24 @@
 				<li class="breadcrumb-item active" aria-current="page">Student</li>
 			</ol>
 		</nav>
+		@if (session('message'))
+			<div class="alert alert-success alert-outline-coloured alert-dismissible " role="alert">
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				<div class="alert-icon">
+					<i class="fas fa-check-circle fs-3"></i>
+				</div>
+				<div class="alert-message">
+					<strong>Success</strong> {{ session('message') }}
+				</div>
+			</div>
+		@endif
 		<div class="row">
 			<div class="col-12">
 				<div class="card">
 					<div class="card-header">
 						<h5 class="card-title">Student</h5>
-						<h6 class="card-subtitle text-muted">Students are responsible for their own learning. They have to decide what they
+						<h6 class="card-subtitle text-muted">Students are responsible for their own learning. They have to decide what
+							they
 							want to study, set their goals, research and develop their subject. Students research current data to answer
 							questions and solve problems.
 					</div>
@@ -37,7 +49,7 @@
 													rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending"
 													style="width: 179px;">Name</th>
 												<th class="sorting" tabindex="0" aria-controls="datatables-column-search-text-inputs" rowspan="1"
-													colspan="1" aria-label="Name: activate to sort column ascending" style="width: 179px;">Name</th>
+													colspan="1" aria-label="Username: activate to sort column ascending" style="width: 179px;">Username</th>
 												<th class="sorting" tabindex="0" aria-controls="datatables-column-search-text-inputs" rowspan="1"
 													colspan="1" aria-label="Email: activate to sort column ascending" style="width: 179px;">Email</th>
 												<th class="sorting" tabindex="0" aria-controls="datatables-column-search-text-inputs" rowspan="1"
