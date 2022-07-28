@@ -3,7 +3,7 @@
     <main>
 
         <!-- =======================
-            Page Banner START -->
+                Page Banner START -->
         <section class="bg-light py-5 position-relative overflow-hidden">
             <!-- SVG decoration -->
             <figure class="fill-primary opacity-1 position-absolute top-50 end-0 me-n6 d-none d-sm-block">
@@ -109,10 +109,10 @@
             </div>
         </section>
         <!-- =======================
-            Page Banner END -->
+                Page Banner END -->
 
         <!-- =======================
-            Work START -->
+                Work START -->
         <section>
             <div class="container">
                 <!-- Title -->
@@ -159,10 +159,10 @@
             </div>
         </section>
         <!-- =======================
-            Work END -->
+                Work END -->
 
         <!-- =======================
-            Counter START -->
+                Counter START -->
         <section class="py-0 py-lg-5">
             <div class="container">
                 <div class="bg-orange bg-opacity-10 p-4 p-sm-5 rounded position-relative overflow-hidden">
@@ -219,25 +219,15 @@
                             <h6 class="mb-0 fw-bold">Total Courses</h6>
                         </div>
 
-                        <!-- Counter item -->
-                        <div class="col-sm-6 col-lg-3 text-center">
-                            <div class="d-flex justify-content-center">
-                                <h4 class="purecounter display-6 text-orange fw-bold mb-0" data-purecounter-start="0"
-                                    data-purecounter-end="20" data-purecounter-delay="200" data-purecounter-duration="0">
-                                    20</h4>
-                                <span class="display-6 text-orange mb-0">+</span>
-                            </div>
-                            <h6 class="mb-0 fw-bold">Languages</h6>
-                        </div>
                     </div> <!-- Row END -->
                 </div>
             </div>
         </section>
         <!-- =======================
-            Counter END -->
+                Counter END -->
 
         <!-- =======================
-            Form and Tabs START -->
+                Form and Tabs START -->
         <section>
             <div class="container">
                 <div class="row">
@@ -397,10 +387,10 @@
             </div>
         </section>
         <!-- =======================
-            Form and Tabs END -->
+                Form and Tabs END -->
 
         <!-- =======================
-            Action box START -->
+                Action box START -->
         <section class="pt-0">
             <div class="container position-relative">
                 <!-- SVG -->
@@ -453,7 +443,7 @@
             </div>
         </section>
         <!-- =======================
-            Action box END -->
+                Action box END -->
 
     </main>
 @endsection
