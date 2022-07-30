@@ -26,7 +26,7 @@
 	<link rel="stylesheet" href="{{ asset('assets-admin/css/custom.css') }}">
 	<!-- END SETTINGS -->
 
-	<link href="{{ asset('assets-admin/summernote/summernote.min.css') }}" rel="stylesheet">
+	{{-- <link href="{{ asset('assets-admin/summernote/summernote.min.css') }}" rel="stylesheet"> --}}
 	@stack('custom-style')
 </head>
 
@@ -37,6 +37,7 @@
 			@include('admin.layouts.partials.navbar')
 			<main class="content">
 				<div class="container-fluid p-0">
+					@include('sweetalert::alert')
 					@yield('content')
 				</div>
 			</main>
@@ -44,14 +45,15 @@
 	</div>
 
 	<script src="{{ asset('assets-admin/js/app.js') }}"></script>
-	<script src="{{ asset('assets-admin/summernote/summernote.min.js') }}"></script>
+	{{-- <script src="{{ asset('assets-admin/summernote/summernote.min.js') }}"></script> --}}
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 	@stack('custom-script')
 
-	<script>
+	{{-- <script>
 	 $(document).ready(function() {
 	  $('#summernote').summernote();
 	 });
-	</script>
+	</script> --}}
 
 </body>
 

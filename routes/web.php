@@ -106,7 +106,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('profile', AdminProfileController::class, ['only' => ['show', 'post', 'put', 'delete']]);
         Route::resource('users/admins', AdminController::class, ['only' => ['index', 'show']]);
         Route::resource('users/students', StudentController::class)->parameters([
-            'students' => 'username'
+            'users' => 'username'
         ]);
         Route::resource('users/instructors', InstructorController::class);
         Route::resource('roles', RoleController::class, ['only' => ['index', 'show']]);

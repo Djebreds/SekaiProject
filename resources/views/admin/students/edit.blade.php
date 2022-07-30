@@ -19,16 +19,25 @@
 						<h6 class="card-subtitle text-muted">The data must be valid.</h6>
 					</div>
 					<div class="card-body">
-						<form class="form" runat="server" action="{{ route('admin.students.update', $user->profile_picture) }}"
+						<form id="edit" class="form" runat="server" action="{{ route('admin.students.update', $user->username) }}"
 							method="POST" enctype="multipart/form-data">
 							<input type="hidden" name="_method" value="PUT">
+							<input type="hidden" name="user_id" value="{{ $user->id }}">
 							<input type="hidden" name="oldPicture" value="{{ $user->profile_picture }}">
 							@csrf
 							@method('PUT')
 							<div class="hstack justify-content-center">
 								<div class="mb-3 text-center">
-									<img id="profile" class="rounded-circle text-center" width="150"
-										src="{{ asset('storage/admin/students/uploaded/' . $user->profile_picture) }}" alt="your image" />
+									@if (Storage::disk('public')->exists('/admin/students/uploaded/' . $user->profile_picture))
+										<img id="profile" class="rounded-circle text-center bg-drk border border-dark border-5 shadow mb-3"
+											width="150" src="{{ asset('storage/admin/students/uploaded/' . $user->profile_picture) }}"
+											alt="your image" />
+									@else
+										<img src="{{ $user->profile_picture }}" alt="{{ $user->username }}"
+											class="rounded-circle text-center bg-dark border border-dark border-5 shadow mb-3" width="150">
+									@endif
+									{{-- <img
+										src="{{ Storage::disk('public')->exists('/admin/students/uploaded/' . $user->profile_picture) ? asset('storage/admin/students/uploaded/' . $user->profile_picture) : $user->profile_picture }}"> --}}
 									<input type="file" accept="image/*" class="form-control my-2 @error('picture') is-invalid @enderror"
 										id="profile_input" name="picture">
 									<label for="profile" class="form-label mx-auto">Profile Picture</label>
@@ -95,8 +104,9 @@
 								<div class="col">
 									<div class="mb-3">
 										<label for="formGroupExampleInput" class="form-label">Passoword</label>
-										<input type="password" class="form-control @error('password') is-invalid @enderror" id="formGroupExampleInput"
-											name="password" value="{{ $user->password }}" placeholder="Input student password" required>
+										<input type="password" class="form-control @error('password') is-invalid @enderror"
+											id="formGroupExampleInput" name="password" value="{{ $user->password }}"
+											placeholder="Input student password" required>
 										@error('password')
 											<div class="invalid-feedback">
 												{{ $message }}
@@ -201,7 +211,7 @@
 							<hr>
 							<div class="col-12 text-end">
 								<button type="reset" class="btn btn-danger fs-5">Reset</button>
-								<button type="submit" class="btn btn-primary fs-5" onclick="validate()">Edit</button>
+								<button type="submit" class="btn btn-primary fs-5" onclick="confirmEdit()">Edit</button>
 							</div>
 						</form>
 					</div>
@@ -212,24 +222,40 @@
 @endsection
 @push('custom-script')
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 	<script>
-	 //  function validate() {
-	 //   Swal.fire({
-	 //    title: 'Do you want to save the changes?',
-	 //    showDenyButton: true,
-	 //    showCancelButton: true,
-	 //    confirmButtonText: 'Save',
-	 //    denyButtonText: `Don't save`,
-	 //   }).then((result) => {
-	 //    /* Read more about isConfirmed, isDenied below */
-	 //    if (result.isConfirmed) {
-	 //     Swal.fire('Saved!', '', 'success')
-	 //    } else if (result.isDenied) {
-	 //     Swal.fire('Changes are not saved', '', 'info')
-	 //    }
-	 //   })
-	 //  }
+	 function confirmEdit() {
+	  var form = $('#edit');
+	  const swalWithBootstrapButtons = Swal.mixin({
+	   customClass: {
+	    confirmButton: 'btn btn-primary mx-2',
+	    cancelButton: 'btn btn-dark mx-2'
+	   },
+	   buttonsStyling: false
+	  });
+	  event.preventDefault();
+	  swalWithBootstrapButtons.fire({
+	   title: 'Are you sure want to edit?',
+	   text: "If you edit, the student will know your changing!",
+	   icon: 'warning',
+	   showCancelButton: true,
+	   confirmButtonText: 'Yes, Edit',
+	   cancelButtonText: 'No, cancel',
+	   reverseButtons: true
+	  }).then((result) => {
+	   if (result.isConfirmed) {
+	    form.submit();
+	   } else if (
+	    /* Read more about handling dismissals below */
+	    result.dismiss === Swal.DismissReason.cancel
+	   ) {
+	    swalWithBootstrapButtons.fire(
+	     'Cancelled',
+	     'The data is still saved',
+	     'error'
+	    )
+	   }
+	  })
+	 }
 
 
 	 profile_input.onchange = evt => {
