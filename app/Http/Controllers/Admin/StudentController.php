@@ -10,6 +10,7 @@ use DataTables;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use RealRashid\SweetAlert\Facades\Alert;
 
 
 
@@ -33,10 +34,16 @@ class StudentController extends Controller
                     return '
                     <div class="d-flex gap-2">
                     <a href=' . route('admin.students.show', $students->username) . ' class="btn btn-info"><i class="fas fa-search"></i></a>
-                    <a href="' . route('admin.students.edit', $students->username) . '" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></a>
-                    <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                    <a href=' . route('admin.students.edit', $students->username) . ' class="btn btn-warning"><i class="fas fa-pencil-alt"></i></a>
+                    <form method="POST" action=' . route('admin.students.destroy', $students->username) . ' id="delete">
+                    ' . csrf_field() . '
+                    ' . method_field("DELETE") . '
+                    <input name="_method" type="hidden" value="DELETE">
+                    <button type="submit" class="btn btn-danger" onclick="return confirmDelete()" data-toggle="tooltip" title="Delete"><i class="fas fa-trash-alt"></i></button>
+                    </form>
                     </div>';
                 })
+
                 ->addColumn('status', function ($students) {
                     switch ($students->status) {
                         case 'active':
@@ -102,7 +109,7 @@ class StudentController extends Controller
 
         $request->file('picture')->store('public/admin/students/uploaded');
 
-        User::create([
+        $user = User::create([
             'full_name' => $validate['name'],
             'username' => ucfirst(Str::slug($validate['username'])),
             'password' => Hash::make($validate['password']),
@@ -120,8 +127,14 @@ class StudentController extends Controller
             'is_email_verified' => true,
             'status' => 'active'
         ]);
+        if ($user) {
+            Alert::success('Success', 'New student has beed created!');
+        } else {
+            Alert::error('Error', 'Failed to add student!');
+            return redirect()->route('admin.students.index')->with('error', 'Failed to add student!');
+        }
 
-        return redirect()->route('admin.students.index')->with('message', 'New student has beed created!');
+        return redirect()->route('admin.students.index')->with('message', 'New student has been created');
     }
 
     /**
@@ -134,10 +147,8 @@ class StudentController extends Controller
     {
         $user = User::where('username', $username)->whereHas('roles', function ($query) {
             $query->where('role_name', 'Student');
-        })->first();
-        if (!$user) {
-            abort(404);
-        }
+        })->firstOrFail();
+
         return view('admin.students.show', compact('user'));
     }
 
@@ -151,8 +162,8 @@ class StudentController extends Controller
     {
         $user = User::where('username', $username)->whereHas('roles', function ($query) {
             $query->where('role_name', 'Student');
-        })->first();
-        if (!$user) abort(404);
+        })->firstOrFail();
+
         return view('admin.students.edit', compact('user'));
     }
 
@@ -167,8 +178,8 @@ class StudentController extends Controller
     {
         $validate = $request->validate([
             'name' => 'required|string|regex:/^[a-zA-Z\s]+$/|min:3|max:50',
-            'email' => 'required|email:dns|unique:users|max:255',
-            'username' => 'required|string|unique:users|max:50',
+            'email' => 'required|email:dns|unique:users,email,' . $request->user_id . '|max:255',
+            'username' => 'required|string|unique:users,username, ' . $request->user_id . '|max:50',
             'phone_number' => 'required|numeric|min:10',
             'password' => 'required|string|min:8|confirmed',
             'job_title' => 'nullable|string|min:3|max:50 ',
@@ -183,13 +194,15 @@ class StudentController extends Controller
 
         if ($request->file('picture')) {
             Storage::delete('storage/admin/students/uploaded/' . $request->oldPicture);
-            $request->file('picture')->store('uploaded');
+            $request->file('picture')->store('public/admin/students/uploaded');
             $validate['picture'] = $request->file('picture')->hashName();
         } else {
             $validate['picture'] = $request->oldPicture;
         }
 
-        User::where('username', $username)->update([
+        $user = User::where('username', $username)->whereHas('roles', function ($query) {
+            $query->where('role_name', 'Student');
+        })->update([
             'full_name' => $validate['name'],
             'username' => ucfirst(Str::slug($validate['username'])),
             'password' => Hash::make($validate['password']),
@@ -204,6 +217,12 @@ class StudentController extends Controller
             'social_linkedin' => $validate['linkedin'],
             'social_youtube' => $validate['youtube'],
         ]);
+        if ($user) {
+            Alert::success('Success', 'Student has updated!');
+        } else {
+            Alert::error('Error', 'Failed to edit student!');
+            return redirect()->route('admin.students.index')->with('error', 'Failed to update student!');
+        }
 
         return redirect()->route('admin.students.index')->with('message', 'Student has been updated!');
     }
@@ -214,8 +233,18 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($username)
     {
-        //
+        $user = User::where('username', $username)->whereHas('roles', function ($query) {
+            $query->where('role_name', 'Student');
+        })->first()->delete();
+        if ($user) {
+            Alert::success('Success', 'The record has deleted!');
+        } else {
+            Alert::error('Error', 'Can\'t delete this record!');
+            return back();
+        }
+
+        return back();
     }
 }

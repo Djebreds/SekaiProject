@@ -1,5 +1,6 @@
 @extends('admin.layouts.main')
 @section('title', 'Data Students | Basicschool')
+
 @section('content')
 	<div class="container-fluid p-0">
 
@@ -8,7 +9,7 @@
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="#">Dashboard</a></li>
 				<li class="breadcrumb-item active" aria-current="page">Users</li>
-				<li class="breadcrumb-item active" aria-current="page">Student</li>
+				<li class="breadcrumb-item active" aria-current="page">Students</li>
 			</ol>
 		</nav>
 		@if (session('message'))
@@ -19,6 +20,16 @@
 				</div>
 				<div class="alert-message">
 					<strong>Success</strong> {{ session('message') }}
+				</div>
+			</div>
+		@elseif (session('error'))
+			<div class="alert alert-danger alert-outline-coloured alert-dismissible " role="alert">
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				<div class="alert-icon">
+					<i class="fas fa-exclamation-triangle fs-3"></i>
+				</div>
+				<div class="alert-message">
+					<strong>Failed</strong> {{ session('error') }}
 				</div>
 			</div>
 		@endif
@@ -97,8 +108,44 @@
 	</div>
 @endsection
 @push('custom-script')
-	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 	<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 	<script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
 	<script src="{{ asset('assets-admin/js/page/dataTableStudent.js') }}"></script>
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+	<script type="text/javascript">
+	 function confirmDelete() {
+	  var form = $('#delete');
+	  const swalWithBootstrapButtons = Swal.mixin({
+	   customClass: {
+	    confirmButton: 'btn btn-success mx-2',
+	    cancelButton: 'btn btn-danger mx-2'
+	   },
+	   buttonsStyling: false
+	  });
+	  event.preventDefault();
+	  swalWithBootstrapButtons.fire({
+	   title: 'Are you sure?',
+	   text: "If you delete, the student will lose their account!",
+	   icon: 'warning',
+	   showCancelButton: true,
+	   confirmButtonText: 'Yes, delete it!',
+	   cancelButtonText: 'No, cancel!',
+	   reverseButtons: true
+	  }).then((result) => {
+	   if (result.isConfirmed) {
+	    form.submit();
+	   } else if (
+	    /* Read more about handling dismissals below */
+	    result.dismiss === Swal.DismissReason.cancel
+	   ) {
+	    swalWithBootstrapButtons.fire(
+	     'Cancelled',
+	     'The record is still saved',
+	     'error'
+	    )
+	   }
+	  })
+	 }
+	</script>
 @endpush
