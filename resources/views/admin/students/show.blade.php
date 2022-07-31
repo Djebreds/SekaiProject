@@ -2,7 +2,6 @@
 @section('title', 'Data Students | Basicschool')
 @section('content')
 	<div class="container-fluid p-0">
-
 		<h1 class="h3 mb-3">Data Student</h1>
 		<nav style="--bs-breadcrumb-divider: '/';" aria-label="breadcrumb">
 			<ol class="breadcrumb">
