@@ -3,8 +3,7 @@
 
 @section('content')
 	<div class="container-fluid p-0">
-
-		<h1 class="h3 mb-3">Data Student</h1>
+		<h1 class="h3 mb-3">Data Students</h1>
 		<nav style="--bs-breadcrumb-divider: '/';" aria-label="breadcrumb">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="#">Dashboard</a></li>

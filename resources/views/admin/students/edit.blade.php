@@ -49,7 +49,7 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="col">
+								<div class="col-12 col-sm-6 col-xxl-6">
 									<div class="mb-3">
 										<label for="formGroupExampleInput" class="form-label">Name</label>
 										<input type="text" class="form-control @error('name') is-invalid @enderror" id="formGroupExampleInput"
@@ -61,7 +61,7 @@
 										@enderror
 									</div>
 								</div>
-								<div class="col">
+								<div class="col-12 col-sm-6 col-xxl-6">
 									<div class="mb-3">
 										<label for="formGroupExampleInput" class="form-label">Phone Number</label>
 										<input type="text" class="form-control @error('phone_number') is-invalid @enderror"
@@ -75,7 +75,7 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="col">
+								<div class="col-12 col-sm-6 col-xxl-6">
 									<div class="mb-3">
 										<label for="formGroupExampleInput" class="form-label">Email</label>
 										<input type="text" class="form-control @error('email') is-invalid @enderror" id="formGroupExampleInput"
@@ -87,7 +87,7 @@
 										@enderror
 									</div>
 								</div>
-								<div class="col">
+								<div class="col-12 col-sm-6 col-xxl-6">
 									<div class="mb-3">
 										<label for="formGroupExampleInput" class="form-label">Username</label>
 										<input type="text" class="form-control @error('username') is-invalid @enderror" id="formGroupExampleInput"
@@ -101,7 +101,7 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="col">
+								<div class="col-12 col-sm-6 col-xxl-6">
 									<div class="mb-3">
 										<label for="formGroupExampleInput" class="form-label">Passoword</label>
 										<input type="password" class="form-control @error('password') is-invalid @enderror"
@@ -114,7 +114,7 @@
 										@enderror
 									</div>
 								</div>
-								<div class="col">
+								<div class="col-12 col-sm-6 col-xxl-6">
 									<div class="mb-3">
 										<label for="formGroupExampleInput" class="form-label @error('password') is-invalid @enderror">Password
 											Confirmation</label>
@@ -144,7 +144,7 @@
 								@enderror
 							</div>
 							<div class="row">
-								<div class="col">
+								<div class="col-12 col-sm-6 col-xxl">
 									<div class="mb-3">
 										<label for="formGroupExampleInput" class="form-label">Twitter</label>
 										<input type="text" class="form-control @error('twitter') is-invalid @enderror" id="formGroupExampleInput"
@@ -156,7 +156,7 @@
 										@enderror
 									</div>
 								</div>
-								<div class="col">
+								<div class="col-12 col-sm-6 col-xxl">
 									<div class="mb-3">
 										<label for="formGroupExampleInput" class="form-label">Instragram</label>
 										<input type="text" class="form-control @error('instagram') is-invalid @enderror"
@@ -169,7 +169,7 @@
 										@enderror
 									</div>
 								</div>
-								<div class="col">
+								<div class="col-12 col-sm-6 col-xxl">
 									<div class="mb-3">
 										<label for="formGroupExampleInput" class="form-label">Facebook</label>
 										<input type="text" class="form-control @error('facebook') is-invalid @enderror"
@@ -182,7 +182,7 @@
 										@enderror
 									</div>
 								</div>
-								<div class="col">
+								<div class="col-12 col-sm-6 col-xxl">
 									<div class="mb-3">
 										<label for="formGroupExampleInput" class="form-label">Linkedin</label>
 										<input type="text" class="form-control @error('linkedin') is-invalid @enderror"
@@ -195,7 +195,7 @@
 										@enderror
 									</div>
 								</div>
-								<div class="col">
+								<div class="col-12 col-sm-6 col-xxl">
 									<div class="mb-3">
 										<label for="formGroupExampleInput" class="form-label">YouTube</label>
 										<input type="text" class="form-control @error('youtube') is-invalid @enderror"
