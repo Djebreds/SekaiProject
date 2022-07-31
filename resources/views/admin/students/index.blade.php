@@ -44,7 +44,7 @@
 							questions and solve problems.
 					</div>
 					<div class="card-body">
-						<div class="button">
+						<div class="button text-lg-start text-center my-2">
 							<a href="{{ route('admin.students.create') }}" class="btn btn-success mb-2"><i
 									class="fas fa-user-plus me-2"></i>New
 								student</a>
@@ -114,19 +114,19 @@
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 	<script type="text/javascript">
-	 function confirmDelete() {
-	  var form = $('#delete');
+	 function confirmDelete(username) {
+	  var form = $('#data-' + username);
 	  const swalWithBootstrapButtons = Swal.mixin({
 	   customClass: {
-	    confirmButton: 'btn btn-success mx-2',
-	    cancelButton: 'btn btn-danger mx-2'
+	    confirmButton: 'btn btn-danger mx-2',
+	    cancelButton: 'btn btn-dark mx-2'
 	   },
 	   buttonsStyling: false
-	  });
-	  event.preventDefault();
+	  })
+
 	  swalWithBootstrapButtons.fire({
 	   title: 'Are you sure?',
-	   text: "If you delete, the student will lose their account!",
+	   text: "You won't be able to revert this!",
 	   icon: 'warning',
 	   showCancelButton: true,
 	   confirmButtonText: 'Yes, delete it!',
@@ -134,6 +134,11 @@
 	   reverseButtons: true
 	  }).then((result) => {
 	   if (result.isConfirmed) {
+	    swalWithBootstrapButtons.fire(
+	     'Deleted!',
+	     'Your file has been deleted.',
+	     'success'
+	    )
 	    form.submit();
 	   } else if (
 	    /* Read more about handling dismissals below */
@@ -141,7 +146,7 @@
 	   ) {
 	    swalWithBootstrapButtons.fire(
 	     'Cancelled',
-	     'The record is still saved',
+	     'The record are save',
 	     'error'
 	    )
 	   }
