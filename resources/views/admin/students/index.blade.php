@@ -118,8 +118,8 @@
 	  var form = $('#data-' + username);
 	  const swalWithBootstrapButtons = Swal.mixin({
 	   customClass: {
-	    confirmButton: 'btn btn-success',
-	    cancelButton: 'btn btn-danger'
+	    confirmButton: 'btn btn-danger mx-2',
+	    cancelButton: 'btn btn-dark mx-2'
 	   },
 	   buttonsStyling: false
 	  })
@@ -146,7 +146,7 @@
 	   ) {
 	    swalWithBootstrapButtons.fire(
 	     'Cancelled',
-	     'Your imaginary file is safe :)',
+	     'The record are save',
 	     'error'
 	    )
 	   }

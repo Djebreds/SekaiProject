@@ -33,15 +33,15 @@ class StudentController extends Controller
                 ->editColumn('status', function ($students) {
                     switch ($students->status):
                         case 'active':
-                            $status = '<span class="badge rounded-pill bg-success">Active</span>';
+                            $status = '<span class="badge rounded-pill badge-soft-success me-2">Active</span>';
                             return $status;
                             break;
                         case 'deactivated':
-                            $status = '<span class="badge rounded-pill bg-secondary">Deactivated</span>';
+                            $status = '<span class="badge rounded-pill badge-soft-dark me-2">Deactivated</span>';
                             return $status;
                             break;
                         default:
-                            $status = '<span class="badge rounded-pill bg-warning">Inactive</span>';
+                            $status = '<span class="badge rounded-pill badge-soft-danger me-2">Inactive</span>';
                             return $status;
                             break;
                     endswitch;
@@ -93,11 +93,11 @@ class StudentController extends Controller
             'name' => 'required|string|regex:/^[a-zA-Z\s]+$/|min:3|max:50',
             'email' => 'required|email:dns|unique:users|max:255',
             'username' => 'required|string|unique:users|max:50',
-            'phone_number' => 'required|numeric|min:10',
+            'phone_number' => 'required|numeric|regex:/^[-0-9\+]+$/|min:10',
             'password' => 'required|string|min:8|confirmed',
             'job_title' => 'nullable|string|min:3|max:50 ',
             'picture' => 'required|image|file|mimes:jpg,png,jpeg|max:2024',
-            'about' => 'nullable|string|regex:/^[a-zA-Z\s]+$/|min:3|max:400',
+            'about' => 'nullable|string|regex:/[^0-9a-zA-Z:,]+/|min:3|max:400',
             'twitter' => 'nullable|string|regex:/^https:\/\/\w+(\.\w+)*(:[0-9]+)?\/?$/|max:50',
             'instagram' => 'nullable|string|regex:/^https:\/\/\w+(\.\w+)*(:[0-9]+)?\/?$/|max:50',
             'facebook' => 'nullable|string|regex:/^https:\/\/\w+(\.\w+)*(:[0-9]+)?\/?$/|max:50',
@@ -179,11 +179,11 @@ class StudentController extends Controller
             'name' => 'required|string|regex:/^[a-zA-Z\s]+$/|min:3|max:50',
             'email' => 'required|email:dns|unique:users,email,' . $request->user_id . '|max:255',
             'username' => 'required|string|unique:users,username, ' . $request->user_id . '|max:50',
-            'phone_number' => 'required|numeric|min:10',
+            'phone_number' => 'required|numeric|unique:users,phone_number, ' . $request->user_id . '|regex:/^[-0-9\+]+$/|min:10',
             'password' => 'required|string|min:8|confirmed',
             'job_title' => 'nullable|string|min:3|max:50 ',
             'picture' => 'image|file|mimes:jpg,png,jpeg|max:2024',
-            'about' => 'nullable|string|regex:/^[a-zA-Z\s]+$/|min:3|max:400',
+            'about' => 'nullable|string|min:3|max:400',
             'twitter' => 'nullable|string|regex:/^https:\/\/\w+(\.\w+)*(:[0-9]+)?\/?$/|max:50',
             'instagram' => 'nullable|string|regex:/^https:\/\/\w+(\.\w+)*(:[0-9]+)?\/?$/|max:50',
             'facebook' => 'nullable|string|regex:/^https:\/\/\w+(\.\w+)*(:[0-9]+)?\/?$/|max:50',
@@ -201,7 +201,7 @@ class StudentController extends Controller
 
         $user = User::where('username', $username)->whereHas('roles', function ($query) {
             $query->where('role_name', 'Student');
-        })->update([
+        })->firstOrFail()->update([
             'full_name' => $validate['name'],
             'username' => ucfirst(Str::slug($validate['username'])),
             'password' => Hash::make($validate['password']),
