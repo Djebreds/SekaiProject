@@ -104,11 +104,15 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::middleware(['auth', 'admin'])->group(function () {
         Route::get('dashboard', [DashboardAdminController::class, 'index'])->name('dashboard');
         Route::resource('profile', AdminProfileController::class, ['only' => ['show', 'post', 'put', 'delete']]);
-        Route::resource('users/admins', AdminController::class, ['only' => ['index', 'show']]);
+        Route::resource('users/admins', AdminController::class, ['only' => ['index', 'show']])->parameters([
+            'users' => 'username'
+        ]);
         Route::resource('users/students', StudentController::class)->parameters([
             'users' => 'username'
         ]);
-        Route::resource('users/instructors', InstructorController::class);
+        Route::resource('users/instructors', InstructorController::class)->parameters([
+            'users' => 'username'
+        ]);
         Route::resource('roles', RoleController::class, ['only' => ['index', 'show']]);
         Route::resource('category/course-categories', CourseCategoryController::class);
         Route::resource('category/price-types', PriceTypeController::class);

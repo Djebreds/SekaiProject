@@ -1,5 +1,5 @@
 @extends('admin.layouts.main')
-@section('title', 'Edit Data Student | Basicschool')
+@section('title', 'Edit Data Instructor | Basicschool')
 @section('content')
 	<div class="container-fluid p-0">
 		<h1 class="h3 mb-3">Edit Data Student</h1>
@@ -7,7 +7,7 @@
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
 				<li class="breadcrumb-item active" aria-current="page">Users</li>
-				<li class="breadcrumb-item"><a href="{{ route('admin.students.index') }}">Students</a></li>
+				<li class="breadcrumb-item"><a href="{{ route('admin.instructors.index') }}">Instructors</a></li>
 				<li class="breadcrumb-item active" aria-current="page">Edit</li>
 			</ol>
 		</nav>
@@ -15,12 +15,12 @@
 			<div class="col-12">
 				<div class="card">
 					<div class="card-header">
-						<h5 class="card-title">Edit Student</h5>
+						<h5 class="card-title">Edit Instructors</h5>
 						<h6 class="card-subtitle text-muted">The data must be valid.</h6>
 					</div>
 					<div class="card-body">
-						<form id="edit" class="form" runat="server" action="{{ route('admin.students.update', $user->username) }}"
-							method="POST" enctype="multipart/form-data">
+						<form id="edit" class="form" runat="server"
+							action="{{ route('admin.instructors.update', $user->username) }}" method="POST" enctype="multipart/form-data">
 							<input type="hidden" name="_method" value="PUT">
 							<input type="hidden" name="user_id" value="{{ $user->id }}">
 							<input type="hidden" name="oldPicture" value="{{ $user->profile_picture }}">

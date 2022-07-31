@@ -1,13 +1,13 @@
 @extends('admin.layouts.main')
-@section('title', 'Data Students | Basicschool')
+@section('title', 'Detail Admin | Basicschool')
 @section('content')
 	<div class="container-fluid p-0">
-		<h1 class="h3 mb-3">Data Student</h1>
+		<h1 class="h3 mb-3">Data Admins</h1>
 		<nav style="--bs-breadcrumb-divider: '/';" aria-label="breadcrumb">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
 				<li class="breadcrumb-item active" aria-current="page">Users</li>
-				<li class="breadcrumb-item"><a href="{{ route('admin.students.index') }}">Students</a></li>
+				<li class="breadcrumb-item"><a href="{{ route('admin.admins.index') }}">Admins</a></li>
 				<li class="breadcrumb-item active" aria-current="page">Detail</li>
 			</ol>
 		</nav>
@@ -15,7 +15,7 @@
 			<div class="col">
 				<div class="card">
 					<div class="card-body">
-						<h5 class="card-title">Student Detail</h5>
+						<h5 class="card-title">Admins Detail</h5>
 						<h6 class="card-subtitle text-muted">Detail shows all user profile data
 					</div>
 				</div>
