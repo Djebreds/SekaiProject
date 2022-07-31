@@ -30,36 +30,35 @@ class StudentController extends Controller
 
             return Datatables::of($students)
                 ->addIndexColumn()
+                ->editColumn('status', function ($students) {
+                    switch ($students->status):
+                        case 'active':
+                            $status = '<span class="badge rounded-pill bg-success">Active</span>';
+                            return $status;
+                            break;
+                        case 'deactivated':
+                            $status = '<span class="badge rounded-pill bg-secondary">Deactivated</span>';
+                            return $status;
+                            break;
+                        default:
+                            $status = '<span class="badge rounded-pill bg-warning">Inactive</span>';
+                            return $status;
+                            break;
+                    endswitch;
+                })
+
                 ->addColumn('action', function ($students) {
-                    return '
+                    $actionBtn =  '
                     <div class="d-flex gap-2">
                     <a href=' . route('admin.students.show', $students->username) . ' class="btn btn-info"><i class="fas fa-search"></i></a>
                     <a href=' . route('admin.students.edit', $students->username) . ' class="btn btn-warning"><i class="fas fa-pencil-alt"></i></a>
-                    <form method="POST" action=' . route('admin.students.destroy', $students->username) . ' id="delete">
+                    <form method="POST" action=' . route('admin.students.destroy', $students->username) . ' id="data-' . $students->username . '">
                     ' . csrf_field() . '
-                    ' . method_field("DELETE") . '
                     <input name="_method" type="hidden" value="DELETE">
-                    <button type="submit" class="btn btn-danger" onclick="return confirmDelete()" data-toggle="tooltip" title="Delete"><i class="fas fa-trash-alt"></i></button>
+                    <button type="button" class="btn btn-danger" onclick="confirmDelete(' . '\'' . $students->username . '\'' . ')" data-toggle="tooltip" title="Delete"><i class="fas fa-trash-alt"></i></button>
                     </form>
                     </div>';
-                })
-
-                ->addColumn('status', function ($students) {
-                    switch ($students->status) {
-                        case 'active':
-                            return '<span class="badge rounded-pill bg-success">Active</span>';
-                            break;
-                        case 'deactivated':
-                            return '<span class="badge rounded-pill bg-secondary">Deactivated</span>';
-                            break;
-                        default:
-                            return '<span class="badge rounded-pill bg-warning">Inactive</span>';
-                            break;
-                    }
-                })
-                ->addColumn('No', function ($students) {
-                    $students = 1;
-                    $students++;
+                    return $actionBtn;
                 })
                 ->editColumn('created_at', function ($students) {
                     $formatedDate = Carbon::createFromFormat('Y-m-d H:i:s', $students->created_at)->format('d-M-Y H:i');
@@ -237,7 +236,7 @@ class StudentController extends Controller
     {
         $user = User::where('username', $username)->whereHas('roles', function ($query) {
             $query->where('role_name', 'Student');
-        })->first()->delete();
+        })->firstOrFail()->delete();
         if ($user) {
             Alert::success('Success', 'The record has deleted!');
         } else {

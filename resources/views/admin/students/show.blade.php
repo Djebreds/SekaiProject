@@ -13,31 +13,37 @@
 			</ol>
 		</nav>
 		<div class="row">
-			<div class="col-12">
+			<div class="col">
 				<div class="card">
-					<div class="card-header">
+					<div class="card-body">
 						<h5 class="card-title">Student Detail</h5>
 						<h6 class="card-subtitle text-muted">Detail shows all user profile data
 					</div>
+				</div>
+			</div>
+		</div>
+		{{-- <div class="row">
+			<div class="col-12">
+				<div class="card">
 					<div class="card-body">
 						<div class="row justify-content-center">
 							<div class="col-12">
-								<div class="profile d-flex">
-									<img
-										src="{{ Storage::disk('public')->exists('/admin/students/uploaded/' . $user->profile_picture) ? asset('storage/admin/students/uploaded/' . $user->profile_picture) : $user->profile_picture }}"
-										alt="{{ $user->full_name }}" width="150"
-										class="rounded-circle bg-dark border border-5 border-dark shadow m-3 ">
-									<div class="title my-auto">
-										<h1 class="mb-3">{{ $user->full_name }}</h1>
-										<p class="m-0">{{ $user->username }}</p>
-										<p class="m-0">{{ $user->email }}</p>
-									</div>
-									<div class="avatar-img rounded-circle bg-danger"><span
-											class="text-white position-absolute top-50 start-50 translate-middle fw-bold">AB</span>
+								<div class="profile">
+									<div class="row">
+										<div class="col-sm-12 col-lg-2 text-center">
+											<img
+												src="{{ Storage::disk('public')->exists('/admin/students/uploaded/' . $user->profile_picture) ? asset('storage/admin/students/uploaded/' . $user->profile_picture) : $user->profile_picture }}"
+												alt="{{ $user->full_name }}" width="150"
+												class="rounded-circle bg-dark border border-5 border-dark shadow m-3 ">
+										</div>
+										<div class="col-sm-12 col-lg-10 align-self-center text-lg-start text-sm-center">
+											<h1 class="mb-3">{{ $user->full_name }}</h1>
+											<p class="m-0">{{ $user->username }}</p>
+											<p class="m-0">{{ $user->email }}</p>
+										</div>
 									</div>
 								</div>
 							</div>
-							<hr>
 							<div class="col-xs-6 col-sm-12 col-md-4 col-lg-6">
 								<h4>General</h4>
 								<dl class="row">
@@ -85,7 +91,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> --}}
 	</div>
 	<div class="tab">
 		<ul class="nav nav-tabs" role="tablist">
@@ -112,8 +118,7 @@
 				</a>
 			</li>
 			<li class="nav-item" role="presentation">
-				<a class="nav-link" href="#icon-tab-3" data-bs-toggle="tab" role="tab" aria-selected="false"
-					tabindex="-1">
+				<a class="nav-link" href="#icon-tab-3" data-bs-toggle="tab" role="tab" aria-selected="false" tabindex="-1">
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
 						stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
 						class="feather feather-message-square align-middle">
@@ -124,13 +129,82 @@
 		</ul>
 		<div class="tab-content">
 			<div class="tab-pane active" id="icon-tab-1" role="tabpanel">
-				<h4 class="tab-title">Icon tabs</h4>
-				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor tellus eget condimentum
-					rhoncus. Aenean massa. Cum sociis natoque
-					penatibus et magnis neque dis parturient montes, nascetur ridiculus mus.</p>
-				<p>Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede
-					justo, fringilla vel, aliquet nec, vulputate
-					eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.</p>
+				<div class="row">
+					<div class="col-12">
+						<div class="row mb-3">
+							<div class="col-sm-12 col-lg-2 text-center">
+								<img
+									src="{{ Storage::disk('public')->exists('/admin/students/uploaded/' . $user->profile_picture) ? asset('storage/admin/students/uploaded/' . $user->profile_picture) : $user->profile_picture }}"
+									alt="{{ $user->full_name }}" width="150"
+									class="rounded-circle bg-dark border border-5 border-dark shadow m-3 ">
+							</div>
+							<div class="col-sm-12 col-lg-10 align-self-center text-lg-start text-sm-center">
+								<h1 class="mb-3">{{ $user->full_name }}</h1>
+								<p class="m-0">{{ $user->username }}</p>
+								<p class="m-0">{{ $user->email }}</p>
+							</div>
+						</div>
+						<div class="header">
+							<h2>Overview</h2>
+						</div>
+						<div class="row">
+							<div class="col-sm-4 col-lg-4 col-xxl-4 d-flex">
+								<div class="card bg-primary bg-opacity-10 flex-fill">
+									<div class="card-body p-0 d-flex flex-fill">
+										<div class="row g-0 w-100">
+											<div class="col-6">
+												<div class="illustration-text p-3 m-1">
+													<h4 class="illustration-text">Welcome Back, Chris!</h4>
+													<p class="mb-0">AppStack Dashboard</p>
+												</div>
+											</div>
+											<div class="col-6 align-self-end text-end">
+												<img src="http://127.0.0.1:8000/assets-admin/img/illustrations/searching.png" alt="Searching"
+													class="img-fluid illustration-img">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-4 col-lg-4 col-xxl-4 d-flex">
+								<div class="card bg-success bg-opacity-10 flex-fill">
+									<div class="card-body p-0 d-flex flex-fill">
+										<div class="row g-0 w-100">
+											<div class="col-6">
+												<div class="illustration-text p-3 m-1">
+													<h4 class="text-success">Welcome Back, Chris!</h4>
+													<p class="text-success mb-0">AppStack Dashboard</p>
+												</div>
+											</div>
+											<div class="col-6 align-self-end text-end">
+												<img src="http://127.0.0.1:8000/assets-admin/img/illustrations/searching.png" alt="Searching"
+													class="img-fluid illustration-img">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-4 col-lg-4 col-xxl-4 d-flex">
+								<div class="card bg-warning bg-opacity-10 flex-fill">
+									<div class="card-body p-0 d-flex flex-fill">
+										<div class="row g-0 w-100">
+											<div class="col-6">
+												<div class="illustration-text p-3 m-1">
+													<h4 class="text-warning">Welcome Back, Chris!</h4>
+													<p class="text-warning mb-0">AppStack Dashboard</p>
+												</div>
+											</div>
+											<div class="col-6 align-self-end text-end">
+												<img src="http://127.0.0.1:8000/assets-admin/img/illustrations/searching.png" alt="Searching"
+													class="img-fluid illustration-img">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div class="tab-pane" id="icon-tab-2" role="tabpanel">
 				<h4 class="tab-title">Another one</h4>
