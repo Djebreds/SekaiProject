@@ -4,6 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use DataTables;
+use Carbon\Carbon;
+use App\Models\User;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminController extends Controller
 {
@@ -12,31 +18,49 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        if ($request->ajax()) {
+            $admins = User::select('id', 'full_name', 'email', 'username', 'status', 'created_at')->whereHas('roles', function ($query) {
+                $query->where('role_name', 'Admin');
+            });
+
+            return Datatables::of($admins)
+                ->addIndexColumn()
+                ->editColumn('status', function ($admins) {
+                    switch ($admins->status):
+                        case 'active':
+                            $status = '<span class="badge rounded-pill badge-soft-success me-2">Active</span>';
+                            return $status;
+                            break;
+                        case 'deactivated':
+                            $status = '<span class="badge rounded-pill badge-soft-dark me-2">Deactivated</span>';
+                            return $status;
+                            break;
+                        default:
+                            $status = '<span class="badge rounded-pill badge-soft-danger me-2">Inactive</span>';
+                            return $status;
+                            break;
+                    endswitch;
+                })
+
+                ->addColumn('action', function ($admins) {
+                    $actionBtn =  '
+                    <div class="d-flex gap-2">
+                    <a href=' . route('admin.admins.show', $admins->username) . ' class="btn btn-info"><i class="fas fa-search"></i></a>
+                    </div>';
+                    return $actionBtn;
+                })
+                ->editColumn('created_at', function ($admins) {
+                    $formatedDate = Carbon::createFromFormat('Y-m-d H:i:s', $admins->created_at)->format('d-M-Y H:i');
+                    return $formatedDate;
+                })
+                ->rawColumns(['action', 'status'])
+                ->make(true);
+        }
         return view('admin.admins.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
      * Display the specified resource.
@@ -44,42 +68,12 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($username)
     {
-        //
-    }
+        $user = User::where('username', $username)->whereHas('roles', function ($query) {
+            $query->where('role_name', 'Admin');
+        })->firstOrFail();
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return view('admin.admins.show', compact('user'));
     }
 }
