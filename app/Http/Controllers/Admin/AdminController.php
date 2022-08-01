@@ -7,9 +7,6 @@ use Illuminate\Http\Request;
 use DataTables;
 use Carbon\Carbon;
 use App\Models\User;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Storage;
-use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminController extends Controller
 {
