@@ -66,6 +66,7 @@ class InstructorController extends Controller
                 ->rawColumns(['action', 'status'])
                 ->make(true);
         }
+
         return view('admin.instructors.index');
     }
 
@@ -123,7 +124,8 @@ class InstructorController extends Controller
             'social_youtube' => $validate['youtube'],
             'email_verified_at' => Carbon::now(),
             'is_email_verified' => true,
-            'status' => 'active'
+            'status' => 'active',
+            'role_id' => 3
         ]);
         if ($user) {
             Alert::success('Success', 'New instructor has beed created!');
@@ -144,7 +146,7 @@ class InstructorController extends Controller
     public function show($username)
     {
         $user = User::where('username', $username)->whereHas('roles', function ($query) {
-            $query->where('role_name', 'Instructors');
+            $query->where('role_name', 'Instructor');
         })->firstOrFail();
 
         return view('admin.instructors.show', compact('user'));
@@ -159,7 +161,7 @@ class InstructorController extends Controller
     public function edit($username)
     {
         $user = User::where('username', $username)->whereHas('roles', function ($query) {
-            $query->where('role_name', 'Instructors');
+            $query->where('role_name', 'Instructor');
         })->firstOrFail();
 
         return view('admin.instructors.edit', compact('user'));
@@ -199,7 +201,7 @@ class InstructorController extends Controller
         }
 
         $user = User::where('username', $username)->whereHas('roles', function ($query) {
-            $query->where('role_name', 'Instructors');
+            $query->where('role_name', 'Instructor');
         })->firstOrFail()->update([
             'full_name' => $validate['name'],
             'username' => ucfirst(Str::slug($validate['username'])),

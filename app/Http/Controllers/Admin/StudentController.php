@@ -19,7 +19,7 @@ class StudentController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index(Request $request)
     {
@@ -127,7 +127,7 @@ class StudentController extends Controller
             'status' => 'active'
         ]);
         if ($user) {
-            Alert::success('Success', 'New student has beed created!');
+            Alert::success('Success', 'New student has been created!');
         } else {
             Alert::error('Error', 'Failed to add student!');
             return redirect()->route('admin.students.index')->with('error', 'Failed to add student!');

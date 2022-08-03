@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class CoursePriceType extends Model
 {
     use HasFactory;
-    protected $table = 'course_class_prices';
+    protected $table = 'course_price_types';
     protected $primaryKey = 'price_type_id';
     protected $guarded = [];
 

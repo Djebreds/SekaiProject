@@ -114,11 +114,21 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('users/instructors', InstructorController::class)->parameters([
             'users' => 'username'
         ]);
-        Route::resource('roles', RoleController::class, ['only' => ['index', 'show']]);
-        Route::resource('category/course-categories', CourseCategoryController::class);
-        Route::resource('category/price-types', PriceTypeController::class);
-        Route::resource('category/class-types', ClassTypeController::class);
-        Route::resource('category/course-levels', CourseLevelController::class);
+        Route::resource('roles', RoleController::class, ['only' => ['index']])->parameters([
+            'roles' => 'roles'
+        ]);
+        Route::resource('category/course-categories', CourseCategoryController::class, ['except' => 'show'])->parameters([
+            'course_categories' => 'category_slug',
+        ]);
+        Route::resource('category/price-types', PriceTypeController::class, ['except' => 'show'])->parameters([
+            'course_price_types' => 'price_type_slug'
+        ]);
+        Route::resource('category/class-types', ClassTypeController::class, ['except' => 'show'])->parameters([
+            'course_class_types' => 'class_type_slug'
+        ]);
+        Route::resource('category/course-levels', CourseLevelController::class, ['except' => 'show'])->parameters([
+            'course_masterclass_level' => 'masterclass_level_slug'
+        ]);
         Route::resource('classes', ClassController::class);
         Route::resource('masterclasses', MasterClassController::class);
         Route::resource('certificates', CertificateController::class);
