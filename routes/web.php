@@ -52,6 +52,7 @@ Auth::routes(['verify' => true]);
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('courses', [CourseController::class, 'index'])->name('courses');
+Route::get('detail/course', [CourseController::class, 'show'])->name('detail.course');
 Route::get('become/instructor', [BecomeInstructorController::class, 'index'])->name('become.instructor');
 Route::get('instructors', [InstructorListController::class, 'index'])->name('list.instructor');
 Route::get('about/basicschool', [AboutController::class, 'basicschool'])->name('about.basicschool');

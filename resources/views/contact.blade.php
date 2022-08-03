@@ -4,14 +4,14 @@
     <main>
 
         <!-- =======================
-                                Page Banner START -->
+                                    Page Banner START -->
         <section class="pt-5 pb-0"
             style="background-image:url({{ asset('assets/images/element/map.svg') }}); background-position: center left; background-size: cover;">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-xl-6 text-center mx-auto">
                         <!-- Title -->
-                        <h1 class="mb-4">Kontak Kami</h1>
+                        <h1 class="mb-4">Contact us</h1>
                     </div>
                 </div>
 
@@ -71,10 +71,10 @@
             </div>
         </section>
         <!-- =======================
-                                Page Banner END -->
+                                    Page Banner END -->
 
         <!-- =======================
-                                Image and contact form START -->
+                                    Image and contact form START -->
         <section>
             <div class="container">
                 <div class="row g-4 g-lg-0 align-items-center">
@@ -127,10 +127,10 @@
             </div>
         </section>
         <!-- =======================
-                                Image and contact form END -->
+                                    Image and contact form END -->
 
         <!-- =======================
-                                Map START -->
+                                    Map START -->
         <section class="pt-0">
             <div class="container">
                 <div class="row">
@@ -163,7 +163,7 @@
             </div>
         </section>
         <!-- =======================
-                                Map END -->
+                                    Map END -->
 
     </main>
     <!-- **************** MAIN CONTENT END **************** -->

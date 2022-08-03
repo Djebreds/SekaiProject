@@ -97,7 +97,7 @@
     {{-- public/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js --}}
     <!-- Vendors -->
     <script src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/choices/js/choices.min.js') }}"></script>s
+    <script src="{{ asset('assets/vendor/choices/js/choices.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/aos/aos.js') }}"></script>
     <script src="{{ asset('assets/vendor/glightbox/js/glightbox.js') }}"></script>
     <script src="{{ asset('assets/vendor/quill/js/quill.min.js') }}"></script>
