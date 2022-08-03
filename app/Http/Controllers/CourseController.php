@@ -6,8 +6,12 @@ use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         return view('courses');
     }
-
+    public function show()
+    {
+        return view('course.detail');
+    }
 }

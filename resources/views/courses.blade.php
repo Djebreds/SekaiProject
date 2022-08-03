@@ -2,7 +2,7 @@
 @section('content')
     <main>
         <!-- =======================
-                    Page Banner START -->
+                                    Page Banner START -->
         <section class="py-4">
             <div class="container">
                 <div class="row">
@@ -24,10 +24,10 @@
             </div>
         </section>
         <!-- =======================
-                    Page Banner END -->
+                                    Page Banner END -->
 
         <!-- =======================
-                    Page content START -->
+                                    Page content START -->
         <section class="pt-0">
             <div class="container">
 
@@ -65,7 +65,7 @@
                                 <div class="col-sm-6 col-md-3 pb-2 pb-md-0">
                                     <select class="form-select form-select-sm js-choice"
                                         aria-label=".form-select-sm example">
-                                        <option value="">Jenis Kelas</option>
+                                        <option value="">Class type</option>
                                         <option>Materclass</option>
                                         <option>Video On-Demand</option>
                                     </select>
@@ -118,7 +118,8 @@
                                 <div class="card-body pb-0">
                                     <!-- Badge and favorite -->
                                     <div class="d-flex justify-content-between mb-2">
-                                        <a href="#" class="badge bg-success bg-opacity-10 text-success">hhhh</a>
+                                        <a href="{{ route('detail.course') }}"
+                                            class="badge bg-success bg-opacity-10 text-success stretched-link">hhhh</a>
                                     </div>
                                     <!-- Title -->
                                     <h5 class="card-title fw-normal"><a href="#">hhhh</a></h5>
@@ -210,10 +211,10 @@
             </div>
         </section>
         <!-- =======================
-                    Page content END -->
+                                    Page content END -->
 
         <!-- =======================
-                    Newsletter START -->
+                                    Newsletter START -->
         <section class="pt-0">
             <div class="container position-relative overflow-hidden">
                 <!-- SVG decoration -->
@@ -273,7 +274,7 @@
             </div>
         </section>
         <!-- =======================
-                    Newsletter END -->
+                                    Newsletter END -->
 
     </main>
 @endsection
