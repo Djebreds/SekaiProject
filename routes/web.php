@@ -30,6 +30,7 @@ use App\Http\Controllers\InstructorListController;
 use App\Http\Controllers\Student\DashboardStudentController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Student\MyCourseController;
+use App\Http\Controllers\Instructor\ManageCourseController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -145,11 +146,18 @@ Route::middleware(['auth', 'student'])->group(function () {
     Route::resource('student', DashboardStudentController::class)->middleware('verified');
 });
 
+Route::middleware('auth')->group(function () {
+    Route::get('courses/detail', [CourseController::class, 'course'])->middleware('verified')->name('course.detail.learning');
+});
+
 // Routes For Instructor
 Route::middleware(['auth', 'instructor'])->group(function () {
     Route::get('instructor/setting', [DashboardInstructorController::class, 'setting'])->middleware('verified')->name('instructor.setting');
-    Route::get('instructor/create/course', [MakeCourseController::class, 'index'])->middleware('verified')->name('instructor.makecourse');
-    // Route::get('instructor/mycourse', [MakeCourseController::class, 'course'])->middleware('verified')->name('instructor.mycourse');
+    // Route::get('instructor/create/course', [MakeCourseController::class, 'create'])->middleware('verified')->name('instructor.makecourse');
+    Route::resource('instructor/make', ManageCourseController::class);
+    Route::post('instructor/make/curriculum', [ManageCourseController::class, 'storeCurriculum'])->name('curriculum.store');
+
+    Route::get('instructor/mycourse', [MakeCourseController::class, 'show'])->middleware('verified')->name('instructor.mycourse');
     Route::get('instructor/reviews', [ReviewCourseController::class, 'index'])->middleware('verified')->name('instructor.review');
     Route::get('instructor/orders', [OrderCourseController::class, 'index'])->middleware('verified')->name('instructor.order');
     Route::get('instructor/student', [StudentCourseController::class, 'index'])->middleware('verified')->name('instructor.student');

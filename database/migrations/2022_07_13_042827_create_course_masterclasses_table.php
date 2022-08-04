@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('masterclass_discount')->nullable();
             $table->integer('masterclass_total_duration')->unsigned();
             $table->string('masterclass_total_curriculum')->nullable();
+            $table->text('masterclass_description')->nullable();
             $table->timestamps();
 
             $table->index('category_id');
@@ -47,7 +48,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('course_masterclasses', function(Blueprint $table) {
+        Schema::table('course_masterclasses', function (Blueprint $table) {
             $table->dropForeign(['masterclass_level_id_foreign', 'category_id_foreign', 'class_type_id_foreign', 'price_type_id_foreign']);
             $table->dropColumn('masterclass_level_id', 'category_id', 'class_type_id', 'price_type_id');
             $table->dropIndex(['masterclass_level_id_index', 'category_id_index', 'class_type_id_index', 'price_type_id_index']);

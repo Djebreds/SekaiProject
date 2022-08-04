@@ -11,24 +11,6 @@
 				</a>
 
 				<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-					@php
-						$get_initial = explode(' ', ucwords(Auth::user()->full_name));
-						$initial_name = count($get_initial) > 1 ? substr($get_initial[0], 0, 1) . substr($get_initial[1], 0, 1) : substr($get_initial[0], 0, 1);
-						$color = ['bg-primary', 'bg-warning', 'bg-info', 'bg-danger', 'bg-success', 'bg-dark'];
-					@endphp
-
-					@if (Auth::user()->provider_id != null)
-						<img class="avatar-img rounded-circle me-2" width="35" src="{{ Auth::user()->profile_picture }}"
-							alt="avatar">
-					@else
-						@if (in_array(Auth::user()->profile_picture, $color))
-							<div class="avatar-img rounded-circle {{ Auth::user()->profile_picture }}"><span
-									class="text-white position-absolute top-50 start-50 translate-middle fw-bold">{{ $initial_name }}</span>
-							</div>
-						@else
-							<img class="avatar-img rounded-circle" src="{{ Auth::user()->profile_picture }}" alt="avatar">
-						@endif
-					@endif
 					<span class="text-dark">{{ Auth::user()->full_name }}</span>
 				</a>
 				<div class="dropdown-menu dropdown-menu-end">

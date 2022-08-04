@@ -1,4 +1,5 @@
 @extends('student.layouts.main')
+@section('title', 'My Profile')
 @section('profile')
 	<!-- Counter boxes START -->
 	<div class="row mb-4">
@@ -62,48 +63,6 @@
 						<input class="form-control pe-5 bg-transparent" type="search" placeholder="Search" aria-label="Search">
 						<button class="btn bg-transparent px-2 py-0 position-absolute top-50 end-0 translate-middle-y" type="submit"><i
 								class="fas fa-search fs-6 "></i></button>
-					</form>
-				</div>
-
-				<!-- Select option -->
-				<div class="col-md-3">
-					<!-- Short by filter -->
-					<form>
-						<div class="choices" data-type="select-one" tabindex="0" role="combobox" aria-autocomplete="list"
-							aria-haspopup="true" aria-expanded="false">
-							<div class="choices__inner"><select class="form-select js-choice border-0 z-index-9 bg-transparent choices__input"
-									aria-label=".form-select-sm" hidden="" tabindex="-1" data-choice="active">
-									<option value="" data-custom-properties="[object Object]">Sort by</option>
-								</select>
-								<div class="choices__list choices__list--single">
-									<div class="choices__item choices__placeholder choices__item--selectable" data-item="" data-id="1"
-										data-value="" data-custom-properties="[object Object]" aria-selected="true">Sort by</div>
-								</div>
-							</div>
-							<div class="choices__list choices__list--dropdown" aria-expanded="false"><input type="text"
-									class="choices__input choices__input--cloned" autocomplete="off" autocapitalize="off" spellcheck="false"
-									role="textbox" aria-autocomplete="list" aria-label="Sort by" placeholder="">
-								<div class="choices__list" role="listbox">
-									<div id="choices--v8do-item-choice-5"
-										class="choices__item choices__item--choice is-selected choices__placeholder choices__item--selectable is-highlighted"
-										role="option" data-choice="" data-id="5" data-value="" data-select-text="Press to select"
-										data-choice-selectable="" aria-selected="true">
-										Sort by</div>
-									<div id="choices--v8do-item-choice-1" class="choices__item choices__item--choice choices__item--selectable"
-										role="option" data-choice="" data-id="1" data-value="Free" data-select-text="Press to select"
-										data-choice-selectable="">Free</div>
-									<div id="choices--v8do-item-choice-2" class="choices__item choices__item--choice choices__item--selectable"
-										role="option" data-choice="" data-id="2" data-value="Most popular" data-select-text="Press to select"
-										data-choice-selectable="">Most popular</div>
-									<div id="choices--v8do-item-choice-3" class="choices__item choices__item--choice choices__item--selectable"
-										role="option" data-choice="" data-id="3" data-value="Most Viewed" data-select-text="Press to select"
-										data-choice-selectable="">Most Viewed</div>
-									<div id="choices--v8do-item-choice-4" class="choices__item choices__item--choice choices__item--selectable"
-										role="option" data-choice="" data-id="4" data-value="Newest" data-select-text="Press to select"
-										data-choice-selectable="">Newest</div>
-								</div>
-							</div>
-						</div>
 					</form>
 				</div>
 			</div>

@@ -14,4 +14,8 @@ class CourseController extends Controller
     {
         return view('course.detail');
     }
+    public function course()
+    {
+        return view('course.courseLearning');
+    }
 }
