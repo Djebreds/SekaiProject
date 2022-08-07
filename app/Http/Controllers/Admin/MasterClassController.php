@@ -23,8 +23,6 @@ class MasterClassController extends Controller
      */
     public function index(Request $request)
     {
-
-
         if ($request->ajax()) {
             $masterclasses = CourseMasterclass::with(['course_class_types', 'course_categories', 'course_class_prices', 'course_masterclass_levels']);
 
@@ -73,7 +71,7 @@ class MasterClassController extends Controller
                     $actionBtn =  '
                     <div class="d-flex gap-2">
                     <a href=' . route('admin.masterclasses.show', $masterclasses->masterclass_slug) . ' class="btn btn-info"><i class="fas fa-search"></i></a>
-                    <a href=' . route('admin.masterclasses.edit', $masterclasses->masterclass_slug) . ' class="btn btn-primary"><i class="fas fa-book"></i></a>
+                    <a href=' . route('admin.masterclass.curriculum-section.index', $masterclasses->masterclass_slug) . ' class="btn btn-primary"><i class="fas fa-book"></i></a>
                     <a href=' . route('admin.masterclasses.edit', $masterclasses->masterclass_slug) . ' class="btn btn-warning"><i class="fas fa-pencil-alt"></i></a>
 
                     <form method="POST" action=' . route('admin.masterclasses.destroy', $masterclasses->masterclass_slug) . ' id="data-' . $masterclasses->masterclass_slug . '">

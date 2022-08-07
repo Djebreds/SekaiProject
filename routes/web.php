@@ -101,7 +101,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('masterclasses', MasterClassController::class)->parameters([
             'course_masterclasses' => 'masterclass_slug'
         ]);
-        Route::resource('masterclass.curriculum_section', CurriculumSectionController::class, ['except' => 'show'])->parameters([
+        Route::resource('masterclass.curriculum-section', CurriculumSectionController::class, ['except' => 'show'])->parameters([
             'course_curriculum_sections' => 'curriculum_section_slug'
         ]);
 
