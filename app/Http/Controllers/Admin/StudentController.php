@@ -26,7 +26,7 @@ class StudentController extends Controller
         if ($request->ajax()) {
             $students = User::select('id', 'full_name', 'email', 'username', 'status', 'created_at')->whereHas('roles', function ($query) {
                 $query->where('role_name', 'Student');
-            });
+            })->latest();
 
             return Datatables::of($students)
                 ->addIndexColumn()

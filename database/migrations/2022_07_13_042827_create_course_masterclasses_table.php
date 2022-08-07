@@ -16,16 +16,17 @@ return new class extends Migration
         Schema::create('course_masterclasses', function (Blueprint $table) {
             $table->id('masterclass_id');
             $table->unsignedBigInteger('category_id');
-            $table->string('masterclass_name');
+            $table->string('masterclass_name')->unique();
             $table->string('masterclass_short_desc');
             $table->unsignedBigInteger('masterclass_level_id');
             $table->unsignedBigInteger('class_type_id');
             $table->unsignedBigInteger('price_type_id');
             $table->string('masterclass_thumbnail');
             $table->string('masterclass_video_preview');
+            $table->string('masterclass_slug')->unique();
             $table->string('masterclass_price')->nullable();
             $table->string('masterclass_discount')->nullable();
-            $table->integer('masterclass_total_duration')->unsigned();
+            $table->string('masterclass_total_duration')->nullable();
             $table->string('masterclass_total_curriculum')->nullable();
             $table->text('masterclass_description')->nullable();
             $table->timestamps();

@@ -19,7 +19,7 @@ class CourseLevelController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $masterclassLevels = CourseMasterclassLevel::select('masterclass_level_id', 'masterclass_level_name', 'masterclass_level_slug')->get();
+            $masterclassLevels = CourseMasterclassLevel::select('masterclass_level_id', 'masterclass_level_name', 'masterclass_level_slug')->latest();
 
             return Datatables::of($masterclassLevels)
                 ->addIndexColumn()

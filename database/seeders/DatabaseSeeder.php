@@ -133,6 +133,5 @@ class DatabaseSeeder extends Seeder
 
 
         User::factory()->count(50)->create();
-        CourseMasterclass::factory()->count(5)->create();
     }
 }

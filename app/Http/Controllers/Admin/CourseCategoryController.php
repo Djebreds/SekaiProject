@@ -19,7 +19,7 @@ class CourseCategoryController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $courseCategories = CourseCategory::select('category_id', 'category_name', 'category_slug')->get();
+            $courseCategories = CourseCategory::select('category_id', 'category_name', 'category_slug')->latest();
 
             return Datatables::of($courseCategories)
                 ->addIndexColumn()

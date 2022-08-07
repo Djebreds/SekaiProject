@@ -1,27 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Instructor;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\CourseCategory;
-use App\Models\CoursePriceType;
-use App\Models\CourseClassType;
-use App\Models\CourseCurriculumSection;
-use App\Models\CourseMasterclassLevel;
 
-class ManageCourseController extends Controller
+class CurriculumSectionController extends Controller
 {
-
-    // public function index()
-    // {
-    //     return view('instructor.makeCourse');
-    // }
-    // public function show()
-    // {
-    //     return view('instructor.myCourse');
-    // }
-
     /**
      * Display a listing of the resource.
      *
@@ -29,7 +14,7 @@ class ManageCourseController extends Controller
      */
     public function index()
     {
-        return view('instructor.makeCourse');
+        //
     }
 
     /**
@@ -39,15 +24,7 @@ class ManageCourseController extends Controller
      */
     public function create()
     {
-        $categories = CourseCategory::get();
-        $levels = CourseMasterclassLevel::get();
-        $prices = CoursePriceType::get();
-        $classes = CourseClassType::get();
-        return view('instructor.makeCourse', compact('categories', 'levels', 'prices', 'classes'));
-    }
-
-    public function storeCurriculum(Request $request)
-    {
+        //
     }
 
     /**
@@ -58,7 +35,7 @@ class ManageCourseController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        //
     }
 
     /**
@@ -69,6 +46,7 @@ class ManageCourseController extends Controller
      */
     public function show($id)
     {
+        //
     }
 
     /**

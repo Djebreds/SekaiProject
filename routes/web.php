@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\ClassController;
 use App\Http\Controllers\Admin\ClassTypeController;
 use App\Http\Controllers\Admin\CourseCategoryController;
 use App\Http\Controllers\Admin\CourseLevelController;
+use App\Http\Controllers\Admin\CurriculumSectionController;
 use App\Http\Controllers\Admin\DashboardAdminController;
 use App\Http\Controllers\Admin\MasterClassController;
 use App\Http\Controllers\Admin\PriceTypeController;
@@ -45,6 +46,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Home
 Route::get('/dashboard', [DashboardController::class, 'index']);
 
 Auth::routes();
@@ -61,41 +63,6 @@ Route::get('about', [AboutController::class, 'about'])->name('about');
 Route::get('contact', [AboutController::class, 'contact'])->name('contact');
 Route::get('help', [HelpController::class, 'index'])->name('help');
 Route::get('certificate/check', [CheckCertificateController::class, 'index'])->name('certificate.check');
-
-//
-//Route::get('courses/categories', function () {
-//    return view('navbar.courses.categories');
-//})->name('courses.categories');
-//
-//Route::get('courses/courses', function () {
-//    return view('navbar.courses.courses');
-//})->name('courses.courses');
-//
-//Route::get('instruktor/become', function () {
-//    return view('navbar.instruktor.become');
-//})->name('instruktor.become');
-//
-//Route::get('instruktor/list', function () {
-//    return view('navbar.instruktor.list');
-//})->name('instruktor.list');
-//
-//Route::get('aboutBasic', function () {
-//    return view('navbar.about.aboutBasic');
-//})->name('aboutBasic');
-//
-//Route::get('aboutUs', function () {
-//    return view('navbar.about.aboutUs');
-//})->name('aboutUs');
-//
-//Route::get('contactUs', function () {
-//    return view('navbar.about.contactUs');
-//})->name('contactUs');
-//
-//Route::get('other/help', function () {
-//    return view('navbar.other.help');
-//})->name('other.help');
-//
-
 
 // Login and register with google
 Route::get('/oauth/google', [OauthController::class, 'redirectToGoogle'])->name('auth.google');
@@ -131,7 +98,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
             'course_masterclass_level' => 'masterclass_level_slug'
         ]);
         Route::resource('classes', ClassController::class);
-        Route::resource('masterclasses', MasterClassController::class);
+        Route::resource('masterclasses', MasterClassController::class)->parameters([
+            'course_masterclasses' => 'masterclass_slug'
+        ]);
+        Route::resource('masterclass.curriculum_section', CurriculumSectionController::class, ['except' => 'show'])->parameters([
+            'course_curriculum_sections' => 'curriculum_section_slug'
+        ]);
+
         Route::resource('certificates', CertificateController::class);
         Route::resource('reviews', ReviewController::class);
     });

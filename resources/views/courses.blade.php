@@ -47,16 +47,9 @@
 								<div class="col-sm-6 col-md-3 pb-2 pb-md-0">
 									<select class="form-select form-select-sm js-choice" aria-label=".form-select-sm example">
 										<option value="">Categories</option>
-										<option>All</option>
-										<option>Development</option>
-										<option>Design</option>
-										<option>Accounting</option>
-										<option>Translation</option>
-										<option>Finance</option>
-										<option>Legal</option>
-										<option>Photography</option>
-										<option>Writing</option>
-										<option>Marketing</option>
+										@foreach ($categories as $category)
+											<option value="{{ $category->category_slug }}">{{ $category->category_name }}</option>
+										@endforeach
 									</select>
 								</div>
 
@@ -64,8 +57,9 @@
 								<div class="col-sm-6 col-md-3 pb-2 pb-md-0">
 									<select class="form-select form-select-sm js-choice" aria-label=".form-select-sm">
 										<option value="">Class type</option>
-										<option>Materclass</option>
-										<option>Video On-Demand</option>
+										@foreach ($class_types as $class)
+											<option value="{{ $class->class_type_slug }}">{{ $class->class_type_name }}</option>
+										@endforeach
 									</select>
 								</div>
 
@@ -73,9 +67,9 @@
 								<div class="col-sm-6 col-md-3 pb-2 pb-md-0">
 									<select class="form-select form-select-sm js-choice" aria-label=".form-select-sm">
 										<option value="">Price level</option>
-										<option>All</option>
-										<option>Free</option>
-										<option>Paid</option>
+										@foreach ($price_types as $price)
+											<option value="{{ $price->price_type_slug }}">{{ $price->price_type_name }}</option>
+										@endforeach
 									</select>
 								</div>
 
@@ -83,10 +77,9 @@
 								<div class="col-sm-6 col-md-3 pb-2 pb-md-0">
 									<select class="form-select form-select-sm js-choice" aria-label=".form-select-sm">
 										<option value="">Skill level</option>
-										<option>All levels</option>
-										<option>Beginner</option>
-										<option>Intermediate</option>
-										<option>Advanced</option>
+										@foreach ($masterclass_levels as $level)
+											<option value="{{ $level->masterclass_level_slug }}">{{ $level->masterclass_level_name }}</option>
+										@endforeach
 									</select>
 								</div>
 							</div>
@@ -105,47 +98,51 @@
 					<div class="col-12">
 						<div class="row g-4">
 							<!-- Card item START -->
-							<div class="col-sm-6 col-lg-4 col-xl-3">
-								<div class="card shadow h-100">
-									<!-- Image -->
-									<img src="{{ asset('assets/images/courses/4by3/07.jpg') }}" class="card-img-top" alt="course image">
-									<!-- Card body -->
-									<div class="card-body pb-0">
-										<!-- Badge and favorite -->
-										<div class="d-flex justify-content-between mb-2">
-											<a href="{{ route('detail.course') }}"
-												class="badge bg-success bg-opacity-10 text-success stretched-link">Free</a>
+
+							@foreach ($masterclasses as $masterclass)
+								<div class="col-sm-6 col-lg-4 col-xl-3">
+									<div class="card shadow h-100">
+										<!-- Image -->
+										<img src="{{ asset('storage/masterclass/thumbnail/' . $masterclass->masterclass_thumbnail) }}"
+											class="card-img-top" style="width: 300px; height: 255px" alt="course image">
+										<!-- Card body -->
+										<div class="card-body pb-0">
+											<!-- Badge and favorite -->
+											<div class="d-flex justify-content-between mb-2">
+												@if ($masterclass->course_class_prices->price_type_name == 'Free')
+													<a href="#"
+														class="badge bg-success bg-opacity-10 text-success">{{ $masterclass->course_class_prices->price_type_name }}</a>
+												@elseif ($masterclass->course_class_prices->price_type_name == 'Paid')
+													<a href="#"
+														class="badge bg-danger bg-opacity-10 text-danger ">{{ $masterclass->course_class_prices->price_type_name }}</a>
+												@endif
+
+											</div>
+											<!-- Title -->
+											<h5><a href="{{ route('detail.course') }}"
+													class="stretched-link">{{ Str::limit($masterclass->masterclass_name, '40', '...') }}</a>
+											</h5>
+											<p class="mb-2">{{ Str::limit($masterclass->masterclass_short_desc, '30', '...') }}</p>
 										</div>
-										<!-- Title -->
-										<h5><a href="#"> Web Development Ruby On Rails</a></h5>
-										<p class="mb-2 text-truncate-2">
-											Lorem ipsum dolor sit amet consectetur adipisicing elit Exercitationem, distinctio soluta. Fugit fuga commodi
-											dolore excepturi perferendis quisquam itaque repellat praesentium non recusandae, ea voluptas amet a, ut
-											assumenda, cumque minus mollitia enim sapiente accusantium. Rem nisi nesciunt accusamus ad distinctio quas
-											esse ducimus praesentium error! Laboriosam nobis atque incidunt.</p>
-									</div> sok nyut
-									<!-- Card footer -->
-									<div class="card-footer pt-0 pb-3">
-										<hr>
-										<div class="d-flex justify-content-between">
-											<span class="h6 fw-light mb-0"><i class="far fa-clock text-danger me-2"></i>12h 56m
-											</span>
-											<span class="h6 fw-light mb-0"><i class="fas fa-table text-orange me-2"></i>
-												15
-												Lecture</span>
+										<!-- Card footer -->
+										<div class="card-footer pt-0 pb-3">
+											<hr>
+											<div class="d-flex justify-content-between">
+												<span class="h6 fw-light mb-0"><i
+														class="far fa-clock text-danger me-2"></i>{{ $masterclass->masterclass_total_duration }}
+												</span>
+												<span class="h6 fw-light mb-0"><i class="fas fa-table text-orange me-2"></i>15 Curriculum</span>
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
-							<!-- Card item END -->
-
+								<!-- Card item END -->
+							@endforeach
 						</div>
 						<!-- Course Grid END -->
 					</div>
 				</div>
 				<!-- Main content START -->
-
-
 
 				<!-- Pagination START -->
 				<div class="col-12">
