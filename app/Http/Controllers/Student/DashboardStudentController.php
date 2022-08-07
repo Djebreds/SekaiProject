@@ -8,15 +8,18 @@ use Illuminate\Http\Request;
 
 class DashboardStudentController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         return view('student.dashboard');
     }
 
-    public function setting() {
+    public function setting()
+    {
         return view('student.setting');
     }
 
-    public function deleteAccount() {
+    public function deleteAccount()
+    {
         return view('student.delete');
     }
 
@@ -61,7 +64,7 @@ class DashboardStudentController extends Controller
     public function edit(User $user)
     {
         $user = User::where('role_id', $user->role_id)->where('username', $user->username);
-        return view('student.profile', compact('user'));
+        return view('student.setting', compact('user'));
     }
 
     /**

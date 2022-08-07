@@ -19,7 +19,7 @@ class PriceTypeController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $priceType = CoursePriceType::select('price_type_id', 'price_type_name', 'price_type_slug')->get();
+            $priceType = CoursePriceType::select('price_type_id', 'price_type_name', 'price_type_slug')->latest();
 
             return Datatables::of($priceType)
                 ->addIndexColumn()

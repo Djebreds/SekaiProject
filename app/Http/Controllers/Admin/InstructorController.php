@@ -25,7 +25,7 @@ class InstructorController extends Controller
         if ($request->ajax()) {
             $instructors = User::select('id', 'full_name', 'email', 'username', 'status', 'created_at')->whereHas('roles', function ($query) {
                 $query->where('role_name', 'Instructor');
-            });
+            })->latest();
 
             return Datatables::of($instructors)
                 ->addIndexColumn()

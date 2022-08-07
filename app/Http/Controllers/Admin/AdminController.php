@@ -20,7 +20,7 @@ class AdminController extends Controller
         if ($request->ajax()) {
             $admins = User::select('id', 'full_name', 'email', 'username', 'status', 'created_at')->whereHas('roles', function ($query) {
                 $query->where('role_name', 'Admin');
-            });
+            })->latest();
 
             return Datatables::of($admins)
                 ->addIndexColumn()

@@ -4,11 +4,13 @@ namespace Database\Seeders;
 
 use App\Models\CourseCategory;
 use App\Models\CourseClassType;
+use App\Models\CourseMasterclass;
 use App\Models\CourseMasterclassLevel;
 use App\Models\CoursePriceType;
 use App\Models\Role;
 use App\Models\User;
 use Database\Factories\CourseCategoryFactory;
+use Database\Factories\MasterClassFactory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 
@@ -23,11 +25,11 @@ class DatabaseSeeder extends Seeder
     {
 
 
-         \App\Models\Role::factory()->create([
-             'role_name' => 'Admin',
-             'role_slug' => ucfirst(Str::slug('admin')),
-             'role_description' => fake()->text,
-         ]);
+        \App\Models\Role::factory()->create([
+            'role_name' => 'Admin',
+            'role_slug' => ucfirst(Str::slug('admin')),
+            'role_description' => fake()->text,
+        ]);
 
         \App\Models\Role::factory()->create([
             'role_name' => 'Student',
@@ -41,30 +43,95 @@ class DatabaseSeeder extends Seeder
             'role_description' => fake()->text,
         ]);
 
-//
-//        $role = new Role();
-//        $role->role_name = 'Admin';
-//        $role->role_slug = 'admin';
-//        $role->role_description = 'can do anything';
-//        $role->save();
-//
-//        $role = new Role();
-//        $role->role_name = 'Student';
-//        $role->role_slug = 'student';
-//        $role->role_description = 'can learning';
-//        $role->save();
-//
-//        $role = new Role();
-//        $role->role_name = 'Instructor';
-//        $role->role_slug = 'instructor';
-//        $role->role_description = 'can teaching';
-//        $role->save();
+        \App\Models\CourseCategory::factory()->create([
+            'category_name' => 'Web Development',
+            'category_slug' => Str::slug('Web Development'),
+        ]);
+
+        \App\Models\CourseCategory::factory()->create([
+            'category_name' => 'Data Science',
+            'category_slug' => Str::slug('Data Science'),
+        ]);
+
+        \App\Models\CourseCategory::factory()->create([
+            'category_name' => 'Android Development',
+            'category_slug' => Str::slug('Andoird Development'),
+        ]);
+
+        \App\Models\CourseCategory::factory()->create([
+            'category_name' => 'IOS Development',
+            'category_slug' => Str::slug('IOS Development'),
+        ]);
+
+        \App\Models\CourseCategory::factory()->create([
+            'category_name' => 'DevOps Development',
+            'category_slug' => Str::slug('DevOps Development'),
+        ]);
+
+        \App\Models\CourseCategory::factory()->create([
+            'category_name' => 'Desktop Development',
+            'category_slug' => Str::slug('Desktop Development'),
+        ]);
+
+        \App\Models\CourseCategory::factory()->create([
+            'category_name' => 'Game Development',
+            'category_slug' => Str::slug('Game Development'),
+        ]);
+
+        \App\Models\CourseCategory::factory()->create([
+            'category_name' => 'Machine Learning',
+            'category_slug' => Str::slug('Machine Learning'),
+        ]);
+
+
+        \App\Models\CourseMasterclassLevel::factory()->create([
+            'masterclass_level_name' => 'All Level',
+            'masterclass_level_slug' => Str::slug('All'),
+        ]);
+
+        \App\Models\CourseMasterclassLevel::factory()->create([
+            'masterclass_level_name' => 'Advance',
+            'masterclass_level_slug' => Str::slug('Advance'),
+        ]);
+
+        \App\Models\CourseMasterclassLevel::factory()->create([
+            'masterclass_level_name' => 'Beginner',
+            'masterclass_level_slug' => Str::slug('Beginner'),
+        ]);
+
+        \App\Models\CourseMasterclassLevel::factory()->create([
+            'masterclass_level_name' => 'Intermediate',
+            'masterclass_level_slug' => Str::slug('Intermediate'),
+        ]);
+
+        \App\Models\CourseMasterclassLevel::factory()->create([
+            'masterclass_level_name' => 'Master',
+            'masterclass_level_slug' => Str::slug('Master'),
+        ]);
+
+
+        \App\Models\CoursePriceType::factory()->create([
+            'price_type_name' => 'Free',
+            'price_type_slug' => Str::slug('Free'),
+        ]);
+
+        \App\Models\CoursePriceType::factory()->create([
+            'price_type_name' => 'Paid',
+            'price_type_slug' => Str::slug('Paid'),
+        ]);
+
+        \App\Models\CourseClassType::factory()->create([
+            'class_type_name' => 'Masterclass',
+            'class_type_slug' => Str::slug('masterclass'),
+        ]);
+
+        \App\Models\CourseClassType::factory()->create([
+            'class_type_name' => 'Video On-Demand',
+            'class_type_slug' => Str::slug('video on-demand'),
+        ]);
+
+
 
         User::factory()->count(50)->create();
-        CourseCategory::factory()->count(20)->create();
-        CourseMasterclassLevel::factory()->count(10)->create();
-        CoursePriceType::factory()->count(7)->create();
-        CourseClassType::factory()->count(10)->create();
-
     }
 }

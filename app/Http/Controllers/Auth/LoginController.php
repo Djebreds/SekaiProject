@@ -33,16 +33,17 @@ class LoginController extends Controller
      */
     protected $redirectTo;
 
+
     /**
      * Create a new controller instance.
      *
      * @return string
      */
-    public function __construct()
+    public function __construct(Request $request)
     {
-        if(Auth::check() && Auth::user()->role_id == 1){
+        if (Auth::check() && Auth::user()->role_id == 1) {
             $this->redirectTo = route('admin.dashboard');
-        } elseif(Auth::check() && Auth::user()->role_id == 2){
+        } elseif (Auth::check() && Auth::user()->role_id == 2) {
             $this->redirectTo = route('student.index');
         } elseif (Auth::check() && Auth::user()->role_id == 3) {
             $this->redirectTo = route('instructor.index');
@@ -50,5 +51,4 @@ class LoginController extends Controller
 
         $this->middleware('guest')->except('logout');
     }
-
 }

@@ -9,9 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // DataTables
     var table = $('#datatables-column-search-text-inputs').DataTable({
-        "order": [
-            [1, 'desc']
-        ],
+        "order": [],
         "responsive": true,
         "scrollX": true,
         "processing": true,

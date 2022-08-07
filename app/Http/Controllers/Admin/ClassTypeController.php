@@ -19,7 +19,7 @@ class ClassTypeController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $classTypes = CourseClassType::select('class_type_id', 'class_type_name', 'class_type_slug')->get();
+            $classTypes = CourseClassType::select('class_type_id', 'class_type_name', 'class_type_slug')->latest();
 
             return Datatables::of($classTypes)
                 ->addIndexColumn()
