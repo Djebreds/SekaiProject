@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\CourseCurriculum;
 use App\Models\CourseCurriculumSection;
+use App\Models\CourseMasterclass;
 use Illuminate\Http\Request;
 use DataTables;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CurriculumSectionController extends Controller
 {
@@ -17,12 +19,15 @@ class CurriculumSectionController extends Controller
      */
     public function index(Request $request, $masterclass_slug)
     {
-        $curriculum_sections = CourseCurriculumSection::with('course_masterclasses')->whereHas('course_masterclasses', function ($query) use ($masterclass_slug) {
-            $query->where('masterclass_slug', $masterclass_slug);
-        })->first();
+        // $curriculum_sections = CourseCurriculumSection::with('course_masterclasses')->whereHas('course_masterclasses', function ($query) use ($masterclass_slug) {
+        //     $query->where('masterclass_slug', $masterclass_slug);
+        // });
+        $masterclasses = CourseMasterclass::with('course_curriculum_sections')->where('masterclass_slug', $masterclass_slug)->firstOrFail(['masterclass_slug', 'masterclass_name']);
 
         if ($request->ajax()) {
-            $curriculum_sections = CourseCurriculumSection::with(['course_curriculums', 'course_masterclasses']);
+            $curriculum_sections = CourseCurriculumSection::with(['course_curriculums', 'course_masterclasses'])->whereHas('course_masterclasses', function ($query) use ($masterclass_slug) {
+                $query->where('masterclass_slug', $masterclass_slug);
+            });
             return Datatables::of($curriculum_sections)
                 ->addIndexColumn()
                 ->addColumn('action', function ($curriculum_sections) {
@@ -41,7 +46,7 @@ class CurriculumSectionController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
-        return view('admin.curriculumSection.index');
+        return view('admin.curriculumSection.index', compact('masterclasses'));
     }
 
     /**
@@ -49,9 +54,10 @@ class CurriculumSectionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($masterclass_slug)
     {
-        //
+        $masterclasses = CourseMasterclass::with('course_curriculum_sections')->where('masterclass_slug', $masterclass_slug)->firstOrFail(['masterclass_slug', 'masterclass_name']);
+        return view('admin.curriculumSection.create', compact('masterclasses'));
     }
 
     /**
@@ -60,20 +66,26 @@ class CurriculumSectionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $masterclass_slug)
     {
-        //
-    }
+        $validate = $request->validate([
+            'curriculum_section_name' => 'required|string|max:50'
+        ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        $curriculum_sections = CourseCurriculumSection::with(['course_curriculums', 'course_masterclasses'])->whereHas('course_masterclasses', function ($query) use ($masterclass_slug) {
+            $query->where('masterclass_slug', $masterclass_slug);
+        });
+
+        $masterclasses = CourseMasterclass::where('masterclass_slug', $masterclass_slug)->firstOrFail();
+        $masterclasses->course_curriculum_sections()->create($validate);
+
+        if ($curriculum_sections) {
+            Alert::success('Success', 'New curriculum section has been created!');
+        } else {
+            Alert::error('Error', 'Faied to create curriculum section');
+            return redirect()->route('admin.masterclass.curriculum-section.index', $masterclasses->masterclass_slug)->with('error', 'Failed to create curriculum section');
+        }
+        return redirect()->route('admin.masterclass.curriculum-section.index', $masterclasses->masterclass_slug)->with('message', 'New curriculum section has been created');
     }
 
     /**
@@ -82,9 +94,10 @@ class CurriculumSectionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, $masterclass_slug)
     {
-        //
+        $masterclasses = CourseMasterclass::with('course_curriculum_sections')->where('masterclass_slug', $masterclass_slug)->firstOrFail(['masterclass_slug', 'masterclass_name']);
+        return view('admin.curriculumSection.edit', compact('masterclasses'));
     }
 
     /**

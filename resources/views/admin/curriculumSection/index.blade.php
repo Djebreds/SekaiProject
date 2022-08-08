@@ -15,13 +15,12 @@
 			<div class="col-12">
 				<div class="card">
 					<div class="card-header">
-						<h5 class="card-title"></h5>
+						<h5 class="card-title">Curriculum Section on {{ $masterclasses->masterclass_name }}</h5>
 					</div>
 
 					<div class="card-body">
 						<div class="button text-lg-start text-center my-2">
-							<a
-								href="{{ route('admin.masterclass.curriculum-section.create', $curriculum_sections->course_masterclasses->masterclass_slug) }}"
+							<a href="{{ route('admin.masterclass.curriculum-section.create', $masterclasses->masterclass_slug) }}"
 								class="btn btn-success mb-2"><i class="fas fa-user-plus me-2"></i>New
 								Curriculum Section</a>
 						</div>
