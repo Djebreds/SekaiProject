@@ -8,7 +8,7 @@
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
 				<li class="breadcrumb-item"><a href="{{ route('admin.masterclasses.index') }}">Masterclasses</a></li>
-				<li class="breadcrumb-item active" aria-current="page">Curriculum Section</li>
+				<li class="breadcrumb-item active" aria-current="page">Curriculum Sections</li>
 			</ol>
 		</nav>
 		<div class="row">
@@ -68,4 +68,42 @@
 	<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 	<script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
 	<script src="{{ asset('assets-admin/js/page/dataTableCurriculumSection.js') }}"></script>
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+	<script type="text/javascript">
+	 function confirmDelete(slug) {
+	  var form = $('#data-' + slug);
+	  const swalWithBootstrapButtons = Swal.mixin({
+	   customClass: {
+	    confirmButton: 'btn btn-danger mx-2',
+	    cancelButton: 'btn btn-dark mx-2'
+	   },
+	   buttonsStyling: false
+	  })
+
+	  swalWithBootstrapButtons.fire({
+	   title: 'Are you sure?',
+	   text: "You won't be able to revert this!",
+	   icon: 'warning',
+	   showCancelButton: true,
+	   confirmButtonText: 'Yes, delete it!',
+	   cancelButtonText: 'No, cancel!',
+	   reverseButtons: true
+	  }).then((result) => {
+	   if (result.isConfirmed) {
+
+	    form.submit();
+	   } else if (
+	    /* Read more about handling dismissals below */
+	    result.dismiss === Swal.DismissReason.cancel
+	   ) {
+	    swalWithBootstrapButtons.fire(
+	     'Cancelled',
+	     'The record are save',
+	     'error'
+	    )
+	   }
+	  })
+	 }
+	</script>
 @endpush

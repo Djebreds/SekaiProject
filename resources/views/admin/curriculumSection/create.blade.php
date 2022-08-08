@@ -7,7 +7,9 @@
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
 				<li class="breadcrumb-item"><a href="{{ route('admin.masterclasses.index') }}">Masterclasses</a></li>
-				<li class="breadcrumb-item active" aria-current="page">Curriculum Section</li>
+				<li class="breadcrumb-item"><a
+						href="{{ route('admin.masterclass.curriculum-section.index', $masterclasses->masterclass_slug) }}">Curriculum
+						Sections</a></li>
 				<li class="breadcrumb-item active" aria-current="page">Create</li>
 			</ol>
 		</nav>

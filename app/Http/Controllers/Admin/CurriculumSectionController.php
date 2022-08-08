@@ -72,12 +72,8 @@ class CurriculumSectionController extends Controller
             'curriculum_section_name' => 'required|string|max:50'
         ]);
 
-        $curriculum_sections = CourseCurriculumSection::with(['course_curriculums', 'course_masterclasses'])->whereHas('course_masterclasses', function ($query) use ($masterclass_slug) {
-            $query->where('masterclass_slug', $masterclass_slug);
-        });
-
         $masterclasses = CourseMasterclass::where('masterclass_slug', $masterclass_slug)->firstOrFail();
-        $masterclasses->course_curriculum_sections()->create($validate);
+        $curriculum_sections = $masterclasses->course_curriculum_sections()->create($validate);
 
         if ($curriculum_sections) {
             Alert::success('Success', 'New curriculum section has been created!');
@@ -94,10 +90,13 @@ class CurriculumSectionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id, $masterclass_slug)
+    public function edit($masterclass_slug, $curriculum_sections)
     {
-        $masterclasses = CourseMasterclass::with('course_curriculum_sections')->where('masterclass_slug', $masterclass_slug)->firstOrFail(['masterclass_slug', 'masterclass_name']);
-        return view('admin.curriculumSection.edit', compact('masterclasses'));
+        $curriculum_sections = CourseCurriculumSection::with('course_masterclasses')->whereHas('course_masterclasses', function ($query) use ($masterclass_slug) {
+            $query->where('masterclass_slug', $masterclass_slug);
+        })->where('curriculum_section_id', $curriculum_sections)->firstOrFail();
+
+        return view('admin.curriculumSection.edit', compact('curriculum_sections'));
     }
 
     /**
@@ -107,9 +106,24 @@ class CurriculumSectionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $masterclass_slug)
     {
-        //
+        $validate = $request->validate([
+            'curriculum_section_name' => 'required|string|max:50'
+        ]);
+
+        $masterclasses = CourseMasterclass::where('masterclass_slug', $masterclass_slug)->firstOrFail();
+        $curriculum_sections = CourseCurriculumSection::with('course_masterclasses')->whereHas('course_masterclasses', function ($query) use ($masterclass_slug) {
+            $query->where('masterclass_slug', $masterclass_slug);
+        })->firstOrFail()->update($validate);
+
+        if ($curriculum_sections) {
+            Alert::success('Success', 'Curriculum section has been Edited!');
+        } else {
+            Alert::error('Error', 'Faied to create curriculum section');
+            return redirect()->route('admin.masterclass.curriculum-section.index', $masterclasses->masterclass_slug)->with('error', 'Failed to create curriculum section');
+        }
+        return redirect()->route('admin.masterclass.curriculum-section.index', $masterclasses->masterclass_slug)->with('message', 'Curriculum section has been edited');
     }
 
     /**
@@ -118,8 +132,18 @@ class CurriculumSectionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($masterclass_slug, $curriculum_sections)
     {
-        //
+        $curriculum_sections = CourseCurriculumSection::with('course_masterclasses')->whereHas('course_masterclasses', function ($query) use ($masterclass_slug) {
+            $query->where('masterclass_slug', $masterclass_slug);
+        })->where('curriculum_section_id', $curriculum_sections)->firstOrFail()->delete();
+
+        if ($curriculum_sections) {
+            Alert::success('Success', 'The record has deleted!');
+        } else {
+            Alert::error('Error', 'Can\'t delete this record!');
+            return back();
+        }
+        return back();
     }
 }
