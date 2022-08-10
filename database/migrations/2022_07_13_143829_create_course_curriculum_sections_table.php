@@ -17,11 +17,11 @@ return new class extends Migration
             $table->id('curriculum_section_id');
             $table->unsignedBigInteger('masterclass_id');
             $table->string('curriculum_section_name');
-            $table->boolean('section_is_completed');
+            $table->boolean('section_is_completed')->default(false);
             $table->timestamps();
 
             $table->index('masterclass_id');
-            $table->foreign('masterclass_id')->references('class_id')->on('course_classes');
+            $table->foreign('masterclass_id')->references('masterclass_id')->on('course_masterclasses');
         });
     }
 
@@ -32,7 +32,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('course_curriculum_sections', function(Blueprint $table) {
+        Schema::table('course_curriculum_sections', function (Blueprint $table) {
             $table->dropForeign('masterclass_id_foreign');
             $table->dropColumn('masterclass_id');
             $table->dropIndex('masterclass_id_index');

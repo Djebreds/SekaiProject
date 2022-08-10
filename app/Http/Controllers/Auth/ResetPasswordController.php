@@ -27,19 +27,19 @@ class ResetPasswordController extends Controller
      *
      * @var string
      */
-    protected $redirectTo;
+    protected $redirectTo  = '/student';
+
 
     public function __construct()
     {
-        if(Auth::check() && Auth::user()->role_id == 1){
+        if (Auth::check() && Auth::user()->role_id == 1) {
             $this->redirectTo = route('admin.dashboard');
-        } else if(Auth::check() && Auth::user()->role_id == 2){
+        } else if (Auth::check() && Auth::user()->role_id == 2) {
             $this->redirectTo = route('student.index');
         } else if (Auth::check() && Auth::user()->role_id == 3) {
             $this->redirectTo = route('instructor.index');
         }
 
         $this->middleware('guest')->except('logout');
-
     }
 }

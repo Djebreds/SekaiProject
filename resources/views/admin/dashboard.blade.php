@@ -49,10 +49,12 @@
 										</div>
 									</div>
 								</div>
-								<span class="h1 d-inline-block mt-1 mb-4">50</span>
+								<span class="h1 d-inline-block mt-1 mb-4">{{ $students }}</span>
 								<div class="mb-0">
-									<span class="badge badge-soft-success me-2"> +14 % </span>
-									<span class="text-muted">New Students</span>
+									@if ($studentsNew != '')
+										<span class="badge badge-soft-success me-2"> +{{ $studentsNew }} % </span>
+										<span class="text-muted">New Students</span>
+									@endif
 								</div>
 							</div>
 						</div>
@@ -71,10 +73,12 @@
 										</div>
 									</div>
 								</div>
-								<span class="h1 d-inline-block mt-1 mb-4">25</span>
+								<span class="h1 d-inline-block mt-1 mb-4">{{ $instructors }}</span>
 								<div class="mb-0">
-									<span class="badge badge-soft-success me-2"> +3 % </span>
-									<span class="text-muted">New Instructor</span>
+									@if ($instructorsNew != '')
+										<span class="badge badge-soft-success me-2"> +{{ $instructorsNew }} % </span>
+										<span class="text-muted">New Instructor</span>
+									@endif
 								</div>
 							</div>
 						</div>
@@ -93,10 +97,12 @@
 										</div>
 									</div>
 								</div>
-								<span class="h1 d-inline-block mt-1 mb-4">52</span>
+								<span class="h1 d-inline-block mt-1 mb-4">{{ $masterclasses }}</span>
 								<div class="mb-0">
-									<span class="badge badge-soft-success me-2"> +8 %</span>
-									<span class="text-muted">New Course</span>
+									@if ($masterclassesNew != '')
+										<span class="badge badge-soft-success me-2"> +{{ $masterclassesNew }} %</span>
+										<span class="text-muted">New Course</span>
+									@endif
 								</div>
 							</div>
 						</div>

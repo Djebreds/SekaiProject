@@ -41,64 +41,64 @@
                             <input class="form-control me-1" type="search" placeholder="Enter keyword">
                         </div>
 
-                        <!-- Select item -->
-                        <div class="col-xl-8">
-                            <div class="row g-3">
-                                <!-- Select items -->
-                                <div class="col-sm-6 col-md-3 pb-2 pb-md-0">
-                                    <select class="form-select form-select-sm js-choice"
-                                        aria-label=".form-select-sm example">
-                                        <option value="">Categories</option>
-                                        <option>All</option>
-                                        <option>Development</option>
-                                        <option>Design</option>
-                                        <option>Accounting</option>
-                                        <option>Translation</option>
-                                        <option>Finance</option>
-                                        <option>Legal</option>
-                                        <option>Photography</option>
-                                        <option>Writing</option>
-                                        <option>Marketing</option>
-                                    </select>
-                                </div>
+                        <<<<<<< HEAD <!-- Select item -->
+                            <div class="col-xl-8">
+                                <div class="row g-3">
+                                    <!-- Select items -->
+                                    <div class="col-sm-6 col-md-3 pb-2 pb-md-0">
+                                        <select class="form-select form-select-sm js-choice"
+                                            aria-label=".form-select-sm example">
+                                            <option value="">Categories</option>
+                                            <option>All</option>
+                                            <option>Development</option>
+                                            <option>Design</option>
+                                            <option>Accounting</option>
+                                            <option>Translation</option>
+                                            <option>Finance</option>
+                                            <option>Legal</option>
+                                            <option>Photography</option>
+                                            <option>Writing</option>
+                                            <option>Marketing</option>
+                                        </select>
+                                    </div>
 
-                                <!-- Search item -->
-                                <div class="col-sm-6 col-md-3 pb-2 pb-md-0">
-                                    <select class="form-select form-select-sm js-choice" aria-label=".form-select-sm">
-                                        <option value="">Class type</option>
-                                        <option>Materclass</option>
-                                        <option>Video On-Demand</option>
-                                    </select>
-                                </div>
+                                    <!-- Search item -->
+                                    <div class="col-sm-6 col-md-3 pb-2 pb-md-0">
+                                        <select class="form-select form-select-sm js-choice" aria-label=".form-select-sm">
+                                            <option value="">Class type</option>
+                                            <option>Materclass</option>
+                                            <option>Video On-Demand</option>
+                                        </select>
+                                    </div>
 
-                                <!-- Search item -->
-                                <div class="col-sm-6 col-md-3 pb-2 pb-md-0">
-                                    <select class="form-select form-select-sm js-choice" aria-label=".form-select-sm">
-                                        <option value="">Price level</option>
-                                        <option>All</option>
-                                        <option>Free</option>
-                                        <option>Paid</option>
-                                    </select>
-                                </div>
+                                    <!-- Search item -->
+                                    <div class="col-sm-6 col-md-3 pb-2 pb-md-0">
+                                        <select class="form-select form-select-sm js-choice" aria-label=".form-select-sm">
+                                            <option value="">Price level</option>
+                                            <option>All</option>
+                                            <option>Free</option>
+                                            <option>Paid</option>
+                                        </select>
+                                    </div>
 
-                                <!-- Search item -->
-                                <div class="col-sm-6 col-md-3 pb-2 pb-md-0">
-                                    <select class="form-select form-select-sm js-choice" aria-label=".form-select-sm">
-                                        <option value="">Skill level</option>
-                                        <option>All levels</option>
-                                        <option>Beginner</option>
-                                        <option>Intermediate</option>
-                                        <option>Advanced</option>
-                                    </select>
+                                    <!-- Search item -->
+                                    <div class="col-sm-6 col-md-3 pb-2 pb-md-0">
+                                        <select class="form-select form-select-sm js-choice" aria-label=".form-select-sm">
+                                            <option value="">Skill level</option>
+                                            <option>All levels</option>
+                                            <option>Beginner</option>
+                                            <option>Intermediate</option>
+                                            <option>Advanced</option>
+                                        </select>
+                                    </div>
                                 </div>
+                                <!-- Row END -->
                             </div>
-                            <!-- Row END -->
-                        </div>
-                        <!-- Button -->
-                        <div class="col-xl-1">
-                            <button type="submit" class="btn btn-primary mb-0 rounded z-index-1 w-100"><i
-                                    class="fas fa-search"></i></button>
-                        </div>
+                            <!-- Button -->
+                            <div class="col-xl-1">
+                                <button type="submit" class="btn btn-primary mb-0 rounded z-index-1 w-100"><i
+                                        class="fas fa-search"></i></button>
+                            </div>
                     </div>
                     <!-- Row END -->
                 </form>
@@ -178,7 +178,134 @@
             <!-- Row END -->
         </section>
         <!-- Page content END -->
+        <!-- Select item -->
+        <div class="col-xl-8">
+            <div class="row g-3">
+                <!-- Select items -->
+                <div class="col-sm-6 col-md-3 pb-2 pb-md-0">
+                    <select class="form-select form-select-sm js-choice" aria-label=".form-select-sm example">
+                        <option value="">Categories</option>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->category_slug }}">{{ $category->category_name }}</option>
+                        @endforeach
+                    </select>
+                </div>
 
+                <!-- Search item -->
+                <div class="col-sm-6 col-md-3 pb-2 pb-md-0">
+                    <select class="form-select form-select-sm js-choice" aria-label=".form-select-sm">
+                        <option value="">Class type</option>
+                        @foreach ($class_types as $class)
+                            <option value="{{ $class->class_type_slug }}">{{ $class->class_type_name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <!-- Search item -->
+                <div class="col-sm-6 col-md-3 pb-2 pb-md-0">
+                    <select class="form-select form-select-sm js-choice" aria-label=".form-select-sm">
+                        <option value="">Price level</option>
+                        @foreach ($price_types as $price)
+                            <option value="{{ $price->price_type_slug }}">{{ $price->price_type_name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <!-- Search item -->
+                <div class="col-sm-6 col-md-3 pb-2 pb-md-0">
+                    <select class="form-select form-select-sm js-choice" aria-label=".form-select-sm">
+                        <option value="">Skill level</option>
+                        @foreach ($masterclass_levels as $level)
+                            <option value="{{ $level->masterclass_level_slug }}">{{ $level->masterclass_level_name }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+            <!-- Row END -->
+        </div>
+        <!-- Button -->
+        <div class="col-xl-1">
+            <button type="submit" class="btn btn-primary mb-0 rounded z-index-1 w-100"><i
+                    class="fas fa-search"></i></button>
+        </div>
+        </div>
+        <!-- Row END -->
+        </form>
+        <!-- Filter bar END -->
+
+        <div class="row mt-3">
+            <div class="col-12">
+                <div class="row g-4">
+                    <!-- Card item START -->
+
+                    @foreach ($masterclasses as $masterclass)
+                        <div class="col-sm-6 col-lg-4 col-xl-3">
+                            <div class="card shadow h-100">
+                                <!-- Image -->
+                                <img src="{{ asset('storage/masterclass/thumbnail/' . $masterclass->masterclass_thumbnail) }}"
+                                    class="card-img-top" style="width: 300px; height: 255px" alt="course image">
+                                <!-- Card body -->
+                                <div class="card-body pb-0">
+                                    <!-- Badge and favorite -->
+                                    <div class="d-flex justify-content-between mb-2">
+                                        @if ($masterclass->course_class_prices->price_type_name == 'Free')
+                                            <a href="#"
+                                                class="badge bg-success bg-opacity-10 text-success">{{ $masterclass->course_class_prices->price_type_name }}</a>
+                                        @elseif ($masterclass->course_class_prices->price_type_name == 'Paid')
+                                            <a href="#"
+                                                class="badge bg-danger bg-opacity-10 text-danger ">{{ $masterclass->course_class_prices->price_type_name }}</a>
+                                        @endif
+
+                                    </div>
+                                    <!-- Title -->
+                                    <h5><a href="{{ route('detail.courses', $masterclass->masterclass_slug) }}"
+                                            class="stretched-link">{{ Str::limit($masterclass->masterclass_name, '40', '...') }}</a>
+                                    </h5>
+                                    <p class="mb-2">{{ Str::limit($masterclass->masterclass_short_desc, '30', '...') }}
+                                    </p>
+                                </div>
+                                <!-- Card footer -->
+                                <div class="card-footer pt-0 pb-3">
+                                    <hr>
+                                    <div class="d-flex justify-content-between">
+                                        <span class="h6 fw-light mb-0"><i
+                                                class="far fa-clock text-danger me-2"></i>{{ $masterclass->masterclass_total_duration }}
+                                        </span>
+                                        <span class="h6 fw-light mb-0"><i class="fas fa-table text-orange me-2"></i>15
+                                            Curriculum</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card item END -->
+                    @endforeach
+                </div>
+                <!-- Course Grid END -->
+            </div>
+        </div>
+        <!-- Main content START -->
+
+        <!-- Pagination START -->
+        <div class="col-12">
+            <nav class="mt-4 d-flex justify-content-center" aria-label="navigation">
+                <ul class="pagination pagination-primary-soft rounded mb-0">
+                    <li class="page-item mb-0"><a class="page-link" href="#" tabindex="-1"><i
+                                class="fas fa-angle-double-left"></i></a></li>
+                    <li class="page-item mb-0"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item mb-0 active"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item mb-0"><a class="page-link" href="#">..</a></li>
+                    <li class="page-item mb-0"><a class="page-link" href="#">6</a></li>
+                    <li class="page-item mb-0"><a class="page-link" href="#"><i
+                                class="fas fa-angle-double-right"></i></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <!-- Pagination END -->
+        <!-- Row END -->
+        </section>
+        <!-- Page content END -->
         <!-- Newsletter START -->
         <section class="pt-0">
             <div class="container position-relative overflow-hidden">

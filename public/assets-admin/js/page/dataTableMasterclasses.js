@@ -17,12 +17,28 @@ document.addEventListener("DOMContentLoaded", function() {
         "ajax": window.location.href,
         "lengthChange": false,
         "columns": [{
-                "data": 'class_type_name',
-                "name": 'class_type_name'
+                "data": 'masterclass_name',
+                "name": 'masterclass_name'
             },
             {
-                "data": 'class_type_slug',
-                "name": 'class_type_slug'
+                "data": 'course_categories',
+                "name": 'course_categories.category_name'
+            },
+            {
+                "data": 'course_masterclass_levels',
+                "name": 'course_masterclass_levels.masterclass_level_name'
+            },
+            {
+                "data": 'course_class_types',
+                "name": 'course_class_types.class_type_name'
+            },
+            {
+                "data": 'course_class_prices',
+                "name": 'course_class_prices.price_type_name'
+            },
+            {
+                "data": 'masterclass_price',
+                "name": 'masterclass_price'
             },
             {
                 "data": 'action',

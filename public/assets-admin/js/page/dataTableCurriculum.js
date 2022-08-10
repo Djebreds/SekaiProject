@@ -17,12 +17,12 @@ document.addEventListener("DOMContentLoaded", function() {
         "ajax": window.location.href,
         "lengthChange": false,
         "columns": [{
-                "data": 'class_type_name',
-                "name": 'class_type_name'
+                "data": 'curriculum_name',
+                "name": 'curriculum_name'
             },
             {
-                "data": 'class_type_slug',
-                "name": 'class_type_slug'
+                "data": 'curriculum_description',
+                'name': 'curriculum_description'
             },
             {
                 "data": 'action',
@@ -32,7 +32,6 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         ]
     });
-
 
     // Apply the search
     table.columns().every(function() {

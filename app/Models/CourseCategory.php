@@ -12,7 +12,8 @@ class CourseCategory extends Model
     protected $primaryKey = 'category_id';
     protected $guarded = [];
 
-    public function course_masterclasses() {
+    public function course_masterclasses()
+    {
         return $this->hasMany(CourseMasterclass::class, 'category_id', 'category_id');
     }
 }
