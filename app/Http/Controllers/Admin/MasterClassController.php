@@ -137,13 +137,13 @@ class MasterClassController extends Controller
             'masterclass_level_id' => $validate['masterclass_level'],
             'class_type_id' => $validate['class_type'],
             'price_type_id' => $validate['price_type'],
-            'masterclass_price' => $validate['masterclass_price'],
+            'masterclass_price' => $request->masterclass_price,
             'category_id' => $validate['category'],
             'masterclass_thumbnail' => $request->file('thumbnail')->hashName(),
             'masterclass_video_preview' => $request->file('masterclass_video_preview')->hashName(),
             'masterclass_description' => $validate['masterclass_description'],
             'masterclass_total_duration' => $validate['masterclass_total_duration'],
-            'masterclass_discount' => $validate['masterclass_discount'],
+            'masterclass_discount' => $request->masterclass_discount,
         ]);
 
         if ($masterclass) {

@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\ClassController;
 use App\Http\Controllers\Admin\ClassTypeController;
 use App\Http\Controllers\Admin\CourseCategoryController;
 use App\Http\Controllers\Admin\CourseLevelController;
+use App\Http\Controllers\Admin\CurriculumController;
 use App\Http\Controllers\Admin\CurriculumSectionController;
 use App\Http\Controllers\Admin\DashboardAdminController;
 use App\Http\Controllers\Admin\MasterClassController;
@@ -55,7 +56,7 @@ Auth::routes(['verify' => true]);
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('courses', [CourseController::class, 'index'])->name('courses');
-Route::get('detail/course', [CourseController::class, 'show'])->name('detail.course');
+Route::get('courses/{course_slug}/detail', [CourseController::class, 'show'])->name('detail.courses');
 Route::get('become/instructor', [BecomeInstructorController::class, 'index'])->name('become.instructor');
 Route::get('instructors', [InstructorListController::class, 'index'])->name('list.instructor');
 Route::get('about/basicschool', [AboutController::class, 'basicschool'])->name('about.basicschool');
@@ -102,7 +103,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
             'course_masterclasses' => 'masterclass_slug'
         ]);
         Route::resource('masterclass.curriculum-section', CurriculumSectionController::class, ['except' => 'show'])->parameters([
-            'course_curriculum_sections' => 'curriculum_section_slug'
+            'course_curriculum_sections' => 'curriculum_section'
+        ]);
+
+        Route::resource('masterclass.curriculum-section.curriculum', CurriculumController::class, ['except' => 'show'])->parameters([
+            'course_curriculum' => 'curriculum'
         ]);
 
         Route::resource('certificates', CertificateController::class);
@@ -120,7 +125,7 @@ Route::middleware(['auth', 'student'])->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('courses/detail', [CourseController::class, 'course'])->middleware('verified')->name('course.detail.learning');
+    Route::get('courses/{course_slug}/detail/{curriculum}', [CourseController::class, 'course'])->middleware('verified')->name('course.detail.learning');
 });
 
 // Routes For Instructor

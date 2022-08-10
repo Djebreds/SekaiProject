@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use DataTables;
 use RealRashid\SweetAlert\Facades\Alert;
 
+
 class CurriculumSectionController extends Controller
 {
     /**
@@ -34,7 +35,7 @@ class CurriculumSectionController extends Controller
                     $actionBtn =  '
                     <div class="d-flex gap-2">
                     <a href=' . route('admin.masterclass.curriculum-section.edit', ['masterclass' => $curriculum_sections->course_masterclasses->masterclass_slug, 'curriculum_section' => $curriculum_sections->curriculum_section_id]) . ' class="btn btn-warning"><i class="fas fa-pencil-alt"></i></a>
-                    <a href=' . route('admin.masterclass.curriculum-section.edit', ['masterclass' => $curriculum_sections->course_masterclasses->masterclass_slug, 'curriculum_section' => $curriculum_sections->curriculum_section_id]) . ' class="btn btn-primary"><i class="fas fa-book-open"></i></a>
+                    <a href=' . route('admin.masterclass.curriculum-section.curriculum.index', ['masterclass' => $curriculum_sections->course_masterclasses->masterclass_slug, 'curriculum_section' => $curriculum_sections->curriculum_section_id]) . ' class="btn btn-primary"><i class="fas fa-book-open"></i></a>
                     <form method="POST" action=' . route('admin.masterclass.curriculum-section.destroy', ['masterclass' => $curriculum_sections->course_masterclasses->masterclass_slug, 'curriculum_section' => $curriculum_sections->curriculum_section_id]) . ' id="data-' . $curriculum_sections->curriculum_section_id . '">
                     ' . csrf_field() . '
                     <input name="_method" type="hidden" value="DELETE">

@@ -9,6 +9,8 @@ use App\Models\CourseMasterclass;
 use App\Models\CourseMasterclassLevel;
 use App\Models\CoursePriceType;
 use Illuminate\Http\Request;
+use App\Models\CourseCurriculum;
+use App\Models\CourseCurriculumSection;
 
 class CourseController extends Controller
 {
@@ -21,12 +23,17 @@ class CourseController extends Controller
         $masterclass_levels = CourseMasterclassLevel::get();
         return view('courses', compact('masterclasses', 'categories', 'price_types', 'class_types', 'masterclass_levels'));
     }
-    public function show()
+    public function show($course_slug)
     {
-        return view('course.detail');
+
+        $masterclass = CourseMasterclass::with(['course_class_types', 'course_categories', 'course_class_prices', 'course_masterclass_levels'])
+            ->where('masterclass_slug', $course_slug)->firstOrFail();
+
+        return view('course.detail', compact('masterclass'));
     }
-    public function course()
+    public function course($course_slug, $curriculum)
     {
+        dd($course_slug, $curriculum);
         return view('course.courseLearning');
     }
 }

@@ -131,7 +131,15 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
-
         User::factory()->count(50)->create();
+        User::factory()->create([
+            'role_id' => 1,
+            'full_name' => 'Administrator',
+            'email' => 'admin@administrator.com',
+            'username' => 'admin',
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'status' => 'active',
+            'is_email_verified' => true
+        ]);
     }
 }

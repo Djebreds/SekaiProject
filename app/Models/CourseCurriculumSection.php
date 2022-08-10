@@ -12,11 +12,12 @@ class CourseCurriculumSection extends Model
     protected $primaryKey = 'curriculum_section_id';
     protected $guarded = [];
 
-    public function course_masterclasses() {
+    public function course_masterclasses()
+    {
         return $this->belongsTo(CourseMasterclass::class, 'masterclass_id', 'masterclass_id');
     }
-    public function course_curriculums() {
+    public function course_curriculums()
+    {
         return $this->hasMany(CourseCurriculum::class, 'curriculum_section_id', 'curriculum_section_id');
     }
-
 }
