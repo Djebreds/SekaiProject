@@ -122,15 +122,13 @@ class MasterClassController extends Controller
             'thumbnail' => 'required|image|file|mimes:jpg,png,jpeg|max:2024',
             'masterclass_price' => 'nullable|string',
             'masterclass_discount' => 'nullable|string',
-            'masterclass_total_duration' => 'nullable|string',
+            'masterclass_total_duration' => 'nullable|string|min:7|max:7',
             'masterclass_description' => 'required|string',
             'masterclass_video_preview' => 'required|file|mimes:mp4,mkv,mov|max:20000'
         ]);
 
-
         $request->file('thumbnail')->store('public/masterclass/thumbnail');
         $request->file('masterclass_video_preview')->store('public/masterclass/video/preview');
-
 
         $masterclass = CourseMasterclass::create([
             'masterclass_name' => $validate['masterclass_name'],

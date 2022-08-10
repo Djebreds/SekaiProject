@@ -119,7 +119,7 @@
 
 											</div>
 											<!-- Title -->
-											<h5><a href="{{ route('detail.course') }}"
+											<h5><a href="{{ route('detail.courses', $masterclass->masterclass_slug) }}"
 													class="stretched-link">{{ Str::limit($masterclass->masterclass_name, '40', '...') }}</a>
 											</h5>
 											<p class="mb-2">{{ Str::limit($masterclass->masterclass_short_desc, '30', '...') }}</p>

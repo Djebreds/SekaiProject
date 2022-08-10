@@ -97,12 +97,13 @@
 										<div class="col-12 col-sm-6 col-xxl-6">
 											<div class="mb-3">
 												<label for="class_type" class="form-label">Class type</label>
-												<select class="form-control @error('class_type') is-invalid @enderror" id="class_type" name="class_type">
+												<select class="form-control @error('class_type') is-invalid @enderror" name="class_type" id="class_type">
 													<option value="">Select class type</option>
 													@foreach ($class_types as $class)
 														<option value="{{ $class->class_type_id }}"
-															{{ $masterclass->class_type_id == $class->class_type_id ? 'selected' : 'is_invalid' }}>
-															{{ $class->class_type_name }}</option>
+															{{ $class->class_type_id == $masterclass->class_type_id ? 'selected' : '' }}>
+															{{ $class->class_type_name }}
+														</option>
 													@endforeach
 												</select>
 												@error('class_type')
@@ -282,19 +283,16 @@
 	 }
 	</script>
 	<script>
-	 price_type.onchange = evt => {
-	  var price = document.getElementById('price_type');
-	  var value = price.value;
-	  if (value == 1 || value == '1') {
-
-	   $('#masterclass_price').attr('disabled', 'true')
-	   $('#masterclass_discount').attr('disabled', 'true')
+	 $('#price_type').change(function() {
+	  var disabled = (this.value == '1' || this.value == '');
+	  if (this.value == '2') {
+	   $('#masterclass_price').removeAttr('disabled');
+	   $('#masterclass_discount').removeAttr('disabled');
 	  } else {
-	   $('#masterclass_price').removeAttr('disabled')
-	   $('#masterclass_discount').removeAttr('disabled')
+	   $('#masterclass_price').prop('disabled', disabled);
+	   $('#masterclass_discount').prop('disabled', disabled);
 	  }
-	 }
-
+	 }).change();
 
 	 thumbnail_input.onchange = evt => {
 	  const [file] = thumbnail_input.files

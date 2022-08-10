@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('curriculum_name');
             $table->string('curriculum_description');
             $table->string('curriculum_video');
-            $table->boolean('curriculum_is_completed');
+            $table->boolean('curriculum_is_completed')->default(false);
             $table->timestamps();
 
             $table->index('curriculum_section_id');
@@ -34,7 +34,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('course_curriculums', function(Blueprint $table) {
+        Schema::table('course_curriculums', function (Blueprint $table) {
             $table->dropForeign('course_curriculums_curriculum_section_id_foreign');
             $table->dropColumn('course_curriculums_section_id');
             $table->dropIndex('course_curriculums_curriculum_section_id_index');

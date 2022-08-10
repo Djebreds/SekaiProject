@@ -95,7 +95,7 @@
 													<option value="">Select class type</option>
 													@foreach ($class_types as $class)
 														<option value="{{ $class->class_type_id }}"
-															{{ $class->class_type_id == old('class_type') ? 'selected' : 'is_invalid' }}>
+															{{ old('class_type') == $class->class_type_id ? 'selected' : 'is-invalid' }}>
 															{{ $class->class_type_name }}</option>
 													@endforeach
 												</select>
@@ -129,12 +129,13 @@
 										<div class="col-12 col-sm-6 col-xxl-6">
 											<div class="mb-3">
 												<label for="price_type" class="form-label">Price type</label>
-												<select class="form-control @error('price_type') is-invalid @enderror" id="price_type" name="price_type">
+												<select class="form-control @error('price_type') is-invalid @enderror" name="price_type" id="price_type">
 													<option value="">Select price type</option>
 													@foreach ($price_types as $price)
 														<option value="{{ $price->price_type_id }}"
-															{{ $category->category_id == old('price_type') ? 'selected' : 'is_invalid' }}>
-															{{ $price->price_type_name }}</option>
+															{{ $price->price_type_id == old('price_type') ? 'selected' : '' }}>
+															{{ $price->price_type_name }}
+														</option>
 													@endforeach
 												</select>
 												@error('price_type')
@@ -163,9 +164,9 @@
 											<div class="mb-3">
 												<label for="masterclass_price" class="form-label">Price</label>
 
-												<div class="input-group mb-3">
+												<div class="input-group mb-3" id="prices">
 													<span class="input-group-text">Rp.</span>
-													<input type="tel" id="masterclass_price" data-mask="Rp 000.000,00" name="masterclass_price"
+													<input type="tel" id="masterclass_price" data-mask="Rp 000.000" name="masterclass_price"
 														class="form-control @error('masterclass_price') is-invalid @enderror" placeholder="Input price"
 														value="{{ old('masterclass_price') }}" autocomplete="off" maxlength="14" disabled>
 													<input type="tel" id="masterclass_discount" data-mask="00%" name="masterclass_discount"
@@ -237,18 +238,11 @@
 @endsection
 @push('custom-script')
 	<script>
-	 price_type.onchange = evt => {
-	  var price = document.getElementById('price_type');
-	  var value = price.value;
-	  if (value == 1 || value == '1') {
-
-	   $('#masterclass_price').attr('disabled', 'true')
-	   $('#masterclass_discount').attr('disabled', 'true')
-	  } else {
-	   $('#masterclass_price').removeAttr('disabled')
-	   $('#masterclass_discount').removeAttr('disabled')
-	  }
-	 }
+	 $('#price_type').change(function() {
+	  var disabled = (this.value == '1' || this.value == '');
+	  $('#masterclass_price').prop('disabled', disabled);
+	  $('#masterclass_discount').prop('disabled', disabled);
+	 }).change();
 
 
 	 thumbnail_input.onchange = evt => {

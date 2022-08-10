@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id('curriculum_section_id');
             $table->unsignedBigInteger('masterclass_id');
             $table->string('curriculum_section_name');
-            $table->boolean('section_is_completed');
+            $table->boolean('section_is_completed')->default(false);
             $table->timestamps();
 
             $table->index('masterclass_id');

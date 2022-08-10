@@ -10,7 +10,7 @@ class CourseMasterclass extends Model
     use HasFactory;
     protected $table = 'course_masterclasses';
     protected $primaryKey = 'masterclass_id';
-    protected $guarded = ['masterclass_total_curriculum', 'masterclass_discount', 'masterclass_price'];
+    protected $guarded = [];
 
     public function course_categories()
     {
